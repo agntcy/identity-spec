@@ -8,18 +8,22 @@
     </picture>
   </a>
   <br />
-  <caption>Welcome to the <b>Agent Identity</b> repo</caption>
+  <caption>Welcome to the <b>Agent Identity</b> documentation repo</caption>
 </p>
 
 ---
 
-This repository contains all components of the Agent Identity.
+This repository contains documentation for the Agent Identity platform.
 
 ## Getting Started
 
-## API Specs
+## Generate the docs
 
-Documentation for the [API Specs](api-spec/README.md) can be found in the `api-spec` directory.
+Generate the docs by running the following command:
+
+```bash
+make generate
+```
 
 ## Contributing
 

@@ -1,0 +1,47 @@
+---
+title: vc_service.proto
+hide_title: true
+---
+
+import { ProtoMessage, ProtoServiceMethod, ProtoEnum } from '@theme/ProtoFile';
+
+# `vc_service.proto`
+_**path** agntcy/pyramid/v1alpha1/vc_service.proto_
+
+_**package** agntcy.pyramid.v1alpha1_
+
+
+
+---
+
+## Messages
+
+
+### `IssueRequest`
+<ProtoMessage key={0} message={{"name":"IssueRequest","longName":"IssueRequest","fullName":"agntcy.pyramid.v1alpha1.IssueRequest","description":"IssueRequest is a request to issue a VC","hasExtensions":false,"hasFields":true,"hasOneofs":false,"extensions":[],"fields":[{"name":"id","description":"ID is the method-specific identifier in the DID URI.\nSpec: https://www.w3.org/TR/did-core/#method-specific-id\nAgntcy DID has the following format: did:agntcy:{id}","label":"","type":"string","longType":"string","fullType":"string","ismap":false,"isoneof":false,"oneofdecl":"","defaultValue":""},{"name":"content","description":"Content of the VC","label":"","type":"CredentialContent","longType":"CredentialContent","fullType":"agntcy.pyramid.v1alpha1.CredentialContent","ismap":false,"isoneof":false,"oneofdecl":"","defaultValue":"","typeLink":"/protodocs/agntcy/pyramid/v1alpha1/vc.proto#credentialcontent"},{"name":"envelope_type","description":"Envelope type","label":"","type":"VerifiableCredentialEnvelopeType","longType":"VerifiableCredentialEnvelopeType","fullType":"agntcy.pyramid.v1alpha1.VerifiableCredentialEnvelopeType","ismap":false,"isoneof":false,"oneofdecl":"","defaultValue":"","typeLink":"/protodocs/agntcy/pyramid/v1alpha1/vc.proto#verifiablecredentialenvelopetype"}]}} />
+
+---
+## Services
+
+
+### `VcService`
+
+VC is the service that provides VC operations.
+
+
+#### `Issue`
+<ProtoServiceMethod key={'Issue-0'} method={{"name":"Issue","description":"Issue","requestType":"IssueRequest","requestLongType":"IssueRequest","requestFullType":"agntcy.pyramid.v1alpha1.IssueRequest","requestStreaming":false,"responseType":"EnvelopedVerifiableCredential","responseLongType":"EnvelopedVerifiableCredential","responseFullType":"agntcy.pyramid.v1alpha1.EnvelopedVerifiableCredential","responseStreaming":false,"options":{"google.api.http":{"rules":[{"method":"POST","pattern":"/v1alpha1/vc/issue","body":"*"}]}},"requestTypeLink":"/protodocs/agntcy/pyramid/v1alpha1/vc_service.proto#issuerequest","responseTypeLink":"/protodocs/agntcy/pyramid/v1alpha1/vc.proto#envelopedverifiablecredential"}} />
+
+
+#### `Publish`
+<ProtoServiceMethod key={'Publish-1'} method={{"name":"Publish","description":"Publish","requestType":"EnvelopedVerifiableCredential","requestLongType":"EnvelopedVerifiableCredential","requestFullType":"agntcy.pyramid.v1alpha1.EnvelopedVerifiableCredential","requestStreaming":false,"responseType":"Empty","responseLongType":".google.protobuf.Empty","responseFullType":"google.protobuf.Empty","responseStreaming":false,"options":{"google.api.http":{"rules":[{"method":"POST","pattern":"/v1alpha1/vc/publish","body":"*"}]}},"requestTypeLink":"/protodocs/agntcy/pyramid/v1alpha1/vc.proto#envelopedverifiablecredential"}} />
+
+
+#### `Verify`
+<ProtoServiceMethod key={'Verify-2'} method={{"name":"Verify","description":"Verify","requestType":"EnvelopedVerifiableCredential","requestLongType":"EnvelopedVerifiableCredential","requestFullType":"agntcy.pyramid.v1alpha1.EnvelopedVerifiableCredential","requestStreaming":false,"responseType":"Empty","responseLongType":".google.protobuf.Empty","responseFullType":"google.protobuf.Empty","responseStreaming":false,"options":{"google.api.http":{"rules":[{"method":"POST","pattern":"/v1alpha1/credentials/publish","body":"*"}]}},"requestTypeLink":"/protodocs/agntcy/pyramid/v1alpha1/vc.proto#envelopedverifiablecredential"}} />
+
+
+---
+
+
+  

@@ -1,0 +1,7 @@
+services:
+  docs:
+    build:
+      dockerfile: ./scripts/docker/Dockerfile.docs
+      context: ../../
+    volumes:
+      - ../../:/identity/docs

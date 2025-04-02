@@ -1,0 +1,5 @@
+FROM node:latest
+
+COPY scripts/docker/run.sh .
+RUN chmod +x run.sh && \
+    mv run.sh /usr/local/bin

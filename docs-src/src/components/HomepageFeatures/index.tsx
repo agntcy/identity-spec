@@ -10,35 +10,29 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "Decentralized Identity Management",
+    title: "Decentralized Identity",
     description: (
       <>
-        PyramID is crafted to seamlessly manage decentralized identities across
-        multiple platforms. Our system ensures secure and efficient identity
-        management, allowing users to access services and applications with
-        ease.
+        Unlock the power of self-sovereign identity and learn how to create and
+        manage your decentralized identifiers.
       </>
     ),
   },
   {
-    title: "Effortless Integration",
+    title: "Agent Identity Solutions",
     description: (
       <>
-        Connect your existing platforms effortlessly with PyramID-Engine's
-        support for custom sources like Splunk, Meraki, Jira, Salesforce, and
-        Stripe. Our system uses OpenAPI specifications to ensure smooth data
-        source integration without hassle.
+        Explore comprehensive guides and best practices for implementing
+        decentralized identity management for agents.
       </>
     ),
   },
   {
-    title: "Customizable and Extensible",
+    title: "Agntcy",
     description: (
       <>
-        With the "Bring your own tool" functionality, PyramID-Engine allows
-        administrators to add custom tools and extend existing source
-        capabilities. Tailor your environment to meet specific needs with ease,
-        ensuring maximum utility and flexibility.
+        The AGNTCY is where we are building the Internet of Agents to be
+        accessible for all.
       </>
     ),
   },

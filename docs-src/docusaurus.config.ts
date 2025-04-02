@@ -6,7 +6,7 @@ import type { ScalarOptions } from '@scalar/docusaurus'
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'PyramID',
+  title: 'Agent Identity',
   tagline: 'Decentralized Identity Management',
   favicon: 'img/favicon.svg',
 
@@ -18,8 +18,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Agntcy', // Usually your GitHub org/user name.
-  projectName: 'PyramID', // Usually your repo name.
+  organizationName: 'AGNTCY', // Usually your GitHub org/user name.
+  projectName: 'Agent Identity', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -77,9 +77,9 @@ const config: Config = {
 
   themeConfig: {
     navbar: {
-      title: 'PyramID',
+      title: 'Agent Identity',
       logo: {
-        alt: 'PyramID Engine',
+        alt: 'Agent Identity Engine',
         src: 'img/logo.svg',
       },
       items: [
@@ -96,7 +96,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://github.com/cisco-eti/pyramid',
+          href: 'https://github.com/cisco-eti/pyramid-spec',
           label: 'GitHub',
           position: 'right',
         },
@@ -107,17 +107,27 @@ const config: Config = {
       links: [
         {},
         {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
         {
           title: 'Community',
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/cisco-eti/pyramid',
+              label: 'AGNTCY',
+              href: 'https://github.com/agntcy',
+            },
+            {
+              label: 'Github',
+              href: 'https://github.com/cisco-eti/pyramid-spec',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} PyramID. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} AGNTCY. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

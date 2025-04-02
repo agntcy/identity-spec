@@ -96,7 +96,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          href: 'https://github.com/cisco-eti/pyramid-spec',
+          href: 'https://github.com/agntcy/identity-spec',
           label: 'GitHub',
           position: 'right',
         },
@@ -121,8 +121,8 @@ const config: Config = {
               href: 'https://github.com/agntcy',
             },
             {
-              label: 'Github',
-              href: 'https://github.com/cisco-eti/pyramid-spec',
+              label: 'Identity',
+              href: 'https://github.com/agntcy/identity-spec',
             },
           ],
         },

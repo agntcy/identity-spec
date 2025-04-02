@@ -28,7 +28,7 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "Agntcy",
+    title: "Internet of Agents",
     description: (
       <>
         The AGNTCY is where we are building the Internet of Agents to be

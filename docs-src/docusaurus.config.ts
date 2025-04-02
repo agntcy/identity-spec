@@ -37,7 +37,7 @@ const config: Config = {
       '@scalar/docusaurus',
       {
         label: 'OpenAPI',
-        route: '/openapi/v1alpha1',
+        route: '/openapi/v1alpha1/',
         configuration: {
           spec: {
             url: '/api/openapi/v1alpha1/openapi.yaml',

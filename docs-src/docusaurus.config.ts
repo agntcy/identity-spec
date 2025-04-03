@@ -82,6 +82,7 @@ const config: Config = {
       logo: {
         alt: 'Agent Identity Engine',
         src: 'img/logo.svg',
+        srcDark: 'img/logo-dark.svg'
       },
       items: [
         {
@@ -104,7 +105,6 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
       links: [
         {},
         {},

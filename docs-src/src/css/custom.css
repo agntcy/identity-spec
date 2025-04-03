@@ -6,25 +6,152 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #002786; /* Updated primary color */
+  --ifm-color-primary-dark: #001f6b;
+  --ifm-color-primary-darker: #001a57;
+  --ifm-color-primary-darkest: #001342;
+  --ifm-color-primary-light: #0033a1;
+  --ifm-color-primary-lighter: #003dbb;
+  --ifm-color-primary-lightest: #0046d5;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 39, 134, 0.1); /* Updated highlight background */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-primary: #FBAF45; /* Dark theme primary color */
+  --ifm-color-primary-dark: #002786; /* Matches light theme primary */
+  --ifm-color-primary-darker: #001f6b;
+  --ifm-color-primary-darkest: #001342;
+  --ifm-color-primary-light: #0046d5;
+  --ifm-color-primary-lighter: #0051af;
+  --ifm-color-primary-lightest: #0066ff;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 39, 134, 0.2); /* Highlight background for dark theme */
+}
+
+.navbar {
+  background: radial-gradient(100% 204.08% at 0% 100%, #DEE6F9 0%, #F5F8FD 48.71%, #F5F8FD 100%);
+}
+
+[data-theme='dark'] .navbar {
+  background: radial-gradient(100% 204.08% at 0% 100%, #00142B 0%, #00142B 48.71%, #00142B 100%);
+}
+
+.footer {
+  background-color: #E8EEFB;
+  border-top: 1px solid #dee6f9;
+}
+
+[data-theme='dark'] .footer {
+  background-color: #00142B;
+  border-top: 1px solid #002a4d;
+}
+
+.menu {
+  background-color: #E8EEFB;
+  border-right: 1px solid #dee6f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .menu {
+  background-color: #00142b;
+  border-right: 1px solid #002a4d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.menu__link {
+  font-size: 16px;
+  color: #00142B; 
+}
+.menu__link:hover {
+  font-size: 16px;
+  color: #0051AF; 
+}
+
+.menu__link--active {
+  font-weight: bold;
+  color: #0051AF;
+}
+
+[data-theme='dark'] .menu__link {
+  color: #dee6f9;
+}
+
+[data-theme='dark'] .menu__link:hover {
+  color: #FBAF45;
+}
+
+[data-theme='dark'] .menu__link--active {
+  color: #FBAF45;
+}
+
+.main-wrapper {
+  background-color: #EFF3FC;
+}
+
+[data-theme='dark'] .main-wrapper {
+  background-color: #00142B;
+}
+
+.card {
+  background-color: #EFF3FC;
+  border: 1px solid #dee6f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #00142B;
+  padding: 16px;
+  border-radius: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme='dark'] .card {
+  background-color: #00142B;
+  border: 1px solid #002a4d;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  color: #dee6f9;
+}
+
+[data-theme='dark'] .card:hover {
+  transform: translateY(-4px); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+}
+
+code {
+  background-color: #EFF3FC;
+  color: #00142B;
+  border-radius: 4px;
+}
+
+[data-theme='dark'] code {
+  background-color: #002a4d;
+  color: #dee6f9;
+  border-radius: 4px;
+}
+
+.hero {
+ background-color: #EFF3FC;
+}
+
+[data-theme='dark'] .hero {
+  background-color: #00142B;
+}
+
+.hero__title {
+  color: #00142B;
+}
+
+[data-theme='dark'] .hero__title {
+  color: #FBAF45;
+}
+
+.hero__subtitle {
+  color: #00142B;
+}
+
+[data-theme='dark'] .hero__subtitle {
+  color: #FBAF45;
 }

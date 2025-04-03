@@ -71,8 +71,7 @@ const config: Config = {
           url: '/api/openapi/v1alpha1/openapi.yaml',
           hideDarkModeToggle: true,
           layout: 'modern',
-          customCss: './src/css/custom.css',
-          // theme: 'kepler'
+          customCss: './src/css/custom.css'
         },
       } as ScalarOptions,
     ],

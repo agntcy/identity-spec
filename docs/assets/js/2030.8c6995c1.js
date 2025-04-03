@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[2030],{2030:(e,c,s)=>{s.r(c),s.d(c,{default:()=>t});var l=s(641),n=s(3395);const t=(0,l.pM)({__name:"CollectionSync",setup:e=>(e,c)=>((0,l.uX)(),(0,l.Wv)(n.A,null,{title:(0,l.k6)((()=>c[0]||(c[0]=[(0,l.eW)("Sync")]))),_:1}))})}}]);

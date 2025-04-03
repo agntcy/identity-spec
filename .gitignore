@@ -140,3 +140,5 @@ pyramid/cmd/issuer/web
 pyramid/pkg/assets/web
 
 .vscode
+
+docs/

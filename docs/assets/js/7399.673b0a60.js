@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[7399],{7399:(e,s,t)=>{t.r(s),t.d(s,{default:()=>u});var c=t(641),l=t(3395);const u=(0,c.pM)({__name:"CollectionScripts",setup:e=>(e,s)=>((0,c.uX)(),(0,c.Wv)(l.A,null,{title:(0,c.k6)((()=>s[0]||(s[0]=[(0,c.eW)("Scripts")]))),_:1}))})}}]);

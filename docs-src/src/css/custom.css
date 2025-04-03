@@ -30,6 +30,13 @@
 }
 
 .navbar {
+  position: fixed; /* Fix the sidebar position */
+  top: 0;
+  left: 0;
+  overflow: hidden; /* Prevent scrolling */
+  width: 100%; /* Fixed width */
+  background-color: #E8EEFB; /* Keep the existing background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background: radial-gradient(100% 204.08% at 0% 100%, #DEE6F9 0%, #F5F8FD 48.71%, #F5F8FD 100%);
 }
 
@@ -48,6 +55,11 @@
 }
 
 .menu {
+  position: fixed; /* Fix the sidebar position */
+  top: 60px; /* Adjust top position */
+  left: 0;
+  width: 100%; /* Fixed width */
+  height: 100vh; /* Full viewport height */
   background-color: #E8EEFB;
   border-right: 1px solid #dee6f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -86,6 +98,7 @@
 }
 
 .main-wrapper {
+  margin-top: 60px; /* Adjust for fixed navbar */
   background-color: #EFF3FC;
 }
 

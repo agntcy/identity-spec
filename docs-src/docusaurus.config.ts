@@ -36,6 +36,7 @@ const config: Config = {
     [
       '@scalar/docusaurus',
       {
+        id: 'openapi',
         label: 'OpenAPI',
         route: '/openapi/v1alpha1/',
         configuration: {

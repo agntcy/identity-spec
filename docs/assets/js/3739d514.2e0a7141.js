@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[587],{1413:s=>{s.exports=JSON.parse('{"name":"@scalar/docusaurus","id":"openapi"}')}}]);

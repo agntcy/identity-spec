@@ -1,7 +1,6 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
-import type { ScalarOptions } from '@scalar/docusaurus'
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -32,21 +31,7 @@ const config: Config = {
     locales: ['en'],
   },
 
-  plugins: [
-    [
-      '@scalar/docusaurus',
-      {
-        id: 'openapi',
-        label: 'OpenAPI',
-        route: '/openapi/v1alpha1/',
-        configuration: {
-          spec: {
-            url: '/api/openapi/v1alpha1/openapi.yaml',
-          },
-        },
-      } as ScalarOptions,
-    ],
-  ],
+  plugins: [],
 
   presets: [
     [
@@ -95,6 +80,12 @@ const config: Config = {
           to: 'protodocs/agntcy/pyramid/v1alpha1/did.proto',
           activeBasePath: 'protodocs',
           label: 'Protodocs',
+          position: 'left',
+        },
+        {
+          to: 'openapi/v1alpha1',
+          activeBasePath: 'openapi',
+          label: 'OpenAPI',
           position: 'left',
         },
         {

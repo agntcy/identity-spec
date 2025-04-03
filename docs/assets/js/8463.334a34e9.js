@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[8463],{8463:(e,s,o)=>{o.r(s),o.d(s,{default:()=>u});var l=o(641),t=o(3395);const u=(0,l.pM)({__name:"CollectionCookies",setup:e=>(e,s)=>((0,l.uX)(),(0,l.Wv)(t.A,null,{title:(0,l.k6)((()=>s[0]||(s[0]=[(0,l.eW)("Cookies")]))),_:1}))})}}]);

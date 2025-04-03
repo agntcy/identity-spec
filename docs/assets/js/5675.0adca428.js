@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[5675],{5675:(e,n,s)=>{s.r(n),s.d(n,{default:()=>u});var t=s(641),l=s(3395);const u=(0,t.pM)({__name:"CollectionEnvironment",setup:e=>(e,n)=>((0,t.uX)(),(0,t.Wv)(l.A,null,{title:(0,t.k6)((()=>n[0]||(n[0]=[(0,t.eW)("Environments")]))),_:1}))})}}]);

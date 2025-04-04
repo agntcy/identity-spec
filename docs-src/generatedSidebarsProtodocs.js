@@ -1,26 +1,3 @@
-module.exports = {
-  protodocs: [
-    {
-      type: "category",
-      label: "Files",
-      items: [
-        {
-          type: "category",
-          label: "/agntcy/identity/v1alpha1",
-          items: [
-            { type: "doc", id: "agntcy/identity/v1alpha1/did.proto" },
-            { type: "doc", id: "agntcy/identity/v1alpha1/issuer.proto" },
-            { type: "doc", id: "agntcy/identity/v1alpha1/did_service.proto" },
-            {
-              type: "doc",
-              id: "agntcy/identity/v1alpha1/issuer_service.proto",
-            },
-            { type: "doc", id: "agntcy/identity/v1alpha1/openapi.proto" },
-            { type: "doc", id: "agntcy/identity/v1alpha1/vc.proto" },
-            { type: "doc", id: "agntcy/identity/v1alpha1/vc_service.proto" },
-          ],
-        },
-      ],
-    },
-  ],
-};
+
+module.exports = {"protodocs":[{"type":"category","label":"Files","items":[{"type":"category","label":"/agntcy/identity/v1alpha1","items":[{"type":"doc","id":"agntcy/identity/v1alpha1/did.proto"},{"type":"doc","id":"agntcy/identity/v1alpha1/issuer.proto"},{"type":"doc","id":"agntcy/identity/v1alpha1/did_service.proto"},{"type":"doc","id":"agntcy/identity/v1alpha1/issuer_service.proto"},{"type":"doc","id":"agntcy/identity/v1alpha1/openapi.proto"},{"type":"doc","id":"agntcy/identity/v1alpha1/vc.proto"},{"type":"doc","id":"agntcy/identity/v1alpha1/vc_service.proto"}]}]}]};
+  

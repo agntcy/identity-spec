@@ -3,12 +3,12 @@
 
 openapi: 3.0.3
 info:
-    title: PyramID
-    description: PyramID
+    title: Identity
+    description: Identity
     contact:
         name: Agntcy Team
-        url: https://github.com/agntcy/pyramid
-        email: pyramid@agntcy.org
+        url: https://github.com/agntcy/identity
+        email: identity@agntcy.org
     version: v1alpha1
 servers:
     - url: http://0.0.0.0:4000
@@ -339,7 +339,7 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/Jwk'
                     description: The private key of the issuer in JWK format
-            description: A PyramID Issuer
+            description: A Identity Issuer
         Jwk:
             type: object
             properties:

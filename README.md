@@ -1,4 +1,4 @@
-# Agent Identity Docs
+# Identity Docs
 
 <p align="center">
   <a href="https://agntcy.org">
@@ -8,12 +8,12 @@
     </picture>
   </a>
   <br />
-  <caption>Welcome to the <b>Agent Identity</b> documentation repo</caption>
+  <caption>Welcome to the <b>Identity</b> documentation repo</caption>
 </p>
 
 ---
 
-This repository contains documentation for the Agent Identity platform.
+This repository contains documentation for the Identity platform.
 
 ## Getting Started
 

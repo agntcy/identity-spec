@@ -15,12 +15,12 @@ assignees: ""
 
 #### How to reproduce it (as minimally and precisely as possible):
 
-#### Are there any error messages in Agent Identity logs?
+#### Are there any error messages in Identity logs?
 
 #### Anything else we need to know?:
 
 #### Environment:
 
-- Agent Identity version:
+- Identity version:
 - Cloud provider or hardware configuration:
 - Others:

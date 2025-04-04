@@ -26,7 +26,7 @@ export default function Home(): ReactNode {
   return (
     <Layout
       title={`Agtncy ${siteConfig.title}`}
-      description="Agent Identity by Agntcy"
+      description="Identity by Agntcy"
     >
       <HomepageHeader />
       <main>

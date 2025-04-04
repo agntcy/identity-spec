@@ -6,7 +6,7 @@ import type { ScalarOptions } from '@scalar/docusaurus'
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Agent Identity',
+  title: 'Identity',
   tagline: 'Decentralized Identity Management',
   favicon: 'img/favicon.svg',
 
@@ -19,7 +19,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'AGNTCY', // Usually your GitHub org/user name.
-  projectName: 'Agent Identity', // Usually your repo name.
+  projectName: 'Identity', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -79,9 +79,9 @@ const config: Config = {
 
   themeConfig: {
     navbar: {
-      title: 'Agent Identity',
+      title: 'Identity',
       logo: {
-        alt: 'Agent Identity Engine',
+        alt: 'Identity Engine',
         src: 'img/logo.svg',
         srcDark: 'img/logo-dark.svg'
       },

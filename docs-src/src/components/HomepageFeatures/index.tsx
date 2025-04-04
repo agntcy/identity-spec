@@ -20,7 +20,7 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "Agent Identity Solutions",
+    title: "Identity Solutions",
     description: (
       <>
         Explore comprehensive guides and best practices for implementing

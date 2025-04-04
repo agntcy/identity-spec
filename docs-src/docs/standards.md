@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Decentralized
 
-The `Agent Identity` platform complies with the following standards defined by [W3C](https://www.w3.org/):
+The `Identity` platform complies with the following standards defined by [W3C](https://www.w3.org/):
 
 - [`Decentralized Identifiers (DID) v1.1`](https://www.w3.org/TR/did-1.1/)
 - [`Verifiable Credentials (VC) v2.0`](https://www.w3.org/TR/vc-data-model-2.0/)

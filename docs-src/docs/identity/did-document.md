@@ -39,4 +39,4 @@ where:
 - `verificationMethod`: Public key used to verify signatures
 - `assertionMethod`: Public key used to sign verifiable credentials
 - `ORG`: Organization
-- `NODE`: Identity Node
+- `NODE`: `Identity Node`

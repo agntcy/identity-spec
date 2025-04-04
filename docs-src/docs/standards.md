@@ -13,4 +13,4 @@ The `Identity` platform complies with the following standards defined by [W3C](h
 
 ## Post-Quantum Safe
 
-We support as an option the following quantum-safe cryptographic algorithm defined by [`NIST`](https://www.nist.gov/): `NTRU-Falcon`.
+We support, as an option, the following quantum-safe cryptographic algorithm defined by [`NIST`](https://www.nist.gov/): `NTRU-Falcon`.

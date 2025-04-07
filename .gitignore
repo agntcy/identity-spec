@@ -141,4 +141,6 @@ pyramid/pkg/assets/web
 
 .vscode
 
-docs/
+# ignore docs in root directory, but not in subdirectories
+/docs
+

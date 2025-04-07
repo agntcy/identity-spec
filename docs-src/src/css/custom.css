@@ -54,21 +54,20 @@
   border-top: 1px solid #002a4d;
 }
 
-.menu {
-  position: fixed; /* Fix the sidebar position */
-  top: 60px; /* Adjust top position */
-  left: 0;
-  width: 100%; /* Fixed width */
-  height: 100vh; /* Full viewport height */
+.theme-doc-sidebar-container {
   background-color: #E8EEFB;
   border-right: 1px solid #dee6f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme='dark'] .menu {
+[data-theme='dark'] .theme-doc-sidebar-container {
   background-color: #00142b;
   border-right: 1px solid #002a4d;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.theme-doc-sidebar-container div[class^='sidebarViewport'] {
+  height: auto;
 }
 
 .menu__link {

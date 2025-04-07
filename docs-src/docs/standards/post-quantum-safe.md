@@ -9,7 +9,7 @@ As quantum computing technology advances, traditional cryptographic algorithms b
 
 We support, as an option, the following quantum-safe cryptographic algorithm defined by [`NIST`](https://www.nist.gov/):
 
-## `NTRU-Falcon`
+## [`NTRU-Falcon`](https://falcon-sign.info/)
 
 - **Purpose**: `NTRU-Falcon` is a cryptographic algorithm designed to be secure in the presence of quantum computing capabilities. It is part of the family of lattice-based cryptographic schemes.
 - **Features**: Known for its efficiency and strong security properties, `NTRU-Falcon` is suitable for applications requiring fast encryption and decryption processes while maintaining robust security.

@@ -1,7 +1,7 @@
 # Agent Passport
 
-`Agent Passport` is a envelopped OASF verifiable credential that represents an Agent in the Agntcy ecosystem.
-It is a JSON-LD document that contains information about the Agent, such as its DID, OASF definition, and other metadata.
+`Agent Passport` is a envelopped OASF `Verifiable Credential` represents an Agent in the `AGNTCY` ecosystem.
+It is a JSON-LD document that contains information about the Agent, such as its [`DID`](/docs/did), [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent), and other metadata.
 
 Here is an example of an `Agent Passport` with a `JOSE` envelope:
 
@@ -32,7 +32,7 @@ CREDENTIAL
 
 where:
 
-- `credentialSubject.id`: DID of the subject
-- `credentialSubject.oasf`: OASF Definition
+- `credentialSubject.id`: [`DID`](/docs/did) of the subject
+- `credentialSubject.oasf`: [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent)
 
 Note: The `proof` is verfiied by the `assertionMethod` public key in the DID Document.

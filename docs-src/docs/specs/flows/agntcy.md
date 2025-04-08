@@ -133,7 +133,6 @@ Directory CLI->>Agent Verifier: Downloaded OASF
 deactivate Directory CLI
 
 % Verify the agent version DID linking OASF verifiable credential
-Agent Verifier->>Agent Verifier: Extract the agent version DID<br/>from the OASF Identity Extension
 Agent Verifier->>Identity CLI: Verify the Agent Passport (verifiable credential) linking agent version DID with OASF
 activate Identity CLI
 Identity CLI->>Identity Node: Verify the Agent Passport (verifiable credential)<br/>linking agent version DID with OASF
@@ -141,38 +140,24 @@ activate Identity Node
 Identity Node-->>Identity Node: Look up the issuer<br/>well-known public key
 Identity Node-->>Identity Node: Verify
 Identity Node-->>Identity CLI: Verified
-deactivate Identity Node
-Identity CLI-->>Agent Verifier: Verified
-deactivate Identity CLI
 
-% Verify the agent version DID
-Agent Verifier->>Identity CLI: Verify the agent version DID
-activate Identity CLI
+% Verify the agent version DID linking OASF verifiable credential
 Identity CLI->>Identity Node: Verify the agent version DID
 activate Identity Node
 Identity Node-->>Identity Node: Look up the issuer<br/>well-known public key
 Identity Node-->>Identity Node: Verify
 Identity Node-->>Identity CLI: Verified
 deactivate Identity Node
-Identity CLI-->>Agent Verifier: Verified
-deactivate Identity CLI
 
 % Verify the agent DID linking agent version DID verifiable credential
-Agent Verifier->>Agent Verifier: Extract the agent DID from<br/>the OASF Identity Extension
-Agent Verifier->>Identity CLI: Verify the Agent Passport (verifiable credential) linking agent DID with agent version DID
-activate Identity CLI
 Identity CLI->>Identity Node: Verify the Agent Passport (verifiable credential)<br/>linking agent DID with agent version DID
 activate Identity Node
 Identity Node-->>Identity Node: Look up the issuer<br/>well-known public key
 Identity Node-->>Identity Node: Verify
 Identity Node-->>Identity CLI: Verified
 deactivate Identity Node
-Identity CLI-->>Agent Verifier: Verified
-deactivate Identity CLI
 
 % Verify the agent DID
-Agent Verifier->>Identity CLI: Verify the agent DID
-activate Identity CLI
 Identity CLI->>Identity Node: Verify the agent DID
 activate Identity Node
 Identity Node-->>Identity Node: Look up the issuer<br/>well-known public key

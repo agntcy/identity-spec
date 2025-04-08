@@ -38,6 +38,7 @@
   background-color: #E8EEFB; /* Keep the existing background */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background: radial-gradient(100% 204.08% at 0% 100%, #DEE6F9 0%, #F5F8FD 48.71%, #F5F8FD 100%);
+  z-index: 1000; /* Ensure it stays on top */
 }
 
 [data-theme='dark'] .navbar {
@@ -189,4 +190,20 @@ html[data-theme="dark"] body, .scalar-card.dark-mode {
   --scalar-background-2: #041930 !important;
   --scalar-background-3: #0D274D !important;
   /* --scalar-background-accent: red !important; */
+}
+
+.panzoom-wrapper {
+  border: 2px solid #000; /* Adjust the color and width as needed */
+  border-radius: 8px; /* Optional: Add rounded corners */
+  padding: 10px; /* Optional: Add padding inside the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  width: 100%; /* Ensure it takes full width */
+}
+
+[data-theme='dark'] .panzoom-wrapper {
+  border: 2px solid #fff; /* Adjust the color and width as needed */
+}
+
+.markdown > *:last-child {
+  width: 100% !important;
 }

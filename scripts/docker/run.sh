@@ -1,3 +1,3 @@
 #!/bin/bash
 
-npm install --legacy-peer-deps && npx docusaurus generate-proto-docs && npm run build && mv build ../docs
+yarn install && npx docusaurus generate-proto-docs && yarn run build && mv build ../docs

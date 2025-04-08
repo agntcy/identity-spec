@@ -16,9 +16,12 @@
   },
   "dependencies": {
     "@docusaurus/core": "3.7.0",
+    "@docusaurus/plugin-content-docs": "^3.7.0",
     "@docusaurus/preset-classic": "3.7.0",
     "@docusaurus/theme-mermaid": "^3.7.0",
+    "@docusaurus/utils-validation": "^3.7.0",
     "@mdx-js/react": "^3.0.0",
+    "@panzoom/panzoom": "^4.6.0",
     "@scalar/docusaurus": "^0.5.11",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",

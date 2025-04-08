@@ -75,6 +75,12 @@ const config: Config = {
         },
       } as ScalarOptions,
     ],
+    [
+      require.resolve('./src/plugins/panzoom'),
+      {
+        timeout: 1500
+      },
+    ],
   ],
 
   themeConfig: {
@@ -139,7 +145,7 @@ const config: Config = {
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
-    },
+    }
   } satisfies Preset.ThemeConfig,
   markdown: {
     mermaid: true,

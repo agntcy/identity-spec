@@ -134,9 +134,9 @@ deactivate Directory CLI
 
 % Verify the agent version DID linking OASF verifiable credential
 Agent Verifier->>Agent Verifier: Extract the agent version DID<br/>from the OASF Identity Extension
-Agent Verifier->>Identity CLI: Verify the Agent Passport (verifiable credential) linking agent version DID with OASF 
+Agent Verifier->>Identity CLI: Verify the Agent Passport (verifiable credential) linking agent version DID with OASF
 activate Identity CLI
-Identity CLI->>Identity Node: Verify the Agent Passport (verifiable credential)<br/>linking agent version DID with OASF 
+Identity CLI->>Identity Node: Verify the Agent Passport (verifiable credential)<br/>linking agent version DID with OASF
 activate Identity Node
 Identity Node-->>Identity Node: Look up the issuer<br/>well-known public key
 Identity Node-->>Identity Node: Verify

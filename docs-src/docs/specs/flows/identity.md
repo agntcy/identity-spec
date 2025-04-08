@@ -38,14 +38,19 @@ Identity CLI->>Agent Creator: Connected
 deactivate Identity CLI
 
 % Publish public key as well known
-Agent Creator->>Identity CLI: Publish public key as well known
+Agent Creator->>Identity CLI: Request to publish public key as well known
 activate Identity CLI
 Identity CLI->>Wallet: Get public key
 Wallet-->>Identity CLI: Public key
-Identity CLI->>Identity Node: Publish public key as well known
-Identity Node-->>Identity CLI: Published
-Identity CLI-->>Agent Creator: Published
+Identity CLI->>Identity Node: Request to publish public key as well known
+activate Identity Node
+Identity Node-->>Identity CLI: Respond with verification uri action<br/>to complete publishing
+Identity CLI-->>Agent Creator: Respond with verification uri action to complete publishing
 deactivate Identity CLI
+Agent Creator->>Identity Node: Complete verification uri action (e.g., via browser)
+Identity Node-->>Identity Node: Publish public key as well known
+Identity Node-->>Agent Creator: Published public key as well known
+deactivate Identity Node
 ```
 
 </div>

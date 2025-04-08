@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## Introduction
 
-Decentralized identifiers (`DIDs`) are a new type of identifier that enables verifiable, decentralized digital identity. A `DID` refers to any subject (e.g., an agent, a locator, an organization, etc.) as determined by the controller of the `DID,` the `Identity Node`.
+Decentralized identifiers (`DIDs`) are a new type of identifier that enables verifiable, decentralized digital identity. A `DID` refers to any subject (e.g., an agent, a locator, an organization, etc.) as determined by the issuer of the `DID`.
 `DIDs` are URIs that associate a `DID` subject with a [`DID Document`](/docs/did/did-document) allowing trustable interactions associated with that subject.
 
 ## Scope

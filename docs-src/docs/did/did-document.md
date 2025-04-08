@@ -11,7 +11,7 @@ A [`DID`](/docs/did) resolves to a `DID Document`.
 
 ## DID Document Structure
 
-Agnecy `DID Document` is composed of the following parts:
+`AGNTCY` `DID Document` is composed of the following parts:
 
 ```
 DOCUMENT

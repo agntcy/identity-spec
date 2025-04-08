@@ -7,7 +7,7 @@ import type { ScalarOptions } from '@scalar/docusaurus'
 
 const config: Config = {
   title: 'Identity',
-  tagline: 'Decentralized Identity Management',
+  tagline: 'Explore comprehensive guides and best practices for implementing decentralized identity management for agents.',
   favicon: 'img/favicon.svg',
 
   // Set the production url of your site here

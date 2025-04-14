@@ -193,15 +193,13 @@ html[data-theme="dark"] body, .scalar-card.dark-mode {
 }
 
 .panzoom-wrapper {
-  border: 2px solid #000; /* Adjust the color and width as needed */
-  border-radius: 8px; /* Optional: Add rounded corners */
-  padding: 10px; /* Optional: Add padding inside the container */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-  width: 100%; /* Ensure it takes full width */
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  width: 100%;
 }
 
 [data-theme='dark'] .panzoom-wrapper {
-  border: 2px solid #fff; /* Adjust the color and width as needed */
+  border: 1px solid var(--ifm-color-emphasis-300);
 }
 
 .markdown > *:last-child {

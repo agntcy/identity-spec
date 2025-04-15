@@ -9,7 +9,7 @@ sidebar_position: 3
 A `DID Document` is a JSON-LD document that contains information about a `DID` subject. It is a machine-readable representation of the `DID` subject's identity.
 A [`DID`](/docs/did) resolves to a `DID Document`.
 
-## DID Document Structure
+## `AGNTCY` DID Document Structure
 
 `AGNTCY` `DID Document` is composed of the following parts:
 

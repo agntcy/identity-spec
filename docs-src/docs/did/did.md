@@ -12,8 +12,9 @@ Decentralized identifiers (`DIDs`) are a new type of identifier that enables ver
 ## Scope
 
 This document describes the structure of a `DID` (Decentralized Identifier).
+Multiple `DID` methods are defined in the `Identity` platform, each with its own syntax and resolution process. The `AGNTCY` `DID` method is one of them.
 
-## DID Structure
+## `AGNTCY` `DID` method
 
 The `DID` structure is composed of three parts:
 
@@ -22,3 +23,7 @@ did:agntcy:{ID}
 ```
 
 `ID` is a random UUID (Universally Unique Identifier) that identifies the `DID` subject.
+
+## Other `DID` methods
+
+We will define other `DID` methods in the future, each with its own syntax and resolution process. The `AGNTCY` `DID` method is just one of them.

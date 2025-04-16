@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Decentralized
 
-The concept of `Decentralized Identity` focuses on providing individuals with greater control over their personal data and digital identities.
+The concept of `Decentralized Identity` focuses on providing individuals and organizations with greater control over their data and digital identities.
 
 The `Identity` platform adheres to key standards set by the [World Wide Web Consortium (W3C)](https://www.w3.org/) to ensure interoperability, security, and reliability. These standards include:
 

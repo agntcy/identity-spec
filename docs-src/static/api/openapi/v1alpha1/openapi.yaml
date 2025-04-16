@@ -14,28 +14,6 @@ servers:
     - url: http://0.0.0.0:4000
       description: Local environment
 paths:
-    /v1alpha1/credentials/publish:
-        post:
-            tags:
-                - VcService
-            description: Verify
-            operationId: VcService_Verify
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/EnvelopedVerifiableCredential'
-                required: true
-            responses:
-                "200":
-                    description: OK
-                    content: {}
-                default:
-                    description: Default error response
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Status'
     /v1alpha1/did/generate:
         post:
             tags:
@@ -203,6 +181,53 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Status'
+    /v1alpha1/vc/search:
+        post:
+            tags:
+                - VcService
+            description: Search
+            operationId: VcService_Search
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/SearchRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/SearchResponse'
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /v1alpha1/vc/verify:
+        post:
+            tags:
+                - VcService
+            description: Verify
+            operationId: VcService_Verify
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/EnvelopedVerifiableCredential'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
 components:
     schemas:
         CredentialContent:
@@ -219,6 +244,20 @@ components:
                     type: string
                     description: The content representation in JSON-LD format.
             description: CredentialContent represents the content of a Verifiable Credential.
+        CredentialSchema:
+            type: object
+            properties:
+                type:
+                    type: string
+                    description: Type specifies the type of the file
+                id:
+                    type: string
+                    description: The URL identifying the schema file
+            description: |-
+                CredentialSchema represents the credentialSchema property of a Verifiable Credential.
+                 more information can be found [here]
+
+                 [here]: https://www.w3.org/TR/vc-data-model-2.0/#data-schemas
         DidDocument:
             type: object
             properties:
@@ -347,17 +386,15 @@ components:
                     type: string
                     description: |-
                         ALG represents the algorithm intended for use with the key.
-                         Example algorithms for "Falcon" family: "FALCON512", "FALCON1024" for
-                         NTRU Post-Quantum algorithms.
-                         Example algorithms for "CRYSTALS-Dilithium" family: "CRYDI2", "CRYDI3",
-                         "CRYDI4" for LWE Post-Quantum algorithms.
+                         Example algorithms for Post-Quantum ML-DSA family:
+                         "ML-DSA-44", "ML-DSA-65", "ML-DSA-87".
                          Some example algorithms are "RS256", "RS384", "RS512" for RSA algorithms.
                 kty:
                     type: string
                     description: |-
                         KTY represents the key type parameter.
                          It specifies the family of quantum algorithms used with the key,
-                         such as "NTRU" or "LWE" for post quantum algorithms
+                         such as "AKP" for post quantum algorithms
                          or "RSA" for non quantum algorithms.
                 use:
                     type: string
@@ -369,9 +406,15 @@ components:
                     description: |-
                         KID represents the key ID.
                          It is used to match a specific key.
-                x:
+                pub:
                     type: string
-                    description: The public key for the NTRU and LWE kty.
+                    description: The public key for the AKP kty.
+                priv:
+                    type: string
+                    description: The private key for the AKP kty.
+                seed:
+                    type: string
+                    description: Seed used to derive keys for ML-DSA alg.
                 e:
                     type: string
                     description: The exponent for the RSA public key.
@@ -380,9 +423,7 @@ components:
                     description: The modulus for the RSA public key.
                 d:
                     type: string
-                    description: |-
-                        The private exponent for the RSA kty.
-                         The private key for the NTRU or LWE kty.
+                    description: The private exponent for the RSA kty.
                 p:
                     type: string
                     description: The first prime factor for the RSA private key.
@@ -426,6 +467,31 @@ components:
                         ID is the method-specific identifier in the DID URI.
                          Spec: https://www.w3.org/TR/did-core/#method-specific-id
                          Agntcy DID has the following format: did:agntcy:{id}
+        SearchRequest:
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: |-
+                        ID is the method-specific identifier in the DID URI.
+                         Spec: https://www.w3.org/TR/did-core/#method-specific-id
+                         Agntcy DID has the following format: did:agntcy:{id}
+                schema:
+                    allOf:
+                        - $ref: '#/components/schemas/CredentialSchema'
+                    description: Schema is the schema of the credential contained in the VC
+                content:
+                    type: string
+                    description: The credential content representation in JSON-LD format
+            description: SearchRequest is a request to seach for VCs
+        SearchResponse:
+            type: object
+            properties:
+                credentials:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/EnvelopedVerifiableCredential'
+                    description: The list of VCs that match the search criteria
         Service:
             type: object
             properties:

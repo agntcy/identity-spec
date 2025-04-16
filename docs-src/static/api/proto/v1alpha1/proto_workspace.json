@@ -99,7 +99,7 @@
           "name": "Jwk",
           "longName": "Jwk",
           "fullName": "agntcy.identity.v1alpha1.Jwk",
-          "description": "JWK represents:\n- a JSON Web Key (JWK) with the respective fields specific to RSA algorithms.\n- a Quantum JSON Web Key (QJWK) with the respective fields specific to NTRU and LWE algorithms.",
+          "description": "JWK represents:\n- a JSON Web Key (JWK) with the respective fields specific to RSA algorithms.\n- a Quantum JSON Web Key (QJWK) with the respective fields specific to AKP algorithms.",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,

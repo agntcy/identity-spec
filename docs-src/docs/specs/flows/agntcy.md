@@ -4,121 +4,103 @@ sidebar_position: 2
 
 # Agntcy Flows
 
-## Create a new Agent
+## Create a New Agent (Register)
 
 ```mermaid
 sequenceDiagram
 autonumber
 
 % Create a new agent
-Agent Creator->>e.g. Github: Publish agent source<br/>code and manifest
+Agent Creator->>e.g. Github: Publish agent source<br/>code and ACP manifest
 e.g. Github-->>Agent Creator: Published
 
-% Create a DID for the agent
+% Create a DID and a DID Document for the agent
 Agent Creator->>Identity CLI: Create and publish a DID for the agent
 activate Identity CLI
-Identity CLI->>Identity CLI: Create a DID for the agent
-Identity CLI->>Identity Node: Publish DID for the agent
-Identity Node-->>Identity CLI: Published
-Identity CLI->>Agent Creator: Created and published
+Identity CLI->>Wallet: Get Public Key
+Wallet-->>Identity CLI: Public Key
+Identity CLI->>Identity Node: Create DID for the agent<br/>(/v1alpha1/did/generate)
+activate Identity Node
+Identity Node->>Identity Node: Generate a globally unique DID
+Identity Node->>Identity Node: Create a DID Document
+Identity Node-->>Identity CLI: Created DID and DID Document
+deactivate Identity Node
+Identity CLI-->>Agent Creator: Created DID and DID Document
 deactivate Identity CLI
 
-% Create a DID for the agent version
-Agent Creator->>Identity CLI: Create and publish a DID for the agent version
-activate Identity CLI
-Identity CLI->>Identity CLI: Create a DID for the agent version
-Identity CLI->>Identity Node: Publish DID for the agent version
-Identity Node-->>Identity CLI: Published
-Identity CLI->>Agent Creator: Created and published
-deactivate Identity CLI
-
-% Create + publish a Verifiable Credential linking the agent to the agent version
-Agent Creator->>Identity CLI: Create and publish Agent Passport (Verifiable Credential)<br/>linking the agent DID to the agent version DID
-activate Identity CLI
-Identity CLI->>Wallet: Get Private Key
-Wallet-->>Identity CLI: Private Key
-Identity CLI->>Identity CLI: Create Agent Passport (Verifiable Credential)<br/>linking the agent DID to the agent version DID
-Identity CLI->>Identity Node: Publish Agent Passport
-Identity Node-->>Identity CLI: Published
-Identity CLI-->>Agent Creator: Created and published
-deactivate Identity CLI
-
-% Add DID to the agent's OASF
-Agent Creator->>Directory CLI: Create Agent OASF with agent DID and version DID in Identity Extension (optional: also add Manifest Extension)
-Directory CLI->>Agent Creator: OASF
+% Create the agent's OASF and add DID to it
+Agent Creator->>Directory CLI: Create Agent OASF with agent DID in identity extension
+Directory CLI-->>Agent Creator: OASF
 
 % Publish agent OASF
 Agent Creator->>Directory CLI: Publish OASF
 activate Directory CLI
 Directory CLI->>Directory: Publish OASF
 Directory-->>Directory CLI: Published OASF with<br/>Catalogue ID (Digest)
-Directory CLI-->>Agent Creator: Published OASF withCatalogue ID (Digest)
+Directory CLI-->>Agent Creator: Published OASF with Catalogue ID (Digest)
 deactivate Directory CLI
 
-% Create + Publish Verifiable Credential linking agent version DID + OASF with Catalogue ID (Digest)
-Agent Creator->>Identity CLI: Create and publish Agent Passport (Verifiable Credential)<br/>linking agent version DID and OASF with Catalogue ID (Digest)
+% Create Verifiable Credential linking agent DID + OASF
+Agent Creator->>Identity CLI: Issue an Agent Passport (Verifiable Credential)<br/>linking agent DID and OASF
 activate Identity CLI
+Identity CLI->>Identity CLI: Issue an Agent Passport (Verifiable Credential)<br/>linking agent DID and OASF
 Identity CLI->>Wallet: Get Private Key
 Wallet-->>Identity CLI: Private Key
-Identity CLI->>Identity CLI: Create Agent Passport (Verifiable Credential)<br/>linking agent version DID and OASF with Catalogue ID (Digest)
-Identity CLI->>Identity Node: Publish Agent Passport
+Identity CLI->>Identity CLI: Generate Data Integrity proof and add to Agent Passport
+Identity CLI-->>Agent Creator: Issued Agent Passport
+deactivate Identity CLI
+
+% Publish the Verifiable Credential
+Agent Creator->>Identity CLI: Publish the Agent Passport
+activate Identity CLI
+Identity CLI->>Identity Node: Publish the Agent Passport<br/>(/v1alpha1/vc/publish)
 Identity Node-->>Identity CLI: Published
-Identity CLI-->>Agent Creator: Created and published
+Identity CLI-->>Agent Creator: Published
 deactivate Identity CLI
 ```
 
-## Update an existing Agent
+## Update an Agent (Update)
 
 ```mermaid
 sequenceDiagram
 autonumber
 
-% Create a new agent version DID
-Agent Creator->>Identity CLI: Create and publish a new agent version DID
-activate Identity CLI
-Identity CLI->>Identity CLI: Create a new agent version DID
-Identity CLI->>Identity Node: Publish new agent version DID
-Identity Node-->>Identity CLI: Published
-Identity CLI->>Agent Creator: Created and published
-deactivate Identity CLI
-
-% Create + publish a Verifiable Credential linking the agent to the new agent version
-Agent Creator->>Identity CLI: Create and publish Agent Passport (Verifiable Credential)<br/>linking existing agent DID to the new agent version DID
-activate Identity CLI
-Identity CLI->>Wallet: Get Private Key
-Wallet-->>Identity CLI: Private Key
-Identity CLI->>Identity CLI: Create Agent Passport (Verifiable Credential) linking<br/>existing agent DID to the new agent version DID
-Identity CLI->>Identity Node: Publish Agent Passport
-Identity Node-->>Identity CLI: Published
-Identity CLI-->>Agent Creator: Created and published
-deactivate Identity CLI
+% Update an existing agent
+Agent Creator->>e.g. Github: Update and publish agent source<br/>code and ACP manifest
+e.g. Github-->>Agent Creator: Published
 
 % Update the agent's OASF
-Agent Creator->>Directory CLI: Update Agent OASF, keep existing agent DID and new agent version DID in Identity Extension (optional: also add Manifest Extension)
-Directory CLI->>Agent Creator: Updated OASF
+Agent Creator->>Directory CLI: Update Agent OASF<br/>(keeping the same agent DID in identity extension)
+Directory CLI-->>Agent Creator: OASF
 
-% Publish updated agent OASF
-Agent Creator->>Directory CLI: Publish updated OASF
+% Publish agent OASF
+Agent Creator->>Directory CLI: Publish OASF
 activate Directory CLI
-Directory CLI->>Directory: Publish updated OASF
-Directory-->>Directory CLI: Published updated OASF with<br/>new Catalogue ID (Digest)
-Directory CLI-->>Agent Creator: Published updated OASF with new Catalogue ID (Digest)
+Directory CLI->>Directory: Publish OASF
+Directory-->>Directory CLI: Published OASF with<br/>Catalogue ID (Digest)
+Directory CLI-->>Agent Creator: Published OASF with Catalogue ID (Digest)
 deactivate Directory CLI
 
-% Publish updated Verifiable Credential
-
-Agent Creator->>Identity CLI: Create and publish updated Agent Passport<br/>(Verifiable Credential) linking agent version DID<br/>and updated OASF with new Catalogue ID (Digest)
+% Create a new Verifiable Credential linking agent DID + OASF
+Agent Creator->>Identity CLI: Issue a new Agent Passport (Verifiable Credential)<br/>linking agent DID and OASF
 activate Identity CLI
+Identity CLI->>Identity CLI: Issue a new Agent Passport (Verifiable Credential)<br/>linking agent DID and OASF
 Identity CLI->>Wallet: Get Private Key
 Wallet-->>Identity CLI: Private Key
-Identity CLI->>Identity CLI: Create updated Agent Passport (Verifiable Credential) linking<br/>new agent version DID and updated OASF with new Catalogue ID (Digest)
-Identity CLI->>Identity Node: Publish updated Agent Passport
+Identity CLI->>Identity CLI: Generate Data Integrity proof and add to Agent Passport
+Identity CLI-->>Agent Creator: Issued Agent Passport
+deactivate Identity CLI
+
+% Publish the Verifiable Credential
+Agent Creator->>Identity CLI: Publish the Agent Passport
+activate Identity CLI
+Identity CLI->>Identity Node: Publish the Agent Passport<br/>(/v1alpha1/vc/publish)
 Identity Node-->>Identity CLI: Published
-Identity CLI-->>Agent Creator: Created and published
+Identity CLI-->>Agent Creator: Published
 deactivate Identity CLI
 ```
 
-## Verify an Agent
+## Verify an Agent Locally
 
 ```mermaid
 sequenceDiagram
@@ -132,38 +114,56 @@ Directory-->>Directory CLI: Downloaded OASF
 Directory CLI->>Agent Verifier: Downloaded OASF
 deactivate Directory CLI
 
-% Verify the agent version DID linking OASF verifiable credential
-Agent Verifier->>Identity CLI: Verify the Agent Passport (verifiable credential) linking agent version DID with OASF
+Agent Verifier->>Agent Verifier: Extract the DID from the OASF identity extension
+
+% Resolve the DID into a list of Agent Passports
+Agent Verifier->>Identity CLI: Resolve the DID into a list of Agent Passports
 activate Identity CLI
-Identity CLI->>Identity Node: Verify the Agent Passport (verifiable credential)<br/>linking agent version DID with OASF
+Identity CLI->>Identity Node: Resolve the DID into a list of Agent Passports
 activate Identity Node
-Identity Node-->>Identity Node: Look up the issuer<br/>well-known public key
-Identity Node-->>Identity Node: Verify
-Identity Node-->>Identity CLI: Verified
-
-% Verify the agent version DID linking OASF verifiable credential
-Identity CLI->>Identity Node: Verify the agent version DID
-activate Identity Node
-Identity Node-->>Identity Node: Look up the issuer<br/>well-known public key
-Identity Node-->>Identity Node: Verify
-Identity Node-->>Identity CLI: Verified
+Identity Node-->>Identity CLI: List of Agent Passports
 deactivate Identity Node
+Identity CLI-->>Agent Verifier: List of Agent Passports
+deactivate Identity CLI
 
-% Verify the agent DID linking agent version DID verifiable credential
-Identity CLI->>Identity Node: Verify the Agent Passport (verifiable credential)<br/>linking agent DID with agent version DID
-activate Identity Node
-Identity Node-->>Identity Node: Look up the issuer<br/>well-known public key
-Identity Node-->>Identity Node: Verify
-Identity Node-->>Identity CLI: Verified
-deactivate Identity Node
+% Find and verify the Agent Passport
+Agent Verifier->>Agent Verifier: Find the Agent Passport that matches the OASF
+Agent Verifier->>Identity CLI: Verify the Agent Passport
+activate Identity CLI
+Identity CLI->>Identity Node: Resolve the DID into a DID Document
+Identity Node-->>Identity CLI: DID Document
+Identity CLI->>Identity CLI: Verify the Agent Passport Data Integrity proof<br/>using the DID Document public key
+Identity CLI-->>Agent Verifier: Verified
+deactivate Identity CLI
+```
 
-% Verify the agent DID
-Identity CLI->>Identity Node: Verify the agent DID
-activate Identity Node
-Identity Node-->>Identity Node: Look up the issuer<br/>well-known public key
-Identity Node-->>Identity Node: Verify
-Identity Node-->>Identity CLI: Verified
-deactivate Identity Node
+## Verify an Agent Using Search Endpoint
+
+```mermaid
+sequenceDiagram
+autonumber
+
+% Discover + download the agent OASF
+Agent Verifier->>Directory CLI: Discover and download the agent OASF
+activate Directory CLI
+Directory CLI->>Directory: Discover and download the agent OASF
+Directory-->>Directory CLI: Downloaded OASF
+Directory CLI->>Agent Verifier: Downloaded OASF
+deactivate Directory CLI
+
+Agent Verifier->>Agent Verifier: Extract the DID from the OASF identity extension
+
+Agent Verifier->>Identity CLI: Search the Agent Passport related to the OASF + DID
+Identity CLI->>Identity Node: Search the Agent Passport related to the OASF + DID<br/>(/v1alpha1/vc/search)
+Identity Node-->>Identity CLI: Agent Passport
+Identity CLI-->>Agent Verifier: Agent Passport
+
+% Find and verify the Agent Passport
+Agent Verifier->>Identity CLI: Verify the Agent Passport
+activate Identity CLI
+Identity CLI->>Identity Node: Resolve the DID into a DID Document<br/>(/v1alpha1/did/resolve)
+Identity Node-->>Identity CLI: DID Document
+Identity CLI->>Identity CLI: Verify the Agent Passport Data Integrity proof<br/>using the DID Document public key
 Identity CLI-->>Agent Verifier: Verified
 deactivate Identity CLI
 ```

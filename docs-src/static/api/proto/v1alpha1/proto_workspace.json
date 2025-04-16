@@ -107,7 +107,7 @@
           "fields": [
             {
               "name": "alg",
-              "description": "ALG represents the algorithm intended for use with the key.\nExample algorithms for \"Falcon\" family: \"FALCON512\", \"FALCON1024\" for\nNTRU Post-Quantum algorithms.\nExample algorithms for \"CRYSTALS-Dilithium\" family: \"CRYDI2\", \"CRYDI3\",\n\"CRYDI4\" for LWE Post-Quantum algorithms.\nSome example algorithms are \"RS256\", \"RS384\", \"RS512\" for RSA algorithms.",
+              "description": "ALG represents the algorithm intended for use with the key.\nExample algorithms for Post-Quantum ML-DSA family:\n\"ML-DSA-44\", \"ML-DSA-65\", \"ML-DSA-87\".\nSome example algorithms are \"RS256\", \"RS384\", \"RS512\" for RSA algorithms.",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -119,7 +119,7 @@
             },
             {
               "name": "kty",
-              "description": "KTY represents the key type parameter.\nIt specifies the family of quantum algorithms used with the key,\nsuch as \"NTRU\" or \"LWE\" for post quantum algorithms\nor \"RSA\" for non quantum algorithms.",
+              "description": "KTY represents the key type parameter.\nIt specifies the family of quantum algorithms used with the key,\nsuch as \"AKP\" for post quantum algorithms\nor \"RSA\" for non quantum algorithms.",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -154,15 +154,39 @@
               "defaultValue": ""
             },
             {
-              "name": "x",
-              "description": "The public key for the NTRU and LWE kty.",
+              "name": "pub",
+              "description": "The public key for the AKP kty.",
               "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
               "isoneof": true,
-              "oneofdecl": "_x",
+              "oneofdecl": "_pub",
+              "defaultValue": ""
+            },
+            {
+              "name": "priv",
+              "description": "The private key for the AKP kty.",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_priv",
+              "defaultValue": ""
+            },
+            {
+              "name": "seed",
+              "description": "Seed used to derive keys for ML-DSA alg.",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_seed",
               "defaultValue": ""
             },
             {
@@ -191,7 +215,7 @@
             },
             {
               "name": "d",
-              "description": "The private exponent for the RSA kty.\nThe private key for the NTRU or LWE kty.",
+              "description": "The private exponent for the RSA kty.",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -1101,6 +1125,78 @@
               "defaultValue": ""
             }
           ]
+        },
+        {
+          "name": "SearchRequest",
+          "longName": "SearchRequest",
+          "fullName": "agntcy.identity.v1alpha1.SearchRequest",
+          "description": "SearchRequest is a request to seach for VCs",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "ID is the method-specific identifier in the DID URI.\nSpec: https://www.w3.org/TR/did-core/#method-specific-id\nAgntcy DID has the following format: did:agntcy:{id}",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "schema",
+              "description": "Schema is the schema of the credential contained in the VC",
+              "label": "",
+              "type": "CredentialSchema",
+              "longType": "CredentialSchema",
+              "fullType": "agntcy.identity.v1alpha1.CredentialSchema",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "content",
+              "description": "The credential content representation in JSON-LD format",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "SearchResponse",
+          "longName": "SearchResponse",
+          "fullName": "agntcy.identity.v1alpha1.SearchResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "credentials",
+              "description": "The list of VCs that match the search criteria",
+              "label": "repeated",
+              "type": "EnvelopedVerifiableCredential",
+              "longType": "EnvelopedVerifiableCredential",
+              "fullType": "agntcy.identity.v1alpha1.EnvelopedVerifiableCredential",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
         }
       ],
       "services": [
@@ -1172,7 +1268,30 @@
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/v1alpha1/credentials/publish",
+                      "pattern": "/v1alpha1/vc/verify",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Search",
+              "description": "Search",
+              "requestType": "SearchRequest",
+              "requestLongType": "SearchRequest",
+              "requestFullType": "agntcy.identity.v1alpha1.SearchRequest",
+              "requestStreaming": false,
+              "responseType": "SearchResponse",
+              "responseLongType": "SearchResponse",
+              "responseFullType": "agntcy.identity.v1alpha1.SearchResponse",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/v1alpha1/vc/search",
                       "body": "*"
                     }
                   ]

@@ -442,7 +442,7 @@ components:
             description: |-
                 JWK represents:
                  - a JSON Web Key (JWK) with the respective fields specific to RSA algorithms.
-                 - a Quantum JSON Web Key (QJWK) with the respective fields specific to NTRU and LWE algorithms.
+                 - a Quantum JSON Web Key (QJWK) with the respective fields specific to AKP algorithms.
         Jwks:
             type: object
             properties:

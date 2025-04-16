@@ -99,7 +99,7 @@
           "name": "Jwk",
           "longName": "Jwk",
           "fullName": "agntcy.identity.v1alpha1.Jwk",
-          "description": "JWK represents:\n- a JSON Web Key (JWK) with the respective fields specific to RSA algorithms.\n- a Quantum JSON Web Key (QJWK) with the respective fields specific to NTRU algorithms.",
+          "description": "JWK represents:\n- a JSON Web Key (JWK) with the respective fields specific to RSA algorithms.\n- a Quantum JSON Web Key (QJWK) with the respective fields specific to NTRU and LWE algorithms.",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -107,7 +107,7 @@
           "fields": [
             {
               "name": "alg",
-              "description": "ALG represents the algorithm intended for use with the key.\nSome example algorithms are \"Falcon\" family: \"Falcon-512\", \"Falcon-1024\" for Quantum algorithms.\nSome example algorithms are \"RS256\", \"RS384\", \"RS512\" for RSA algorithms.",
+              "description": "ALG represents the algorithm intended for use with the key.\nExample algorithms for \"Falcon\" family: \"FALCON512\", \"FALCON1024\" for\nNTRU Post-Quantum algorithms.\nExample algorithms for \"CRYSTALS-Dilithium\" family: \"CRYDI2\", \"CRYDI3\",\n\"CRYDI4\" for LWE Post-Quantum algorithms.\nSome example algorithms are \"RS256\", \"RS384\", \"RS512\" for RSA algorithms.",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -119,7 +119,7 @@
             },
             {
               "name": "kty",
-              "description": "KTY represents the key type parameter.\nIt specifies the family of quantum algorithms used with the key,\nsuch as \"NTRU\" or \"RSA\" for non quantum algorithms.",
+              "description": "KTY represents the key type parameter.\nIt specifies the family of quantum algorithms used with the key,\nsuch as \"NTRU\" or \"LWE\" for post quantum algorithms\nor \"RSA\" for non quantum algorithms.",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -154,6 +154,18 @@
               "defaultValue": ""
             },
             {
+              "name": "x",
+              "description": "The public key for the NTRU and LWE kty.",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_x",
+              "defaultValue": ""
+            },
+            {
               "name": "e",
               "description": "The exponent for the RSA public key.",
               "label": "optional",
@@ -179,7 +191,7 @@
             },
             {
               "name": "d",
-              "description": "The private exponent for the RSA private key.",
+              "description": "The private exponent for the RSA kty.\nThe private key for the NTRU or LWE kty.",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -247,54 +259,6 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_qi",
-              "defaultValue": ""
-            },
-            {
-              "name": "h",
-              "description": "The public key for the NTRU public key.",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_h",
-              "defaultValue": ""
-            },
-            {
-              "name": "f",
-              "description": "The polynomial for the NTRU private key.",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_f",
-              "defaultValue": ""
-            },
-            {
-              "name": "fp",
-              "description": "The f inverse modulo p for the NTRU private key.",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_fp",
-              "defaultValue": ""
-            },
-            {
-              "name": "g",
-              "description": "The polynomial for the NTRU private key.",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_g",
               "defaultValue": ""
             }
           ]

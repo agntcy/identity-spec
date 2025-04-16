@@ -347,14 +347,18 @@ components:
                     type: string
                     description: |-
                         ALG represents the algorithm intended for use with the key.
-                         Some example algorithms are "Falcon" family: "Falcon-512", "Falcon-1024" for Quantum algorithms.
+                         Example algorithms for "Falcon" family: "FALCON512", "FALCON1024" for
+                         NTRU Post-Quantum algorithms.
+                         Example algorithms for "CRYSTALS-Dilithium" family: "CRYDI2", "CRYDI3",
+                         "CRYDI4" for LWE Post-Quantum algorithms.
                          Some example algorithms are "RS256", "RS384", "RS512" for RSA algorithms.
                 kty:
                     type: string
                     description: |-
                         KTY represents the key type parameter.
                          It specifies the family of quantum algorithms used with the key,
-                         such as "NTRU" or "RSA" for non quantum algorithms.
+                         such as "NTRU" or "LWE" for post quantum algorithms
+                         or "RSA" for non quantum algorithms.
                 use:
                     type: string
                     description: |-
@@ -365,6 +369,9 @@ components:
                     description: |-
                         KID represents the key ID.
                          It is used to match a specific key.
+                x:
+                    type: string
+                    description: The public key for the NTRU and LWE kty.
                 e:
                     type: string
                     description: The exponent for the RSA public key.
@@ -373,7 +380,9 @@ components:
                     description: The modulus for the RSA public key.
                 d:
                     type: string
-                    description: The private exponent for the RSA private key.
+                    description: |-
+                        The private exponent for the RSA kty.
+                         The private key for the NTRU or LWE kty.
                 p:
                     type: string
                     description: The first prime factor for the RSA private key.
@@ -389,22 +398,10 @@ components:
                 qi:
                     type: string
                     description: The first CRT coefficient for the RSA private key.
-                h:
-                    type: string
-                    description: The public key for the NTRU public key.
-                f:
-                    type: string
-                    description: The polynomial for the NTRU private key.
-                fp:
-                    type: string
-                    description: The f inverse modulo p for the NTRU private key.
-                g:
-                    type: string
-                    description: The polynomial for the NTRU private key.
             description: |-
                 JWK represents:
                  - a JSON Web Key (JWK) with the respective fields specific to RSA algorithms.
-                 - a Quantum JSON Web Key (QJWK) with the respective fields specific to NTRU algorithms.
+                 - a Quantum JSON Web Key (QJWK) with the respective fields specific to NTRU and LWE algorithms.
         Jwks:
             type: object
             properties:

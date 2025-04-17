@@ -34,7 +34,7 @@ const config: Config = {
 
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       {
         docs: {
           sidebarPath: './sidebars.ts',
@@ -42,7 +42,7 @@ const config: Config = {
         theme: {
           customCss: ['./src/css/custom.css'],
         },
-      } satisfies Preset.Options,
+      }
     ],
     [
       'docusaurus-protobuffet',
@@ -61,6 +61,15 @@ const config: Config = {
   ],
 
   plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'jsonschema',
+        path: 'jsonschema',
+        routeBasePath: 'jsonschema',
+        sidebarPath: './sidebars.ts',
+      },
+    ],
     [
       '@scalar/docusaurus',
       {
@@ -110,6 +119,12 @@ const config: Config = {
           position: 'left',
         },
         {
+          to: 'jsonschema/agntcy/identity/v1alpha1/Issuer',
+          activeBasePath: 'jsonschema',
+          label: 'JsonSchema',
+          position: 'left',
+        },
+        {
           href: 'https://github.com/agntcy/identity-spec',
           label: 'GitHub',
           position: 'right',
@@ -150,7 +165,7 @@ const config: Config = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: ['@docusaurus/theme-mermaid', "docusaurus-json-schema-plugin"],
 };
 
 export default config;

@@ -1,0 +1,34 @@
+{
+  "$id": "agntcy.identity.v1alpha1.Service.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Service is used in DID documents to express ways of communicating with\n the DID subject or associated entities.\n A service can be any type of service the DID subject wants to advertise.\n\n Specification Reference: https://www.w3.org/TR/did-core/#services",
+  "patternProperties": {
+    "^(serviceEndpoint)$": {
+      "description": "ServiceEndpoint is a network address, such as an HTTP URL, at which services\n operate on behalf of a DID subject.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "properties": {
+    "id": {
+      "description": "Id is the value of the id property and MUST be a URI conforming to RFC3986.\n A conforming producer MUST NOT produce multiple service entries with\n the same id. A conforming consumer MUST produce an error if it detects\n multiple service entries with the same id.",
+      "type": "string"
+    },
+    "service_endpoint": {
+      "description": "ServiceEndpoint is a network address, such as an HTTP URL, at which services\n operate on behalf of a DID subject.",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "type": {
+      "description": "Type is an example of registered types which can be found\n here: https://www.w3.org/TR/did-spec-registries/#service-types",
+      "type": "string"
+    }
+  },
+  "title": "Service",
+  "type": "object"
+}

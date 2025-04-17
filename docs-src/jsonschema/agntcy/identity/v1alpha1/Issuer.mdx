@@ -1,0 +1,16 @@
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "@site/static/api/jsonschema/v1alpha1/generated/jsonschema/agntcy.identity.v1alpha1.Issuer.jsonschema.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+import Jwk from "@site/static/api/jsonschema/v1alpha1/generated/jsonschema/agntcy.identity.v1alpha1.Jwk.jsonschema.json";
+
+export const refs = {
+  "agntcy.identity.v1alpha1.Jwk.jsonschema.json": Jwk,
+};
+export const get = function anonymous(ref) { return refs[ref + ""]; };
+export const resolverOptions = {resolvers:{file: {resolve: get}}};
+
+# Issuer
+<JSONSchemaViewer schema={Schema} resolverOptions={resolverOptions} />
+
+## Source :
+<CodeBlock language="json-schema">{JSON.stringify(Schema, null, 2)}</CodeBlock>

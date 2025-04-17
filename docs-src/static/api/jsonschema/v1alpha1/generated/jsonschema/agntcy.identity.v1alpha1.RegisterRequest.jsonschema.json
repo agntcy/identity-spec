@@ -1,0 +1,14 @@
+{
+  "$id": "agntcy.identity.v1alpha1.RegisterRequest.jsonschema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "RegisterRequest is the request to register an issuer",
+  "properties": {
+    "issuer": {
+      "$ref": "agntcy.identity.v1alpha1.Issuer.jsonschema.json",
+      "description": "The Issuer to register."
+    }
+  },
+  "title": "Register Request",
+  "type": "object"
+}

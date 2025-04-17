@@ -1,0 +1,56 @@
+{
+  "$id": "agntcy.identity.v1alpha1.IssueRequest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "IssueRequest is a request to issue a VC",
+  "patternProperties": {
+    "^(envelopeType)$": {
+      "anyOf": [
+        {
+          "enum": [
+            "VERIFIABLE_CREDENTIAL_ENVELOPE_TYPE_UNSPECIFIED",
+            "VERIFIABLE_CREDENTIAL_ENVELOPE_TYPE_JOSE"
+          ],
+          "title": "Verifiable Credential Envelope Type",
+          "type": "string"
+        },
+        {
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
+        }
+      ],
+      "description": "Envelope type"
+    }
+  },
+  "properties": {
+    "content": {
+      "$ref": "agntcy.identity.v1alpha1.CredentialContent.schema.json",
+      "description": "Content of the VC"
+    },
+    "envelope_type": {
+      "anyOf": [
+        {
+          "enum": [
+            "VERIFIABLE_CREDENTIAL_ENVELOPE_TYPE_UNSPECIFIED",
+            "VERIFIABLE_CREDENTIAL_ENVELOPE_TYPE_JOSE"
+          ],
+          "title": "Verifiable Credential Envelope Type",
+          "type": "string"
+        },
+        {
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
+        }
+      ],
+      "description": "Envelope type"
+    },
+    "id": {
+      "description": "ID is the method-specific identifier in the DID URI.\n Spec: https://www.w3.org/TR/did-core/#method-specific-id\n Agntcy DID has the following format: did:agntcy:{id}",
+      "type": "string"
+    }
+  },
+  "title": "Issue Request",
+  "type": "object"
+}

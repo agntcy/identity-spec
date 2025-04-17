@@ -1,0 +1,88 @@
+#!/bin/bash
+
+# Read all files in the static folder ../static/api/jsonschema/v1alpha1/generated/jsonschema
+# and generate a MDX file for each file in the following format:
+#
+# Initial file: agntcy.identity.v1alpha1.CredentialContent.jsonschema.json
+# Output file: CredentialContent.mdx
+#
+# import CodeBlock from '@theme/CodeBlock';
+# import Schema from "@site/static/api/jsonschema/v1alpha1/generated/jsonschema/agntcy.identity.v1alpha1.CredentialContent.jsonschema.json";
+# import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+
+# # CredentialContent
+# <JSONSchemaViewer schema={Schema} />
+
+# ## Source :
+# <CodeBlock language="json-schema">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+
+rm -rf ./jsonschema/agntcy/identity/v1alpha1/*.mdx
+for entry in ./static/api/jsonschema/v1alpha1/generated/jsonschema/*.jsonschema.json; do
+  # Get the filename without the path and extension
+  filename=$(basename "$entry" .jsonschema.json)
+  # Get the name of the file without the prefix
+  name=${filename#agntcy.identity.v1alpha1.}
+  # Get the name of the file without the suffix
+  name=${name%.jsonschema}
+  # Create the output file with the same name as the input file
+  output_file="./jsonschema/agntcy/identity/v1alpha1/$name.mdx"
+
+  # Check if the output file already exists
+  if [ -f "$output_file" ]; then
+    echo "File $output_file already exists. Skipping."
+    continue
+  fi
+
+  # Extract all ref entries from the JSON file
+  refs=$(jq -r '.properties[] | select(."$ref" != null) | ."$ref"' "$entry" | uniq)
+
+  # Create the output file
+  cat >> $output_file <<EOF
+import CodeBlock from '@theme/CodeBlock';
+import Schema from "@site/static/api/jsonschema/v1alpha1/generated/jsonschema/agntcy.identity.v1alpha1.${name}.jsonschema.json";
+import JSONSchemaViewer from "@theme/JSONSchemaViewer";
+EOF
+
+# Construct the refs
+for ref in $refs; do
+  # Get the name of the file without the prefix
+  ref_name=${ref#agntcy.identity.v1alpha1.}
+  # Get the name of the file without the suffix
+  ref_name=${ref_name%.jsonschema.json}
+
+  # Add import
+  echo "import ${ref_name} from \"@site/static/api/jsonschema/v1alpha1/generated/jsonschema/$ref\";" >> $output_file
+done
+
+cat >> $output_file <<EOF
+
+export const refs = {
+EOF
+# Add all refs to the refs object
+for ref in "$refs"; do
+  # If empty, skip
+  if [ -z "$ref" ]; then
+    continue
+  fi
+
+  # Get the name of the file without the prefix
+  ref_name=${ref#agntcy.identity.v1alpha1.}
+  # Get the name of the file without the suffix
+  ref_name=${ref_name%.jsonschema.json}
+
+  # Add the ref to the refs object
+  echo "  \"$ref\": $ref_name," >> $output_file
+done
+cat >> $output_file <<EOF
+};
+export const get = function anonymous(ref) { return refs[ref + ""]; };
+export const resolverOptions = {resolvers:{file: {resolve: get}}};
+
+# ${name}
+<JSONSchemaViewer schema={Schema} resolverOptions={resolverOptions} />
+
+## Source :
+<CodeBlock language="json-schema">{JSON.stringify(Schema, null, 2)}</CodeBlock>
+EOF
+
+done

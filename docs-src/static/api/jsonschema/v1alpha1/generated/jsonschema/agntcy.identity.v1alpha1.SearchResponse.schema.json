@@ -1,0 +1,16 @@
+{
+  "$id": "agntcy.identity.v1alpha1.SearchResponse.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "credentials": {
+      "description": "The list of VCs that match the search criteria",
+      "items": {
+        "$ref": "agntcy.identity.v1alpha1.EnvelopedVerifiableCredential.schema.json"
+      },
+      "type": "array"
+    }
+  },
+  "title": "Search Response",
+  "type": "object"
+}

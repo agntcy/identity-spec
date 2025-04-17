@@ -1,8 +1,10 @@
+import EnvelopedVerifiableCredential from "@site/static/api/jsonschema/v1alpha1/generated/jsonschema/agntcy.identity.v1alpha1.EnvelopedVerifiableCredential.jsonschema.json";
 import CodeBlock from '@theme/CodeBlock';
 import Schema from "@site/static/api/jsonschema/v1alpha1/generated/jsonschema/agntcy.identity.v1alpha1.SearchResponse.jsonschema.json";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 
 export const refs = {
+  "agntcy.identity.v1alpha1.EnvelopedVerifiableCredential.jsonschema.json": EnvelopedVerifiableCredential,
 };
 export const get = function anonymous(ref) { return refs[ref + ""]; };
 export const resolverOptions = {resolvers:{file: {resolve: get}}};

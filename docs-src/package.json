@@ -5,6 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
+    "generate-docs": "npx docusaurus generate-proto-docs && ./scripts/generate-json-docs",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -24,6 +25,7 @@
     "@panzoom/panzoom": "^4.6.0",
     "@scalar/docusaurus": "^0.5.11",
     "clsx": "^2.0.0",
+    "docusaurus-json-schema-plugin": "^1.14.0",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

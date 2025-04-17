@@ -1,0 +1,14 @@
+{
+  "$id": "agntcy.identity.v1alpha1.GenerateRequest.jsonschema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Generate an Did for an issuer",
+  "properties": {
+    "issuer": {
+      "$ref": "agntcy.identity.v1alpha1.Issuer.jsonschema.json",
+      "description": "The issuer details"
+    }
+  },
+  "title": "Generate Request",
+  "type": "object"
+}

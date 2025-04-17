@@ -1,0 +1,13 @@
+{
+  "$id": "agntcy.identity.v1alpha1.RegisterResponse.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "uri": {
+      "description": "A uri indicating an action to take to complete the registration.",
+      "type": "string"
+    }
+  },
+  "title": "Register Response",
+  "type": "object"
+}

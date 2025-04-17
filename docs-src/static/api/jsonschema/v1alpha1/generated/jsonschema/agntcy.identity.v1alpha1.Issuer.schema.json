@@ -1,0 +1,48 @@
+{
+  "$id": "agntcy.identity.v1alpha1.Issuer.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "A Identity Issuer",
+  "patternProperties": {
+    "^(commonName)$": {
+      "description": "The common name of the issuer\n Could be a FQDN or a FQDA",
+      "type": "string"
+    },
+    "^(privateKey)$": {
+      "$ref": "agntcy.identity.v1alpha1.Jwk.schema.json",
+      "description": "The private key of the issuer in JWK format"
+    },
+    "^(publicKey)$": {
+      "$ref": "agntcy.identity.v1alpha1.Jwk.schema.json",
+      "description": "The keys of the issuer in JWK format\n The public key is used to verify the signature of the different claims"
+    },
+    "^(subOrganization)$": {
+      "description": "The sub organization of the issuer",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "common_name": {
+      "description": "The common name of the issuer\n Could be a FQDN or a FQDA",
+      "type": "string"
+    },
+    "organization": {
+      "description": "The organization of the issuer",
+      "type": "string"
+    },
+    "private_key": {
+      "$ref": "agntcy.identity.v1alpha1.Jwk.schema.json",
+      "description": "The private key of the issuer in JWK format"
+    },
+    "public_key": {
+      "$ref": "agntcy.identity.v1alpha1.Jwk.schema.json",
+      "description": "The keys of the issuer in JWK format\n The public key is used to verify the signature of the different claims"
+    },
+    "sub_organization": {
+      "description": "The sub organization of the issuer",
+      "type": "string"
+    }
+  },
+  "title": "Issuer",
+  "type": "object"
+}

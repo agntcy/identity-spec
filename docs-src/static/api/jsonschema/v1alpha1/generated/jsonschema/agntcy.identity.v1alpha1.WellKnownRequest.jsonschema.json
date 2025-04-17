@@ -1,0 +1,19 @@
+{
+  "$id": "agntcy.identity.v1alpha1.WellKnownRequest.jsonschema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "patternProperties": {
+    "^(common_name)$": {
+      "description": "The common name of the issuer",
+      "type": "string"
+    }
+  },
+  "properties": {
+    "commonName": {
+      "description": "The common name of the issuer",
+      "type": "string"
+    }
+  },
+  "title": "Well Known Request",
+  "type": "object"
+}

@@ -1,0 +1,22 @@
+{
+  "$id": "agntcy.identity.v1alpha1.SearchRequest.jsonschema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "SearchRequest is a request to seach for VCs",
+  "properties": {
+    "content": {
+      "description": "The credential content representation in JSON-LD format",
+      "type": "string"
+    },
+    "id": {
+      "description": "ID is the method-specific identifier in the DID URI.\n Spec: https://www.w3.org/TR/did-core/#method-specific-id\n Agntcy DID has the following format: did:agntcy:{id}",
+      "type": "string"
+    },
+    "schema": {
+      "$ref": "agntcy.identity.v1alpha1.CredentialSchema.jsonschema.json",
+      "description": "Schema is the schema of the credential contained in the VC"
+    }
+  },
+  "title": "Search Request",
+  "type": "object"
+}

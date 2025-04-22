@@ -2,29 +2,21 @@
   "$id": "agntcy.identity.v1alpha1.VerificationMethod.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
-  "description": "VerificationMethod expresses verification methods, such as cryptographic\n public keys, which can be used to authenticate or authorize interactions\n with the DID subject or associated parties. For example,\n a cryptographic public key can be used as a verification method with\n respect to a digital signature; in such usage, it verifies that the\n signer could use the associated cryptographic private key.\n\n Specification Reference: https://www.w3.org/TR/did-core/#verification-methods",
+  "description": "VerificationMethod expresses verification methods, such as cryptographic\n public keys, which can be used to authenticate or authorize interactions\n with the VCs associated with the ID. It is a part of the ID Document.",
   "patternProperties": {
     "^(publicKeyJwk)$": {
       "$ref": "agntcy.identity.v1alpha1.Jwk.schema.json",
-      "description": "specification reference: https://www.w3.org/TR/did-core/#dfn-publickeyjwk"
+      "description": "The public key used for the verification method."
     }
   },
   "properties": {
-    "controller": {
-      "description": "a value that conforms to the rules in DID Syntax: https://www.w3.org/TR/did-core/#did-syntax",
-      "type": "string"
-    },
     "id": {
       "description": "A unique id of the verification method.",
       "type": "string"
     },
     "public_key_jwk": {
       "$ref": "agntcy.identity.v1alpha1.Jwk.schema.json",
-      "description": "specification reference: https://www.w3.org/TR/did-core/#dfn-publickeyjwk"
-    },
-    "type": {
-      "description": "references exactly one verification method type. In order to maximize global\n interoperability, the verification method type SHOULD be registered in the\n DID Specification Registries: https://www.w3.org/TR/did-spec-registries/",
-      "type": "string"
+      "description": "The public key used for the verification method."
     }
   },
   "title": "Verification Method",

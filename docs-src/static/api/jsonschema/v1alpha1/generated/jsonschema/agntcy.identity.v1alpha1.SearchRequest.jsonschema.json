@@ -9,7 +9,7 @@
       "type": "string"
     },
     "id": {
-      "description": "ID is the method-specific identifier in the DID URI.\n Spec: https://www.w3.org/TR/did-core/#method-specific-id\n Agntcy DID has the following format: did:agntcy:{id}",
+      "description": "ID is the identifier.",
       "type": "string"
     },
     "schema": {

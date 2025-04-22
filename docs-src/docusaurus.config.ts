@@ -113,7 +113,7 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          to: 'protodocs/agntcy/identity/v1alpha1/did.proto',
+          to: 'protodocs/agntcy/identity/v1alpha1/id.proto',
           activeBasePath: 'protodocs',
           label: 'Protodocs',
           position: 'left',

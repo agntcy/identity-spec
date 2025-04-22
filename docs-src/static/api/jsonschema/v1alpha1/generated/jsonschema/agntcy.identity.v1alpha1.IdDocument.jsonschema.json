@@ -1,0 +1,34 @@
+{
+  "$id": "agntcy.identity.v1alpha1.IdDocument.jsonschema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "IdDocument represents a set of data describing the ID including mechanisms such as:\n   - cryptographic public keys - used to authenticate itself and prove\n     association with the ID\n   - node - the node that was used to publish the document\n\n An ID Document can be retrieved by resolving an ID.",
+  "patternProperties": {
+    "^(verification_method)$": {
+      "description": "VerificationMethod is a list of cryptographic public keys, which can be used\n to authenticate or authorize interactions with the VCs associated with the ID.",
+      "items": {
+        "$ref": "agntcy.identity.v1alpha1.VerificationMethod.jsonschema.json"
+      },
+      "type": "array"
+    }
+  },
+  "properties": {
+    "id": {
+      "description": "The ID\n The metadata below is related as claims to the ID",
+      "type": "string"
+    },
+    "node": {
+      "description": "The node that was used to publish the document",
+      "type": "string"
+    },
+    "verificationMethod": {
+      "description": "VerificationMethod is a list of cryptographic public keys, which can be used\n to authenticate or authorize interactions with the VCs associated with the ID.",
+      "items": {
+        "$ref": "agntcy.identity.v1alpha1.VerificationMethod.jsonschema.json"
+      },
+      "type": "array"
+    }
+  },
+  "title": "Id Document",
+  "type": "object"
+}

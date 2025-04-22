@@ -1,0 +1,48 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="RkvVVwTnxEj5hO4dSm_a">
+    <mxGraphModel dx="2083" dy="796" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="C983MVcqgh3klOtZlPKx-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fillColor=#0050ef;strokeColor=#001DBC;fontSize=16;strokeWidth=2;" edge="1" parent="1" source="C983MVcqgh3klOtZlPKx-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="236" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C983MVcqgh3klOtZlPKx-2" value="Universally Unique &lt;br&gt;Agent ID" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#3333FF;fillColor=#FFFFFF;fontColor=#000000;strokeWidth=2;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="-161" y="310" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="C983MVcqgh3klOtZlPKx-4" value="&lt;div style=&quot;font-size: 16px;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Resolves to&lt;/span&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=none;labelBackgroundColor=none;align=center;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="39" y="307" width="201" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="C983MVcqgh3klOtZlPKx-6" value="&amp;nbsp; &amp;nbsp;Identity Document&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;- Verification Method (e.g., PubKey to verify a signature)&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;- Assertion Method&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;(e.g., PrvKey to sign a VC)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp;- Services (e.g., service endpoint such as an Identity Node)&amp;nbsp;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#3333FF;fillColor=#FFFFFF;fontColor=#000000;strokeWidth=2;fontSize=16;align=left;" vertex="1" parent="1">
+          <mxGeometry x="237" y="310" width="488" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="C983MVcqgh3klOtZlPKx-7" value="&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; Agent Passport with envelope (e.g., a JOSE envelop)&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#3333FF;fillColor=#FFFFFF;fontColor=#000000;strokeWidth=2;fontSize=16;align=left;arcSize=16;" vertex="1" parent="1">
+          <mxGeometry x="-289" y="442" width="486" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="C983MVcqgh3klOtZlPKx-9" value="&lt;div&gt;&amp;nbsp; &amp;nbsp;Verifiable Credential (VC):&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;-&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;Universally Unique Agent Identity (e.g., a &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; well-known domain name, a service account, &lt;br&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp; a DID, etc.&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- Type (schema type, e.g., OASF)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- Issuer (e.g., organization for proving provenance)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- Valid From&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- Credential Subject&amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- Credential Schema&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;- Proof (Data integrity proof)&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#23445d;fillColor=#bac8d3;strokeWidth=2;fontSize=16;align=left;fontColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="-255" y="522" width="416" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="C983MVcqgh3klOtZlPKx-13" value="" style="endArrow=none;dashed=1;html=1;rounded=0;fillColor=#0050ef;strokeColor=#001DBC;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="642" as="sourcePoint" />
+            <mxPoint x="290" y="672" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C983MVcqgh3klOtZlPKx-14" value="&lt;div style=&quot;font-size: 16px;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;It&#39;s a Verifiable Credential (VC)&lt;/span&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=none;labelBackgroundColor=none;align=center;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="287" y="652" width="150" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="C983MVcqgh3klOtZlPKx-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fillColor=#0050ef;strokeColor=#001DBC;fontSize=16;strokeWidth=2;" edge="1" parent="1" source="C983MVcqgh3klOtZlPKx-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-61" y="440" as="targetPoint" />
+            <mxPoint x="-80" y="400" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="C983MVcqgh3klOtZlPKx-16" value="&lt;div style=&quot;font-size: 16px;&quot;&gt;&lt;span style=&quot;font-size: 16px;&quot;&gt;Associated to&lt;/span&gt;&lt;/div&gt;" style="text;whiteSpace=wrap;html=1;fontColor=#000000;fillColor=none;labelBackgroundColor=none;align=center;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="-97" y="387" width="201" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

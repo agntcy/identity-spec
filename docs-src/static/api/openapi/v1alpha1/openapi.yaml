@@ -108,7 +108,7 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Status'
-    /v1alpha1/issuer/{commonName}/.well-known/id.json:
+    /v1alpha1/issuer/{commonName}/.well-known/jwks.json:
         get:
             tags:
                 - IssuerService
@@ -341,12 +341,15 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/Jwk'
                     description: |-
-                        The keys of the issuer in JWK format
+                        This field is optional
+                         The keys of the issuer in JWK format
                          The public key is used to verify the signature of the different claims
                 privateKey:
                     allOf:
                         - $ref: '#/components/schemas/Jwk'
-                    description: The private key of the issuer in JWK format
+                    description: |-
+                        This field is optional
+                         The private key of the issuer in JWK format
             description: A Identity Issuer
         Jwk:
             type: object

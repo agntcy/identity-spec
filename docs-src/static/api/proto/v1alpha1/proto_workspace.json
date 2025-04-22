@@ -373,7 +373,7 @@
             },
             {
               "name": "public_key",
-              "description": "The keys of the issuer in JWK format\nThe public key is used to verify the signature of the different claims",
+              "description": "This field is optional\nThe keys of the issuer in JWK format\nThe public key is used to verify the signature of the different claims",
               "label": "optional",
               "type": "Jwk",
               "longType": "Jwk",
@@ -385,7 +385,7 @@
             },
             {
               "name": "private_key",
-              "description": "The private key of the issuer in JWK format",
+              "description": "This field is optional\nThe private key of the issuer in JWK format",
               "label": "optional",
               "type": "Jwk",
               "longType": "Jwk",
@@ -669,7 +669,7 @@
                   "rules": [
                     {
                       "method": "GET",
-                      "pattern": "/v1alpha1/issuer/{common_name}/.well-known/id.json"
+                      "pattern": "/v1alpha1/issuer/{common_name}/.well-known/jwks.json"
                     }
                   ]
                 }

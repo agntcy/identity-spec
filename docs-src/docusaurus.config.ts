@@ -74,10 +74,10 @@ const config: Config = {
       '@scalar/docusaurus',
       {
         label: 'Node OpenAPI',
-        route: '/openapi/v1alpha1',
+        route: '/openapi/node/v1alpha1',
         showNavLink: true,
         configuration: {
-          url: '/api/openapi/v1alpha1/openapi.yaml',
+          url: '/api/openapi/node/v1alpha1/openapi.yaml',
           hideDarkModeToggle: true,
           layout: 'modern',
           customCss: './src/css/custom.css'

@@ -3,8 +3,8 @@
 
 openapi: 3.0.3
 info:
-    title: Identity
-    description: Identity
+    title: Identity Node
+    description: Identity Node
     contact:
         name: Agntcy Team
         url: https://github.com/agntcy/identity
@@ -64,25 +64,6 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Status'
-    /v1alpha1/issuer/keygen:
-        get:
-            tags:
-                - IssuerService
-            description: Generate a keypair in JWK format
-            operationId: IssuerService_KeyGen
-            responses:
-                "200":
-                    description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Jwk'
-                default:
-                    description: Default error response
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Status'
     /v1alpha1/issuer/register:
         post:
             tags:
@@ -128,31 +109,6 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Jwks'
-                default:
-                    description: Default error response
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Status'
-    /v1alpha1/vc/issue:
-        post:
-            tags:
-                - VcService
-            description: Issue
-            operationId: VcService_Issue
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/IssueRequest'
-                required: true
-            responses:
-                "200":
-                    description: OK
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/EnvelopedVerifiableCredential'
                 default:
                     description: Default error response
                     content:
@@ -230,20 +186,6 @@ paths:
                                 $ref: '#/components/schemas/Status'
 components:
     schemas:
-        CredentialContent:
-            type: object
-            properties:
-                contentType:
-                    enum:
-                        - CREDENTIAL_CONTENT_TYPE_UNSPECIFIED
-                        - CREDENTIAL_CONTENT_TYPE_AGENT_PASSPORT
-                    type: string
-                    description: Type specifies the type of the content of the credential.
-                    format: enum
-                content:
-                    type: string
-                    description: The content representation in JSON-LD format.
-            description: CredentialContent represents the content of a Verifiable Credential.
         CredentialSchema:
             type: object
             properties:
@@ -305,24 +247,6 @@ components:
                    - node - the node that was used to publish the document
 
                  An ID Document can be retrieved by resolving an ID.
-        IssueRequest:
-            type: object
-            properties:
-                id:
-                    type: string
-                    description: ID is the identifier.
-                content:
-                    allOf:
-                        - $ref: '#/components/schemas/CredentialContent'
-                    description: Content of the VC
-                envelopeType:
-                    enum:
-                        - VERIFIABLE_CREDENTIAL_ENVELOPE_TYPE_UNSPECIFIED
-                        - VERIFIABLE_CREDENTIAL_ENVELOPE_TYPE_JOSE
-                    type: string
-                    description: Envelope type
-                    format: enum
-            description: IssueRequest is a request to issue a VC
         Issuer:
             type: object
             properties:
@@ -497,6 +421,6 @@ tags:
     - name: IdService
       description: IdService is the service that provides ID operations.
     - name: IssuerService
-      description: IssuerService is the service that provides ISSUER operations.
+      description: IssuerService is the service that provides ISSUER node operations.
     - name: VcService
       description: VC is the service that provides VC operations.

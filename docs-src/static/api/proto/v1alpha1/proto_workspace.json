@@ -1,9 +1,9 @@
 {
   "files": [
     {
-      "name": "agntcy/identity/v1alpha1/id.proto",
+      "name": "agntcy/identity/core/v1alpha1/id.proto",
       "description": "",
-      "package": "agntcy.identity.v1alpha1",
+      "package": "agntcy.identity.core.v1alpha1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -14,7 +14,7 @@
         {
           "name": "IdDocument",
           "longName": "IdDocument",
-          "fullName": "agntcy.identity.v1alpha1.IdDocument",
+          "fullName": "agntcy.identity.core.v1alpha1.IdDocument",
           "description": "IdDocument represents a set of data describing the ID including mechanisms such as:\n  - cryptographic public keys - used to authenticate itself and prove\n    association with the ID\n  - node - the node that was used to publish the document\n\nAn ID Document can be retrieved by resolving an ID.",
           "hasExtensions": false,
           "hasFields": true,
@@ -51,7 +51,7 @@
               "label": "repeated",
               "type": "VerificationMethod",
               "longType": "VerificationMethod",
-              "fullType": "agntcy.identity.v1alpha1.VerificationMethod",
+              "fullType": "agntcy.identity.core.v1alpha1.VerificationMethod",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -62,7 +62,7 @@
         {
           "name": "Jwk",
           "longName": "Jwk",
-          "fullName": "agntcy.identity.v1alpha1.Jwk",
+          "fullName": "agntcy.identity.core.v1alpha1.Jwk",
           "description": "JWK represents:\n- a JSON Web Key (JWK) with the respective fields specific to RSA algorithms.\n- a Quantum JSON Web Key (QJWK) with the respective fields specific to AKP algorithms.",
           "hasExtensions": false,
           "hasFields": true,
@@ -254,7 +254,7 @@
         {
           "name": "Jwks",
           "longName": "Jwks",
-          "fullName": "agntcy.identity.v1alpha1.Jwks",
+          "fullName": "agntcy.identity.core.v1alpha1.Jwks",
           "description": "JWKS represents a set of JSON Web Keys (JWKs).",
           "hasExtensions": false,
           "hasFields": true,
@@ -267,7 +267,7 @@
               "label": "repeated",
               "type": "Jwk",
               "longType": "Jwk",
-              "fullType": "agntcy.identity.v1alpha1.Jwk",
+              "fullType": "agntcy.identity.core.v1alpha1.Jwk",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -278,7 +278,7 @@
         {
           "name": "VerificationMethod",
           "longName": "VerificationMethod",
-          "fullName": "agntcy.identity.v1alpha1.VerificationMethod",
+          "fullName": "agntcy.identity.core.v1alpha1.VerificationMethod",
           "description": "VerificationMethod expresses verification methods, such as cryptographic\npublic keys, which can be used to authenticate or authorize interactions\nwith the VCs associated with the ID. It is a part of the ID Document.",
           "hasExtensions": false,
           "hasFields": true,
@@ -303,7 +303,7 @@
               "label": "optional",
               "type": "Jwk",
               "longType": "Jwk",
-              "fullType": "agntcy.identity.v1alpha1.Jwk",
+              "fullType": "agntcy.identity.core.v1alpha1.Jwk",
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_public_key_jwk",
@@ -315,9 +315,9 @@
       "services": []
     },
     {
-      "name": "agntcy/identity/v1alpha1/issuer.proto",
+      "name": "agntcy/identity/core/v1alpha1/issuer.proto",
       "description": "",
-      "package": "agntcy.identity.v1alpha1",
+      "package": "agntcy.identity.core.v1alpha1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -328,7 +328,7 @@
         {
           "name": "Issuer",
           "longName": "Issuer",
-          "fullName": "agntcy.identity.v1alpha1.Issuer",
+          "fullName": "agntcy.identity.core.v1alpha1.Issuer",
           "description": "A Identity Issuer",
           "hasExtensions": false,
           "hasFields": true,
@@ -377,7 +377,7 @@
               "label": "optional",
               "type": "Jwk",
               "longType": "Jwk",
-              "fullType": "agntcy.identity.v1alpha1.Jwk",
+              "fullType": "agntcy.identity.core.v1alpha1.Jwk",
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_public_key",
@@ -389,7 +389,7 @@
               "label": "optional",
               "type": "Jwk",
               "longType": "Jwk",
-              "fullType": "agntcy.identity.v1alpha1.Jwk",
+              "fullType": "agntcy.identity.core.v1alpha1.Jwk",
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_private_key",
@@ -401,301 +401,9 @@
       "services": []
     },
     {
-      "name": "agntcy/identity/v1alpha1/id_service.proto",
+      "name": "agntcy/identity/core/v1alpha1/vc.proto",
       "description": "",
-      "package": "agntcy.identity.v1alpha1",
-      "hasEnums": false,
-      "hasExtensions": false,
-      "hasMessages": true,
-      "hasServices": true,
-      "enums": [],
-      "extensions": [],
-      "messages": [
-        {
-          "name": "GenerateRequest",
-          "longName": "GenerateRequest",
-          "fullName": "agntcy.identity.v1alpha1.GenerateRequest",
-          "description": "Generate an Id for an issuer",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "issuer",
-              "description": "The issuer details",
-              "label": "",
-              "type": "Issuer",
-              "longType": "Issuer",
-              "fullType": "agntcy.identity.v1alpha1.Issuer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "ResolveRequest",
-          "longName": "ResolveRequest",
-          "fullName": "agntcy.identity.v1alpha1.ResolveRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "ID is the identifier.",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        }
-      ],
-      "services": [
-        {
-          "name": "IdService",
-          "longName": "IdService",
-          "fullName": "agntcy.identity.v1alpha1.IdService",
-          "description": "IdService is the service that provides ID operations.",
-          "methods": [
-            {
-              "name": "Generate",
-              "description": "Generate a Id",
-              "requestType": "GenerateRequest",
-              "requestLongType": "GenerateRequest",
-              "requestFullType": "agntcy.identity.v1alpha1.GenerateRequest",
-              "requestStreaming": false,
-              "responseType": "IdDocument",
-              "responseLongType": "IdDocument",
-              "responseFullType": "agntcy.identity.v1alpha1.IdDocument",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/v1alpha1/id/generate",
-                      "body": "issuer"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "Resolve",
-              "description": "Resolve an Id",
-              "requestType": "ResolveRequest",
-              "requestLongType": "ResolveRequest",
-              "requestFullType": "agntcy.identity.v1alpha1.ResolveRequest",
-              "requestStreaming": false,
-              "responseType": "IdDocument",
-              "responseLongType": "IdDocument",
-              "responseFullType": "agntcy.identity.v1alpha1.IdDocument",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/v1alpha1/id/resolve",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "agntcy/identity/v1alpha1/issuer_service.proto",
-      "description": "",
-      "package": "agntcy.identity.v1alpha1",
-      "hasEnums": false,
-      "hasExtensions": false,
-      "hasMessages": true,
-      "hasServices": true,
-      "enums": [],
-      "extensions": [],
-      "messages": [
-        {
-          "name": "RegisterRequest",
-          "longName": "RegisterRequest",
-          "fullName": "agntcy.identity.v1alpha1.RegisterRequest",
-          "description": "RegisterRequest is the request to register an issuer",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "issuer",
-              "description": "The Issuer to register.",
-              "label": "",
-              "type": "Issuer",
-              "longType": "Issuer",
-              "fullType": "agntcy.identity.v1alpha1.Issuer",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "RegisterResponse",
-          "longName": "RegisterResponse",
-          "fullName": "agntcy.identity.v1alpha1.RegisterResponse",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "uri",
-              "description": "A uri indicating an action to take to complete the registration.",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "WellKnownRequest",
-          "longName": "WellKnownRequest",
-          "fullName": "agntcy.identity.v1alpha1.WellKnownRequest",
-          "description": "",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "common_name",
-              "description": "The common name of the issuer",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        }
-      ],
-      "services": [
-        {
-          "name": "IssuerService",
-          "longName": "IssuerService",
-          "fullName": "agntcy.identity.v1alpha1.IssuerService",
-          "description": "IssuerService is the service that provides ISSUER operations.",
-          "methods": [
-            {
-              "name": "KeyGen",
-              "description": "Generate a keypair in JWK format",
-              "requestType": "Empty",
-              "requestLongType": ".google.protobuf.Empty",
-              "requestFullType": "google.protobuf.Empty",
-              "requestStreaming": false,
-              "responseType": "Jwk",
-              "responseLongType": "Jwk",
-              "responseFullType": "agntcy.identity.v1alpha1.Jwk",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/v1alpha1/issuer/keygen"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "Register",
-              "description": "Register",
-              "requestType": "RegisterRequest",
-              "requestLongType": "RegisterRequest",
-              "requestFullType": "agntcy.identity.v1alpha1.RegisterRequest",
-              "requestStreaming": false,
-              "responseType": "RegisterResponse",
-              "responseLongType": "RegisterResponse",
-              "responseFullType": "agntcy.identity.v1alpha1.RegisterResponse",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/v1alpha1/issuer/register",
-                      "body": "issuer"
-                    }
-                  ]
-                }
-              }
-            },
-            {
-              "name": "WellKnown",
-              "description": "WellKnown endpoint",
-              "requestType": "WellKnownRequest",
-              "requestLongType": "WellKnownRequest",
-              "requestFullType": "agntcy.identity.v1alpha1.WellKnownRequest",
-              "requestStreaming": false,
-              "responseType": "Jwks",
-              "responseLongType": "Jwks",
-              "responseFullType": "agntcy.identity.v1alpha1.Jwks",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "GET",
-                      "pattern": "/v1alpha1/issuer/{common_name}/.well-known/jwks.json"
-                    }
-                  ]
-                }
-              }
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "agntcy/identity/v1alpha1/openapi.proto",
-      "description": "",
-      "package": "agntcy.identity.v1alpha1",
-      "hasEnums": false,
-      "hasExtensions": false,
-      "hasMessages": false,
-      "hasServices": false,
-      "enums": [],
-      "extensions": [],
-      "messages": [],
-      "services": []
-    },
-    {
-      "name": "agntcy/identity/v1alpha1/vc.proto",
-      "description": "",
-      "package": "agntcy.identity.v1alpha1",
+      "package": "agntcy.identity.core.v1alpha1",
       "hasEnums": true,
       "hasExtensions": false,
       "hasMessages": true,
@@ -704,7 +412,7 @@
         {
           "name": "CredentialContentType",
           "longName": "CredentialContentType",
-          "fullName": "agntcy.identity.v1alpha1.CredentialContentType",
+          "fullName": "agntcy.identity.core.v1alpha1.CredentialContentType",
           "description": "The content of the Credential.\nMultiple content types can be supported: AgentPassport, etc.",
           "values": [
             {
@@ -722,7 +430,7 @@
         {
           "name": "VerifiableCredentialEnvelopeType",
           "longName": "VerifiableCredentialEnvelopeType",
-          "fullName": "agntcy.identity.v1alpha1.VerifiableCredentialEnvelopeType",
+          "fullName": "agntcy.identity.core.v1alpha1.VerifiableCredentialEnvelopeType",
           "description": "The Envelope Type of the Verifiable Credential.\nMultiple envelope types can be supported: JOSE, COSE etc.",
           "values": [
             {
@@ -743,7 +451,7 @@
         {
           "name": "CredentialContent",
           "longName": "CredentialContent",
-          "fullName": "agntcy.identity.v1alpha1.CredentialContent",
+          "fullName": "agntcy.identity.core.v1alpha1.CredentialContent",
           "description": "CredentialContent represents the content of a Verifiable Credential.",
           "hasExtensions": false,
           "hasFields": true,
@@ -756,7 +464,7 @@
               "label": "optional",
               "type": "CredentialContentType",
               "longType": "CredentialContentType",
-              "fullType": "agntcy.identity.v1alpha1.CredentialContentType",
+              "fullType": "agntcy.identity.core.v1alpha1.CredentialContentType",
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_content_type",
@@ -779,7 +487,7 @@
         {
           "name": "CredentialSchema",
           "longName": "CredentialSchema",
-          "fullName": "agntcy.identity.v1alpha1.CredentialSchema",
+          "fullName": "agntcy.identity.core.v1alpha1.CredentialSchema",
           "description": "CredentialSchema represents the credentialSchema property of a Verifiable Credential.\nmore information can be found [here]\n\n[here]: https://www.w3.org/TR/vc-data-model-2.0/#data-schemas",
           "hasExtensions": false,
           "hasFields": true,
@@ -815,7 +523,7 @@
         {
           "name": "EnvelopedVerifiableCredential",
           "longName": "EnvelopedVerifiableCredential",
-          "fullName": "agntcy.identity.v1alpha1.EnvelopedVerifiableCredential",
+          "fullName": "agntcy.identity.core.v1alpha1.EnvelopedVerifiableCredential",
           "description": "EnvelopedVerifiableCredential represents a Verifiable Credential enveloped in a specific format.",
           "hasExtensions": false,
           "hasFields": true,
@@ -828,7 +536,7 @@
               "label": "optional",
               "type": "VerifiableCredentialEnvelopeType",
               "longType": "VerifiableCredentialEnvelopeType",
-              "fullType": "agntcy.identity.v1alpha1.VerifiableCredentialEnvelopeType",
+              "fullType": "agntcy.identity.core.v1alpha1.VerifiableCredentialEnvelopeType",
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_envelope_type",
@@ -851,7 +559,7 @@
         {
           "name": "VerifiableCredential",
           "longName": "VerifiableCredential",
-          "fullName": "agntcy.identity.v1alpha1.VerifiableCredential",
+          "fullName": "agntcy.identity.core.v1alpha1.VerifiableCredential",
           "description": "DataModel represents the W3C Verifiable Credential Data Model defined [here]\n\n[here]: https://www.w3.org/TR/vc-data-model/",
           "hasExtensions": false,
           "hasFields": true,
@@ -948,7 +656,7 @@
               "label": "repeated",
               "type": "CredentialSchema",
               "longType": "CredentialSchema",
-              "fullType": "agntcy.identity.v1alpha1.CredentialSchema",
+              "fullType": "agntcy.identity.core.v1alpha1.CredentialSchema",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -960,9 +668,9 @@
       "services": []
     },
     {
-      "name": "agntcy/identity/v1alpha1/vc_service.proto",
+      "name": "agntcy/identity/issuer/v1alpha1/local_service.proto",
       "description": "",
-      "package": "agntcy.identity.v1alpha1",
+      "package": "agntcy.identity.issuer.v1alpha1",
       "hasEnums": false,
       "hasExtensions": false,
       "hasMessages": true,
@@ -971,9 +679,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "IssueRequest",
-          "longName": "IssueRequest",
-          "fullName": "agntcy.identity.v1alpha1.IssueRequest",
+          "name": "IssueVCRequest",
+          "longName": "IssueVCRequest",
+          "fullName": "agntcy.identity.issuer.v1alpha1.IssueVCRequest",
           "description": "IssueRequest is a request to issue a VC",
           "hasExtensions": false,
           "hasFields": true,
@@ -997,8 +705,8 @@
               "description": "Content of the VC",
               "label": "",
               "type": "CredentialContent",
-              "longType": "CredentialContent",
-              "fullType": "agntcy.identity.v1alpha1.CredentialContent",
+              "longType": "agntcy.identity.core.v1alpha1.CredentialContent",
+              "fullType": "agntcy.identity.core.v1alpha1.CredentialContent",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1009,8 +717,79 @@
               "description": "Envelope type",
               "label": "",
               "type": "VerifiableCredentialEnvelopeType",
-              "longType": "VerifiableCredentialEnvelopeType",
-              "fullType": "agntcy.identity.v1alpha1.VerifiableCredentialEnvelopeType",
+              "longType": "agntcy.identity.core.v1alpha1.VerifiableCredentialEnvelopeType",
+              "fullType": "agntcy.identity.core.v1alpha1.VerifiableCredentialEnvelopeType",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "LocalService",
+          "longName": "LocalService",
+          "fullName": "agntcy.identity.issuer.v1alpha1.LocalService",
+          "description": "LocalService is the service that provides LOCAL issuer operations.",
+          "methods": [
+            {
+              "name": "KeyGen",
+              "description": "Generate a keypair in JWK format",
+              "requestType": "Empty",
+              "requestLongType": ".google.protobuf.Empty",
+              "requestFullType": "google.protobuf.Empty",
+              "requestStreaming": false,
+              "responseType": "Jwk",
+              "responseLongType": ".agntcy.identity.core.v1alpha1.Jwk",
+              "responseFullType": "agntcy.identity.core.v1alpha1.Jwk",
+              "responseStreaming": false
+            },
+            {
+              "name": "IssueVC",
+              "description": "Issue a Verifiable Credential",
+              "requestType": "IssueVCRequest",
+              "requestLongType": "IssueVCRequest",
+              "requestFullType": "agntcy.identity.issuer.v1alpha1.IssueVCRequest",
+              "requestStreaming": false,
+              "responseType": "EnvelopedVerifiableCredential",
+              "responseLongType": ".agntcy.identity.core.v1alpha1.EnvelopedVerifiableCredential",
+              "responseFullType": "agntcy.identity.core.v1alpha1.EnvelopedVerifiableCredential",
+              "responseStreaming": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "agntcy/identity/node/v1alpha1/id_service.proto",
+      "description": "",
+      "package": "agntcy.identity.node.v1alpha1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "GenerateRequest",
+          "longName": "GenerateRequest",
+          "fullName": "agntcy.identity.node.v1alpha1.GenerateRequest",
+          "description": "Generate an Id for an issuer",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "issuer",
+              "description": "The issuer details",
+              "label": "",
+              "type": "Issuer",
+              "longType": "agntcy.identity.core.v1alpha1.Issuer",
+              "fullType": "agntcy.identity.core.v1alpha1.Issuer",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1019,9 +798,242 @@
           ]
         },
         {
+          "name": "ResolveRequest",
+          "longName": "ResolveRequest",
+          "fullName": "agntcy.identity.node.v1alpha1.ResolveRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "ID is the identifier.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "IdService",
+          "longName": "IdService",
+          "fullName": "agntcy.identity.node.v1alpha1.IdService",
+          "description": "IdService is the service that provides ID operations.",
+          "methods": [
+            {
+              "name": "Generate",
+              "description": "Generate a Id",
+              "requestType": "GenerateRequest",
+              "requestLongType": "GenerateRequest",
+              "requestFullType": "agntcy.identity.node.v1alpha1.GenerateRequest",
+              "requestStreaming": false,
+              "responseType": "IdDocument",
+              "responseLongType": ".agntcy.identity.core.v1alpha1.IdDocument",
+              "responseFullType": "agntcy.identity.core.v1alpha1.IdDocument",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/v1alpha1/id/generate",
+                      "body": "issuer"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Resolve",
+              "description": "Resolve an Id",
+              "requestType": "ResolveRequest",
+              "requestLongType": "ResolveRequest",
+              "requestFullType": "agntcy.identity.node.v1alpha1.ResolveRequest",
+              "requestStreaming": false,
+              "responseType": "IdDocument",
+              "responseLongType": ".agntcy.identity.core.v1alpha1.IdDocument",
+              "responseFullType": "agntcy.identity.core.v1alpha1.IdDocument",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/v1alpha1/id/resolve",
+                      "body": "*"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "agntcy/identity/node/v1alpha1/issuer_service.proto",
+      "description": "",
+      "package": "agntcy.identity.node.v1alpha1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "RegisterRequest",
+          "longName": "RegisterRequest",
+          "fullName": "agntcy.identity.node.v1alpha1.RegisterRequest",
+          "description": "RegisterRequest is the request to register an issuer",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "issuer",
+              "description": "The Issuer to register.",
+              "label": "",
+              "type": "Issuer",
+              "longType": "agntcy.identity.core.v1alpha1.Issuer",
+              "fullType": "agntcy.identity.core.v1alpha1.Issuer",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "RegisterResponse",
+          "longName": "RegisterResponse",
+          "fullName": "agntcy.identity.node.v1alpha1.RegisterResponse",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "uri",
+              "description": "A uri indicating an action to take to complete the registration.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "WellKnownRequest",
+          "longName": "WellKnownRequest",
+          "fullName": "agntcy.identity.node.v1alpha1.WellKnownRequest",
+          "description": "",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "common_name",
+              "description": "The common name of the issuer",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": [
+        {
+          "name": "IssuerService",
+          "longName": "IssuerService",
+          "fullName": "agntcy.identity.node.v1alpha1.IssuerService",
+          "description": "IssuerService is the service that provides ISSUER node operations.",
+          "methods": [
+            {
+              "name": "Register",
+              "description": "Register",
+              "requestType": "RegisterRequest",
+              "requestLongType": "RegisterRequest",
+              "requestFullType": "agntcy.identity.node.v1alpha1.RegisterRequest",
+              "requestStreaming": false,
+              "responseType": "RegisterResponse",
+              "responseLongType": "RegisterResponse",
+              "responseFullType": "agntcy.identity.node.v1alpha1.RegisterResponse",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "POST",
+                      "pattern": "/v1alpha1/issuer/register",
+                      "body": "issuer"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "WellKnown",
+              "description": "WellKnown endpoint",
+              "requestType": "WellKnownRequest",
+              "requestLongType": "WellKnownRequest",
+              "requestFullType": "agntcy.identity.node.v1alpha1.WellKnownRequest",
+              "requestStreaming": false,
+              "responseType": "Jwks",
+              "responseLongType": ".agntcy.identity.core.v1alpha1.Jwks",
+              "responseFullType": "agntcy.identity.core.v1alpha1.Jwks",
+              "responseStreaming": false,
+              "options": {
+                "google.api.http": {
+                  "rules": [
+                    {
+                      "method": "GET",
+                      "pattern": "/v1alpha1/issuer/{common_name}/.well-known/jwks.json"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "agntcy/identity/node/v1alpha1/vc_service.proto",
+      "description": "",
+      "package": "agntcy.identity.node.v1alpha1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": true,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
           "name": "SearchRequest",
           "longName": "SearchRequest",
-          "fullName": "agntcy.identity.v1alpha1.SearchRequest",
+          "fullName": "agntcy.identity.node.v1alpha1.SearchRequest",
           "description": "SearchRequest is a request to seach for VCs",
           "hasExtensions": false,
           "hasFields": true,
@@ -1045,8 +1057,8 @@
               "description": "Schema is the schema of the credential contained in the VC",
               "label": "",
               "type": "CredentialSchema",
-              "longType": "CredentialSchema",
-              "fullType": "agntcy.identity.v1alpha1.CredentialSchema",
+              "longType": "agntcy.identity.core.v1alpha1.CredentialSchema",
+              "fullType": "agntcy.identity.core.v1alpha1.CredentialSchema",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1069,7 +1081,7 @@
         {
           "name": "SearchResponse",
           "longName": "SearchResponse",
-          "fullName": "agntcy.identity.v1alpha1.SearchResponse",
+          "fullName": "agntcy.identity.node.v1alpha1.SearchResponse",
           "description": "",
           "hasExtensions": false,
           "hasFields": true,
@@ -1081,8 +1093,8 @@
               "description": "The list of VCs that match the search criteria",
               "label": "repeated",
               "type": "EnvelopedVerifiableCredential",
-              "longType": "EnvelopedVerifiableCredential",
-              "fullType": "agntcy.identity.v1alpha1.EnvelopedVerifiableCredential",
+              "longType": "agntcy.identity.core.v1alpha1.EnvelopedVerifiableCredential",
+              "fullType": "agntcy.identity.core.v1alpha1.EnvelopedVerifiableCredential",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1095,38 +1107,15 @@
         {
           "name": "VcService",
           "longName": "VcService",
-          "fullName": "agntcy.identity.v1alpha1.VcService",
+          "fullName": "agntcy.identity.node.v1alpha1.VcService",
           "description": "VC is the service that provides VC operations.",
           "methods": [
-            {
-              "name": "Issue",
-              "description": "Issue",
-              "requestType": "IssueRequest",
-              "requestLongType": "IssueRequest",
-              "requestFullType": "agntcy.identity.v1alpha1.IssueRequest",
-              "requestStreaming": false,
-              "responseType": "EnvelopedVerifiableCredential",
-              "responseLongType": "EnvelopedVerifiableCredential",
-              "responseFullType": "agntcy.identity.v1alpha1.EnvelopedVerifiableCredential",
-              "responseStreaming": false,
-              "options": {
-                "google.api.http": {
-                  "rules": [
-                    {
-                      "method": "POST",
-                      "pattern": "/v1alpha1/vc/issue",
-                      "body": "*"
-                    }
-                  ]
-                }
-              }
-            },
             {
               "name": "Publish",
               "description": "Publish",
               "requestType": "EnvelopedVerifiableCredential",
-              "requestLongType": "EnvelopedVerifiableCredential",
-              "requestFullType": "agntcy.identity.v1alpha1.EnvelopedVerifiableCredential",
+              "requestLongType": ".agntcy.identity.core.v1alpha1.EnvelopedVerifiableCredential",
+              "requestFullType": "agntcy.identity.core.v1alpha1.EnvelopedVerifiableCredential",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -1148,8 +1137,8 @@
               "name": "Verify",
               "description": "Verify",
               "requestType": "EnvelopedVerifiableCredential",
-              "requestLongType": "EnvelopedVerifiableCredential",
-              "requestFullType": "agntcy.identity.v1alpha1.EnvelopedVerifiableCredential",
+              "requestLongType": ".agntcy.identity.core.v1alpha1.EnvelopedVerifiableCredential",
+              "requestFullType": "agntcy.identity.core.v1alpha1.EnvelopedVerifiableCredential",
               "requestStreaming": false,
               "responseType": "Empty",
               "responseLongType": ".google.protobuf.Empty",
@@ -1172,11 +1161,11 @@
               "description": "Search",
               "requestType": "SearchRequest",
               "requestLongType": "SearchRequest",
-              "requestFullType": "agntcy.identity.v1alpha1.SearchRequest",
+              "requestFullType": "agntcy.identity.node.v1alpha1.SearchRequest",
               "requestStreaming": false,
               "responseType": "SearchResponse",
               "responseLongType": "SearchResponse",
-              "responseFullType": "agntcy.identity.v1alpha1.SearchResponse",
+              "responseFullType": "agntcy.identity.node.v1alpha1.SearchResponse",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {

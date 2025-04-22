@@ -113,13 +113,13 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          to: 'protodocs/agntcy/identity/v1alpha1/id.proto',
+          to: 'protodocs/agntcy/identity/core/v1alpha1/id.proto',
           activeBasePath: 'protodocs',
           label: 'Protodocs',
           position: 'left',
         },
         {
-          to: 'jsonschema/agntcy/identity/v1alpha1/Issuer',
+          to: 'jsonschema/agntcy/identity/core/v1alpha1/IdDocument',
           activeBasePath: 'jsonschema',
           label: 'JsonSchema',
           position: 'left',

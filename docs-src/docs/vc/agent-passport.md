@@ -32,7 +32,7 @@ CREDENTIAL
 
 where:
 
-- `credentialSubject.id`: [`DID`](/docs/did) of the subject
+- `credentialSubject.id`: [`DID`](/docs/id) of the subject
 - `credentialSubject.oasf`: [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent)
 
 Note: The `proof` is verfiied by the `assertionMethod` public key in the DID Document.

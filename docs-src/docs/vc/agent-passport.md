@@ -1,7 +1,7 @@
 # Agent Passport
 
 `Agent Passport` is an envelopped `Verifiable Credential` that represents an Agent in the `Identity` ecosystem.
-It is a JSON-LD document that contains information about the Agent, such as its [`DID`](/docs/did), its definition (Ex.: [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent)) and other metadata used for defining locators, authentication, MFA, etc.
+It is a JSON-LD document that contains information about the Agent, such as its [`DID`](/docs/id), its definition (Ex.: [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent)) and other metadata used for defining locators, authentication, MFA, etc.
 
 Here is an example of an `AGNTCY` `Agent Passport` with a `JOSE`(JSON Object Signing and Encryption) envelope:
 

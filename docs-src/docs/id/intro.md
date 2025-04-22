@@ -11,4 +11,4 @@ Unlike traditional identifiers, `DIDs` are independent of centralized systems, a
 You can find below examples of `DIDs` and `DID Documents`, including the ones defined for `AGNTCY` standards:
 
 - [`DID`](/docs/id)
-- [`DID Document`](/docs/id/did-document)
+- [`DID Document`](/docs/id/id-document)

@@ -35,7 +35,7 @@ DOCUMENT
 where:
 
 - `did:web`: Web DID resolver to `well-known` endpoint `api.NODE/ORG/well-known/did.json`
-- `ID`: [`DID`](/docs/did)
+- `ID`: [`DID`](/docs/id)
 - `verificationMethod`: Public key used to verify signatures
 - `assertionMethod`: Public key used to sign verifiable credentials
 - `ORG`: Organization

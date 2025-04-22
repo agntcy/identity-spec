@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "name": "agntcy/identity/v1alpha1/did.proto",
+      "name": "agntcy/identity/v1alpha1/id.proto",
       "description": "",
       "package": "agntcy.identity.v1alpha1",
       "hasEnums": false,
@@ -12,10 +12,10 @@
       "extensions": [],
       "messages": [
         {
-          "name": "DidDocument",
-          "longName": "DidDocument",
-          "fullName": "agntcy.identity.v1alpha1.DidDocument",
-          "description": "DidDocument represents a set of data describing the DID subject including mechanisms such as:\n  - cryptographic public keys - used to authenticate itself and prove\n    association with the DID\n  - services - means of communicating or interacting with the DID subject or\n    associated entities via one or more service endpoints.\n    Examples include discovery services, agent services,\n    social networking services, file storage services,\n    and verifiable credential repository services.\n\nA DID Document can be retrieved by resolving a DID URI.",
+          "name": "IdDocument",
+          "longName": "IdDocument",
+          "fullName": "agntcy.identity.v1alpha1.IdDocument",
+          "description": "IdDocument represents a set of data describing the ID including mechanisms such as:\n  - cryptographic public keys - used to authenticate itself and prove\n    association with the ID\n  - node - the node that was used to publish the document\n\nAn ID Document can be retrieved by resolving an ID.",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -23,7 +23,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "The DID {ID}\nA did could be represented as `did:agntcy:{ID}`\nThe metadata below is related as claims to the {ID}",
+              "description": "The ID\nThe metadata below is related as claims to the ID",
               "label": "optional",
               "type": "string",
               "longType": "string",
@@ -46,48 +46,12 @@
               "defaultValue": ""
             },
             {
-              "name": "controller",
-              "description": "Controller defines an entity that is authorized to make changes to a DID document.\nThe process of authorizing a DID controller is defined by the DID method.\nIt can be a string or a list of strings.",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
               "name": "verification_method",
-              "description": "VerificationMethod is a list of cryptographic public keys, which can be used to authenticate or authorize\ninteractions with the DID subject or associated parties.",
+              "description": "VerificationMethod is a list of cryptographic public keys, which can be used\nto authenticate or authorize interactions with the VCs associated with the ID.",
               "label": "repeated",
               "type": "VerificationMethod",
               "longType": "VerificationMethod",
               "fullType": "agntcy.identity.v1alpha1.VerificationMethod",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "service",
-              "description": "Service expresses ways of communicating with the DID subject or associated entities.\nA service can be any type of service the DID subject wants to advertise.\nspec reference: https://www.w3.org/TR/did-core/#verification-methods",
-              "label": "repeated",
-              "type": "Service",
-              "longType": "Service",
-              "fullType": "agntcy.identity.v1alpha1.Service",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "assertion_method",
-              "description": "AssertionMethod is used to specify how the DID subject is expected to express claims,\nsuch as for the purposes of issuing a Verifiable Credential.",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -312,58 +276,10 @@
           ]
         },
         {
-          "name": "Service",
-          "longName": "Service",
-          "fullName": "agntcy.identity.v1alpha1.Service",
-          "description": "Service is used in DID documents to express ways of communicating with\nthe DID subject or associated entities.\nA service can be any type of service the DID subject wants to advertise.\n\nSpecification Reference: https://www.w3.org/TR/did-core/#services",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "Id is the value of the id property and MUST be a URI conforming to RFC3986.\nA conforming producer MUST NOT produce multiple service entries with\nthe same id. A conforming consumer MUST produce an error if it detects\nmultiple service entries with the same id.",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "type",
-              "description": "Type is an example of registered types which can be found\nhere: https://www.w3.org/TR/did-spec-registries/#service-types",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_type",
-              "defaultValue": ""
-            },
-            {
-              "name": "service_endpoint",
-              "description": "ServiceEndpoint is a network address, such as an HTTP URL, at which services\noperate on behalf of a DID subject.",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "VerificationMethod",
           "longName": "VerificationMethod",
           "fullName": "agntcy.identity.v1alpha1.VerificationMethod",
-          "description": "VerificationMethod expresses verification methods, such as cryptographic\npublic keys, which can be used to authenticate or authorize interactions\nwith the DID subject or associated parties. For example,\na cryptographic public key can be used as a verification method with\nrespect to a digital signature; in such usage, it verifies that the\nsigner could use the associated cryptographic private key.\n\nSpecification Reference: https://www.w3.org/TR/did-core/#verification-methods",
+          "description": "VerificationMethod expresses verification methods, such as cryptographic\npublic keys, which can be used to authenticate or authorize interactions\nwith the VCs associated with the ID. It is a part of the ID Document.",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -382,32 +298,8 @@
               "defaultValue": ""
             },
             {
-              "name": "type",
-              "description": "references exactly one verification method type. In order to maximize global\ninteroperability, the verification method type SHOULD be registered in the\nDID Specification Registries: https://www.w3.org/TR/did-spec-registries/",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_type",
-              "defaultValue": ""
-            },
-            {
-              "name": "controller",
-              "description": "a value that conforms to the rules in DID Syntax: https://www.w3.org/TR/did-core/#did-syntax",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_controller",
-              "defaultValue": ""
-            },
-            {
               "name": "public_key_jwk",
-              "description": "specification reference: https://www.w3.org/TR/did-core/#dfn-publickeyjwk",
+              "description": "The public key used for the verification method.",
               "label": "optional",
               "type": "Jwk",
               "longType": "Jwk",
@@ -509,7 +401,7 @@
       "services": []
     },
     {
-      "name": "agntcy/identity/v1alpha1/did_service.proto",
+      "name": "agntcy/identity/v1alpha1/id_service.proto",
       "description": "",
       "package": "agntcy.identity.v1alpha1",
       "hasEnums": false,
@@ -523,7 +415,7 @@
           "name": "GenerateRequest",
           "longName": "GenerateRequest",
           "fullName": "agntcy.identity.v1alpha1.GenerateRequest",
-          "description": "Generate an Did for an issuer",
+          "description": "Generate an Id for an issuer",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -555,7 +447,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "ID is the method-specific identifier in the DID URI.\nSpec: https://www.w3.org/TR/did-core/#method-specific-id\nAgntcy DID has the following format: did:agntcy:{id}",
+              "description": "ID is the identifier.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -570,28 +462,28 @@
       ],
       "services": [
         {
-          "name": "DidService",
-          "longName": "DidService",
-          "fullName": "agntcy.identity.v1alpha1.DidService",
-          "description": "DidService is the service that provides DID operations.",
+          "name": "IdService",
+          "longName": "IdService",
+          "fullName": "agntcy.identity.v1alpha1.IdService",
+          "description": "IdService is the service that provides ID operations.",
           "methods": [
             {
               "name": "Generate",
-              "description": "Generate a Did",
+              "description": "Generate a Id",
               "requestType": "GenerateRequest",
               "requestLongType": "GenerateRequest",
               "requestFullType": "agntcy.identity.v1alpha1.GenerateRequest",
               "requestStreaming": false,
-              "responseType": "DidDocument",
-              "responseLongType": "DidDocument",
-              "responseFullType": "agntcy.identity.v1alpha1.DidDocument",
+              "responseType": "IdDocument",
+              "responseLongType": "IdDocument",
+              "responseFullType": "agntcy.identity.v1alpha1.IdDocument",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/v1alpha1/did/generate",
+                      "pattern": "/v1alpha1/id/generate",
                       "body": "issuer"
                     }
                   ]
@@ -600,21 +492,21 @@
             },
             {
               "name": "Resolve",
-              "description": "Resolve an Did",
+              "description": "Resolve an Id",
               "requestType": "ResolveRequest",
               "requestLongType": "ResolveRequest",
               "requestFullType": "agntcy.identity.v1alpha1.ResolveRequest",
               "requestStreaming": false,
-              "responseType": "DidDocument",
-              "responseLongType": "DidDocument",
-              "responseFullType": "agntcy.identity.v1alpha1.DidDocument",
+              "responseType": "IdDocument",
+              "responseLongType": "IdDocument",
+              "responseFullType": "agntcy.identity.v1alpha1.IdDocument",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "POST",
-                      "pattern": "/v1alpha1/did/resolve",
+                      "pattern": "/v1alpha1/id/resolve",
                       "body": "*"
                     }
                   ]
@@ -763,7 +655,7 @@
             },
             {
               "name": "WellKnown",
-              "description": "WellKnown endpoint resolved by did:web:{NODE}:{common_name} method",
+              "description": "WellKnown endpoint",
               "requestType": "WellKnownRequest",
               "requestLongType": "WellKnownRequest",
               "requestFullType": "agntcy.identity.v1alpha1.WellKnownRequest",
@@ -777,7 +669,7 @@
                   "rules": [
                     {
                       "method": "GET",
-                      "pattern": "/v1alpha1/issuer/{common_name}/.well-known/did.json"
+                      "pattern": "/v1alpha1/issuer/{common_name}/.well-known/id.json"
                     }
                   ]
                 }
@@ -1090,7 +982,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "ID is the method-specific identifier in the DID URI.\nSpec: https://www.w3.org/TR/did-core/#method-specific-id\nAgntcy DID has the following format: did:agntcy:{id}",
+              "description": "ID is the identifier.",
               "label": "",
               "type": "string",
               "longType": "string",
@@ -1138,7 +1030,7 @@
           "fields": [
             {
               "name": "id",
-              "description": "ID is the method-specific identifier in the DID URI.\nSpec: https://www.w3.org/TR/did-core/#method-specific-id\nAgntcy DID has the following format: did:agntcy:{id}",
+              "description": "ID is the identifier.",
               "label": "",
               "type": "string",
               "longType": "string",

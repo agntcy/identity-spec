@@ -1,0 +1,43 @@
+---
+title: local_service.proto
+hide_title: true
+---
+
+import { ProtoMessage, ProtoServiceMethod, ProtoEnum } from '@theme/ProtoFile';
+
+# `local_service.proto`
+_**path** agntcy/identity/issuer/v1alpha1/local_service.proto_
+
+_**package** agntcy.identity.issuer.v1alpha1_
+
+
+
+---
+
+## Messages
+
+
+### `IssueVCRequest`
+<ProtoMessage key={0} message={{"name":"IssueVCRequest","longName":"IssueVCRequest","fullName":"agntcy.identity.issuer.v1alpha1.IssueVCRequest","description":"IssueRequest is a request to issue a VC","hasExtensions":false,"hasFields":true,"hasOneofs":false,"extensions":[],"fields":[{"name":"id","description":"ID is the identifier.","label":"","type":"string","longType":"string","fullType":"string","ismap":false,"isoneof":false,"oneofdecl":"","defaultValue":""},{"name":"content","description":"Content of the VC","label":"","type":"CredentialContent","longType":"agntcy.identity.core.v1alpha1.CredentialContent","fullType":"agntcy.identity.core.v1alpha1.CredentialContent","ismap":false,"isoneof":false,"oneofdecl":"","defaultValue":"","typeLink":"/protodocs/agntcy/identity/core/v1alpha1/vc.proto#credentialcontent"},{"name":"envelope_type","description":"Envelope type","label":"","type":"VerifiableCredentialEnvelopeType","longType":"agntcy.identity.core.v1alpha1.VerifiableCredentialEnvelopeType","fullType":"agntcy.identity.core.v1alpha1.VerifiableCredentialEnvelopeType","ismap":false,"isoneof":false,"oneofdecl":"","defaultValue":"","typeLink":"/protodocs/agntcy/identity/core/v1alpha1/vc.proto#verifiablecredentialenvelopetype"}]}} />
+
+---
+## Services
+
+
+### `LocalService`
+
+LocalService is the service that provides LOCAL issuer operations.
+
+
+#### `KeyGen`
+<ProtoServiceMethod key={'KeyGen-0'} method={{"name":"KeyGen","description":"Generate a keypair in JWK format","requestType":"Empty","requestLongType":".google.protobuf.Empty","requestFullType":"google.protobuf.Empty","requestStreaming":false,"responseType":"Jwk","responseLongType":".agntcy.identity.core.v1alpha1.Jwk","responseFullType":"agntcy.identity.core.v1alpha1.Jwk","responseStreaming":false,"responseTypeLink":"/protodocs/agntcy/identity/core/v1alpha1/id.proto#jwk"}} />
+
+
+#### `IssueVC`
+<ProtoServiceMethod key={'IssueVC-1'} method={{"name":"IssueVC","description":"Issue a Verifiable Credential","requestType":"IssueVCRequest","requestLongType":"IssueVCRequest","requestFullType":"agntcy.identity.issuer.v1alpha1.IssueVCRequest","requestStreaming":false,"responseType":"EnvelopedVerifiableCredential","responseLongType":".agntcy.identity.core.v1alpha1.EnvelopedVerifiableCredential","responseFullType":"agntcy.identity.core.v1alpha1.EnvelopedVerifiableCredential","responseStreaming":false,"requestTypeLink":"/protodocs/agntcy/identity/issuer/v1alpha1/local_service.proto#issuevcrequest","responseTypeLink":"/protodocs/agntcy/identity/core/v1alpha1/vc.proto#envelopedverifiablecredential"}} />
+
+
+---
+
+
+  

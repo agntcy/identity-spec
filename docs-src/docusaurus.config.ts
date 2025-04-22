@@ -73,7 +73,7 @@ const config: Config = {
     [
       '@scalar/docusaurus',
       {
-        label: 'OpenAPI',
+        label: 'Node OpenAPI',
         route: '/openapi/v1alpha1',
         showNavLink: true,
         configuration: {

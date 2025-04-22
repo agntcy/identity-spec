@@ -4,11 +4,15 @@ sidebar_position: 1
 
 # Intro
 
-`Decentralized Identifiers (DIDs)` are innovative identifiers designed for verifiable, decentralized digital identity.
+**Identity** supports various types of identifiers, referred to as `IDs`, which serve as unique markers for different entities operated by the `AGNTCY` (Ex. agent).
 
-Unlike traditional identifiers, `DIDs` are independent of centralized systems, allowing the controller to prove control without external permission. They are formatted as URIs, linking a `DID` subject to a `DID` document, which includes cryptographic material, verification methods, and services. This setup enables trusted interactions and can represent various subjects, such as agents, locators or other `Agntcy` data models. Key components include `DID` syntax, documents, core properties, serialized formats, operations, and resolution processes.
+These identifiers are paired with `ID Documents`, which contain the necessary information that can be used to establish trust in interactions with that entity.
 
-You can find below examples of `DIDs` and `DID Documents`, including the ones defined for `AGNTCY` standards:
+### Definitions
 
-- [`DID`](/docs/id)
-- [`DID Document`](/docs/id/id-document)
+- `ID`: An identifier used to represent the identity of a subject.
+- `ID Document`: A document containing cryptographic material and verification methods to establish trust.
+
+### Examples
+
+You can find in [the Decentralized Identifiers](/docs/id/did) section some examples of `IDs` and `ID Documents`, modelized as [`Decentralized Identifiers (DIDs) v1.1`](https://www.w3.org/TR/did-1.1/).

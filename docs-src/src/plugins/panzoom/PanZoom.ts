@@ -15,47 +15,20 @@ const createControlButtons = (wrapper: HTMLElement, instance: ReturnType<typeof 
 
   // Zoom In Button
   const zoomInButton = document.createElement('button');
-  zoomInButton.innerHTML = `
-    <?xml version="1.0" encoding="iso-8859-1"?>
-    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-    <svg fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-      width="10px" height="10px" viewBox="0 0 45.402 45.402"
-      xml:space="preserve">
-    <g>
-      <path d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141
-        c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27
-        c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435
-        c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z"/>
-    </g>
-    </svg>
-  `;
-  zoomInButton.className = 'button button--primary button--lg button-control'
+  zoomInButton.innerHTML = `<svg fill="currentColor" version="1.1" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.75 7.5a.75.75 0 0 1 .75-.75h2.25V4.5a.75.75 0 0 1 1.5 0v2.25h2.25a.75.75 0 0 1 0 1.5H8.25v2.25a.75.75 0 0 1-1.5 0V8.25H4.5a.75.75 0 0 1-.75-.75Z"></path><path d="M7.5 0a7.5 7.5 0 0 1 5.807 12.247l2.473 2.473a.749.749 0 1 1-1.06 1.06l-2.473-2.473A7.5 7.5 0 1 1 7.5 0Zm-6 7.5a6 6 0 1 0 12 0 6 6 0 0 0-12 0Z"></path></svg>`
+  zoomInButton.className = 'button button--secondary button--lg button-control'
   zoomInButton.addEventListener('click', () => instance.zoomIn());
 
   // Zoom Out Button
   const zoomOutButton = document.createElement('button');
-  zoomOutButton.innerHTML = `
-    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-      <svg width="10px" height="10px" viewBox="0 -12 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-          <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-414.000000, -1049.000000)" fill="currentColor">
-            <path d="M442,1049 L418,1049 C415.791,1049 414,1050.79 414,1053 C414,1055.21 415.791,1057 418,1057 L442,1057 C444.209,1057 446,1055.21 446,1053 C446,1050.79 444.209,1049 442,1049" id="minus" sketch:type="MSShapeGroup"></path>
-          </g>
-        </g>
-    </svg>
-  `;
-  zoomOutButton.className = 'button button--primary button--lg button-control'
+  zoomOutButton.innerHTML = `<svg fill="currentColor" version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-zoom-out" aria-hidden="true"><path d="M4.5 6.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1 0-1.5Z"></path><path d="M0 7.5a7.5 7.5 0 1 1 13.307 4.747l2.473 2.473a.749.749 0 1 1-1.06 1.06l-2.473-2.473A7.5 7.5 0 0 1 0 7.5Zm7.5-6a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z"></path></svg>`;
+  zoomOutButton.className = 'button button--secondary button--lg button-control'
   zoomOutButton.addEventListener('click', () => instance.zoomOut());
 
   // Reset Button
   const resetButton = document.createElement('button');
-  resetButton.innerHTML = `
-    <?xml version="1.0" encoding="utf-8"?>
-    <svg fill="currentColor" width="12px" height="12px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
-      <path d="M960 0v213.333c411.627 0 746.667 334.934 746.667 746.667S1371.627 1706.667 960 1706.667 213.333 1371.733 213.333 960c0-197.013 78.4-382.507 213.334-520.747v254.08H640V106.667H53.333V320h191.04C88.64 494.08 0 720.96 0 960c0 529.28 430.613 960 960 960s960-430.72 960-960S1489.387 0 960 0" fill-rule="evenodd"/>
-    </svg>
-  `
-  resetButton.className = 'button button--primary button--lg button-control'
+  resetButton.innerHTML = `<svg fill="currentColor" version="1.1" width="16" height="16" viewBox="0 0 16 16" class="octicon octicon-sync" aria-hidden="true"><path d="M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z"></path></svg>`
+  resetButton.className = 'button button--secondary button--lg button-control'
   resetButton.addEventListener('click', () => instance.reset());
 
   // Append buttons to the container
@@ -82,29 +55,14 @@ const zoomElements = (selectors: string[]) => {
         wrapper.className = 'panzoom-wrapper';
         element.parentElement?.insertBefore(wrapper, element);
         wrapper.appendChild(element);
-        
-        // wrapper.addEventListener('wheel', (event) => {
-        //   instance.zoomWithWheel(event);
-        // });
 
         // Add control buttons
         createControlButtons(wrapper, instance);
-
-        // wrapper.addEventListener('dblclick', (event) => {
-        //   instance.reset();
-        // });
       }
-    }
-    if (!wrap) {
-      // (element as HTMLElement).addEventListener('wheel', (event) => {
-      //   instance.zoomWithWheel(event);
-      // });
-      // (element as HTMLElement).addEventListener('dblclick', (event) => {
-      //   instance.reset();
-      // });
     }
   });
 };
+
 
 const ZoomModule: ClientModule = {
   onRouteDidUpdate() {
@@ -112,6 +70,6 @@ const ZoomModule: ClientModule = {
       zoomElements(selectors);
     }, timeout);
   },
-}
+};
 
 export default ZoomModule;

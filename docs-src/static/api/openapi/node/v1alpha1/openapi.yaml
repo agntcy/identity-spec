@@ -239,7 +239,21 @@ components:
                         $ref: '#/components/schemas/VerificationMethod'
                     description: |-
                         VerificationMethod is a list of cryptographic public keys, which can be used
-                         to authenticate or authorize interactions with the VCs associated with the ID.
+                         to authenticate or authorize interactions with the entities represented by the ID.
+                service:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Service'
+                    description: |-
+                        Service is used in ID Documents to express ways of communicating with
+                         the node that published the document.
+                assertionMethod:
+                    type: array
+                    items:
+                        type: string
+                    description: |-
+                        AssertionMethod is used to specify how the entity represented by the ID
+                         is expected to express claims, such as for the purposes of issuing a VCs.
             description: |-
                 IdDocument represents a set of data describing the ID including mechanisms such as:
                    - cryptographic public keys - used to authenticate itself and prove
@@ -382,6 +396,19 @@ components:
                     items:
                         $ref: '#/components/schemas/EnvelopedVerifiableCredential'
                     description: The list of VCs that match the search criteria
+        Service:
+            type: object
+            properties:
+                serviceEndpoint:
+                    type: array
+                    items:
+                        type: string
+                    description: |-
+                        ServiceEndpoint is a network address, such as an HTTP URL, of the
+                         node.
+            description: |-
+                Service is used in ID Documents to express ways of communicating with
+                 the node that published the document.
         Status:
             type: object
             properties:
@@ -411,7 +438,7 @@ components:
             description: |-
                 VerificationMethod expresses verification methods, such as cryptographic
                  public keys, which can be used to authenticate or authorize interactions
-                 with the VCs associated with the ID. It is a part of the ID Document.
+                 with the entities represented by the ID. It is a part of the ID Document.
     headers:
         "":
     securitySchemes: {}

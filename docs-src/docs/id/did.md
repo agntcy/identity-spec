@@ -32,10 +32,16 @@ The `DID Document` is composed of the following parts:
 DOCUMENT
 {
   id: "did:agntcy:ID",
-  node: "NODE",
   verificationMethod: [{
     controller: "did:jwk:eyJhbGciOiJFUz....",
     publicKeyJwk: {}
+  }],
+  assertionMethod: [{
+    controller: "did:jwk:eyJhbGciOiJFUz....",
+    publicKeyJwk: {}
+  }],
+  service: [{
+    serviceEndpoint: "https://api.NODE/ORG"
   }]
 }
 ```
@@ -44,5 +50,7 @@ where:
 
 - `id`: Identifier
 - `NODE`: `Identity Node` where the `DID Document` was published
-- `verificationMethod`: Contains the public key used to verify signatures
+- `ORG`: issuer's organization
 - `did:jwk`: DID resolver to `well-known jwks.json` JWK content
+- `verificationMethod`: Contains the public key used to verify signatures
+- `assertionMethod`: Contains the public key used to sign the [`Verifiable Credentials`](/docs/vc/intro)

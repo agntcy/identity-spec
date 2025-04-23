@@ -15,4 +15,4 @@ These identifiers are paired with `ID Documents`, which contain the necessary in
 
 ### Examples
 
-You can find in [the Decentralized Identifiers](/docs/id/did) section some examples of `IDs` and `ID Documents`, modelized as [`Decentralized Identifiers (DIDs) v1.1`](https://www.w3.org/TR/did-1.1/).
+You can find in the [`Decentralized Identifiers`](/docs/id/did) section some examples of `IDs` and `ID Documents`, modelized as [`Decentralized Identifiers (DIDs) v1.1`](https://www.w3.org/TR/did-1.1/).

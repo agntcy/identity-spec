@@ -119,7 +119,7 @@ const config: Config = {
           position: 'left',
         },
         {
-          to: 'jsonschema/agntcy/identity/core/v1alpha1/IdDocument',
+          to: 'jsonschema/agntcy/identity/core/v1alpha1/Issuer',
           activeBasePath: 'jsonschema',
           label: 'JsonSchema',
           position: 'left',

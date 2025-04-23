@@ -18,7 +18,7 @@ paths:
         post:
             tags:
                 - IdService
-            description: Generate a Id
+            description: Generate an Id and its corresponding Id Document for the specified issuer
             operationId: IdService_Generate
             requestBody:
                 content:
@@ -43,7 +43,7 @@ paths:
         post:
             tags:
                 - IdService
-            description: Resolve an Id
+            description: Resolve a specified Id to its corresponding Id Document
             operationId: IdService_Resolve
             requestBody:
                 content:
@@ -68,13 +68,13 @@ paths:
         post:
             tags:
                 - IssuerService
-            description: Register
+            description: Register an issuer by providing the issuer details
             operationId: IssuerService_Register
             requestBody:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/Issuer'
+                            $ref: '#/components/schemas/RegisterRequest'
                 required: true
             responses:
                 "200":
@@ -93,7 +93,9 @@ paths:
         get:
             tags:
                 - IssuerService
-            description: IssuerWellKnown endpoint
+            description: |-
+                Returns the well-known document content for an issuer in
+                 Json Web Key Set (JWKS) format
             operationId: IssuerService_IssuerWellKnown
             parameters:
                 - name: commonName
@@ -119,7 +121,7 @@ paths:
         post:
             tags:
                 - VcService
-            description: Publish
+            description: Publish an issued Verifiable Credential
             operationId: VcService_Publish
             requestBody:
                 content:
@@ -141,7 +143,7 @@ paths:
         post:
             tags:
                 - VcService
-            description: Search
+            description: Search for Verifiable Credentials based on the specified criteria
             operationId: VcService_Search
             requestBody:
                 content:
@@ -166,7 +168,7 @@ paths:
         post:
             tags:
                 - VcService
-            description: Verify
+            description: Verify an existing Verifiable Credential
             operationId: VcService_Verify
             requestBody:
                 content:
@@ -188,7 +190,7 @@ paths:
         get:
             tags:
                 - VcService
-            description: APWellKnown endpoint
+            description: Returns the well-known Verifiable Presentation for an Agent Passport
             operationId: VcService_APWellKnown
             parameters:
                 - name: id
@@ -219,7 +221,7 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/AgentPassport'
                     description: The well-known document for an Agent Passport
-            description: APWellKnownResponse returns the well-known document for an Agent Passport
+            description: Returns the well-known document for an Agent Passport
         AgentPassport:
             type: object
             properties:
@@ -279,7 +281,7 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/Issuer'
                     description: The issuer details
-            description: Generate an Id for an issuer
+            description: Generate an Id and its corresponding Id Document for the specified issuer
         GenerateResponse:
             type: object
             properties:
@@ -287,7 +289,7 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/IdDocument'
                     description: The Id Document corresponding to the generated Id
-            description: GenerateResponse returns the Id Document
+            description: Returns the Generated Id and its corresponding Id Document
         GoogleProtobufAny:
             type: object
             properties:
@@ -370,7 +372,7 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/Jwks'
                     description: The well-known Json Web Key Set (JWKS) document
-            description: IssuerWellKnownResponse returns the content of the well-known JWKS document
+            description: Returns the content of the well-known JWKS document
         Jwk:
             type: object
             properties:
@@ -466,21 +468,29 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/EnvelopedCredential'
                     description: The Verifiable Credential to publish
-            description: PublishRequest is a request to publish a Verifiable Credential
+            description: Request to publish an issued Verifiable Credential
+        RegisterRequest:
+            type: object
+            properties:
+                issuer:
+                    allOf:
+                        - $ref: '#/components/schemas/Issuer'
+                    description: The Issuer to register.
+            description: Request to register an issuer
         RegisterResponse:
             type: object
             properties:
                 uri:
                     type: string
                     description: A uri indicating an action to take to complete the registration.
-            description: RegisterResponse returns the action to take to complete the registration
+            description: Returns the action to take to complete the registration
         ResolveRequest:
             type: object
             properties:
                 id:
                     type: string
                     description: Id is the identifier.
-            description: Resolve an Id to the Id Document
+            description: Resolve a specified Id to its corresponding Id Document
         ResolveResponse:
             type: object
             properties:
@@ -488,7 +498,7 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/IdDocument'
                     description: The Id Document resolved from the Id
-            description: ResolveResponse returns the Id Document
+            description: Returns the Id Document corresponding to the specified Id
         SearchRequest:
             type: object
             properties:
@@ -502,7 +512,7 @@ components:
                 content:
                     type: string
                     description: The credential content representation in JSON-LD format
-            description: SearchRequest is a request to seach for VCs
+            description: Request to search for VCs based on the specified criteria
         SearchResponse:
             type: object
             properties:
@@ -511,7 +521,7 @@ components:
                     items:
                         $ref: '#/components/schemas/EnvelopedCredential'
                     description: The list of VCs that match the search criteria
-            description: SearchResponse returns the VCs that match the search criteria
+            description: Returns the VCs that match the search criteria
         Service:
             type: object
             properties:
@@ -603,7 +613,7 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/EnvelopedCredential'
                     description: The Verifiable Credential to verify
-            description: VerifyRequest is a request to verify a Verifiable Credential
+            description: Request to verify an existing Verifiable Credential
     headers:
         "":
     securitySchemes: {}

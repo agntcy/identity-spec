@@ -196,6 +196,25 @@ html[data-theme="dark"] body, .scalar-card.dark-mode {
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 8px;
   width: 100%;
+  position: relative;
+}
+
+.panzoom-controls {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.button-control {
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 [data-theme='dark'] .panzoom-wrapper {

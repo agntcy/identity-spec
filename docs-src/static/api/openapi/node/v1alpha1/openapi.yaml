@@ -125,7 +125,7 @@ paths:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/EnvelopedVerifiableCredential'
+                            $ref: '#/components/schemas/EnvelopedCredential'
                 required: true
             responses:
                 "200":
@@ -172,12 +172,38 @@ paths:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/EnvelopedVerifiableCredential'
+                            $ref: '#/components/schemas/EnvelopedCredential'
                 required: true
             responses:
                 "200":
                     description: OK
                     content: {}
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
+    /v1alpha1/vc/{id}/.well-known/passport.json:
+        get:
+            tags:
+                - VcService
+            description: Passport WellKnown endpoint
+            operationId: VcService_PassportWellKnown
+            parameters:
+                - name: id
+                  in: path
+                  description: The identifier.
+                  required: true
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/EnvelopedCredential'
                 default:
                     description: Default error response
                     content:
@@ -200,20 +226,21 @@ components:
                  more information can be found [here]
 
                  [here]: https://www.w3.org/TR/vc-data-model-2.0/#data-schemas
-        EnvelopedVerifiableCredential:
+        EnvelopedCredential:
             type: object
             properties:
                 envelopeType:
                     enum:
-                        - VERIFIABLE_CREDENTIAL_ENVELOPE_TYPE_UNSPECIFIED
-                        - VERIFIABLE_CREDENTIAL_ENVELOPE_TYPE_JOSE
+                        - CREDENTIAL_ENVELOPE_TYPE_UNSPECIFIED
+                        - CREDENTIAL_ENVELOPE_TYPE_EMBEDDED_PROOF
+                        - CREDENTIAL_ENVELOPE_TYPE_JOSE
                     type: string
                     description: EnvelopeType specifies the type of the envelope used to store the credential.
                     format: enum
                 value:
                     type: string
                     description: Value is the enveloped credential in the specified format.
-            description: EnvelopedVerifiableCredential represents a Verifiable Credential enveloped in a specific format.
+            description: EnvelopedCredential represents a Credential enveloped in a specific format.
         GoogleProtobufAny:
             type: object
             properties:
@@ -394,7 +421,7 @@ components:
                 credentials:
                     type: array
                     items:
-                        $ref: '#/components/schemas/EnvelopedVerifiableCredential'
+                        $ref: '#/components/schemas/EnvelopedCredential'
                     description: The list of VCs that match the search criteria
         Service:
             type: object

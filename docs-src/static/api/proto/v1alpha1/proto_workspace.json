@@ -47,11 +47,35 @@
             },
             {
               "name": "verification_method",
-              "description": "VerificationMethod is a list of cryptographic public keys, which can be used\nto authenticate or authorize interactions with the VCs associated with the ID.",
+              "description": "VerificationMethod is a list of cryptographic public keys, which can be used\nto authenticate or authorize interactions with the entities represented by the ID.",
               "label": "repeated",
               "type": "VerificationMethod",
               "longType": "VerificationMethod",
               "fullType": "agntcy.identity.core.v1alpha1.VerificationMethod",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "service",
+              "description": "Service is used in ID Documents to express ways of communicating with\nthe node that published the document.",
+              "label": "repeated",
+              "type": "Service",
+              "longType": "Service",
+              "fullType": "agntcy.identity.core.v1alpha1.Service",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "assertion_method",
+              "description": "AssertionMethod is used to specify how the entity represented by the ID\nis expected to express claims, such as for the purposes of issuing a VCs.",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -276,10 +300,34 @@
           ]
         },
         {
+          "name": "Service",
+          "longName": "Service",
+          "fullName": "agntcy.identity.core.v1alpha1.Service",
+          "description": "Service is used in ID Documents to express ways of communicating with\nthe node that published the document.",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "service_endpoint",
+              "description": "ServiceEndpoint is a network address, such as an HTTP URL, of the\nnode.",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "VerificationMethod",
           "longName": "VerificationMethod",
           "fullName": "agntcy.identity.core.v1alpha1.VerificationMethod",
-          "description": "VerificationMethod expresses verification methods, such as cryptographic\npublic keys, which can be used to authenticate or authorize interactions\nwith the VCs associated with the ID. It is a part of the ID Document.",
+          "description": "VerificationMethod expresses verification methods, such as cryptographic\npublic keys, which can be used to authenticate or authorize interactions\nwith the entities represented by the ID. It is a part of the ID Document.",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,

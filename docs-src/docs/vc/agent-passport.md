@@ -1,9 +1,9 @@
 # Agent Passport
 
-`Agent Passport` is an envelopped `Verifiable Credential` that represents an Agent in the `Identity` ecosystem.
-It is a JSON-LD document that contains information about the Agent, such as its [`ID`](/docs/id/intro), its definition (Ex.: [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent)) and other metadata used for defining locators, authentication, MFA, etc.
+`Agent Passport` is an enveloped `Verifiable Credential` that represents an Agent in the `Identity` ecosystem.
+It is a JSON-LD document that contains information about the Agent, such as its [`ID`](/docs/id/intro), its definition (Ex.: [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) or [`A2A Agent Card`](https://github.com/google/A2A/blob/main/specification/json/a2a.json)) and other metadata used for defining locators, authentication, MFA, etc.
 
-Here is an example of an `AGNTCY` `Agent Passport` with a `JOSE`(JSON Object Signing and Encryption) envelope:
+Here is an example of an `AGNTCY` `Agent Passport` with an embedded proof:
 
 ```
 CREDENTIAL
@@ -18,7 +18,7 @@ CREDENTIAL
     oasf: OASF_JSON,
   },
   credentialSchema: [{
-    id: "https://oasf.agtncy.org,
+    id: "https://schema.oasf.agntcy.org/schema/objects/agent",
     type: "JsonSchema"
   }],
   proof: {
@@ -35,4 +35,10 @@ where:
 - `credentialSubject.id`: [`ID`](/docs/id/intro) of the subject
 - `credentialSubject.oasf`: [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent)
 
-Note: The `proof` is verfiied by the `assertionMethod` public key in the DID Document.
+:::note
+The `proof` is verified by the `assertionMethod` entry in the ID Document.
+:::
+
+:::note
+Multiple envelopes are supported such as `JOSE`(JSON Object Signing and Encryption).
+:::

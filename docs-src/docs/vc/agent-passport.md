@@ -9,7 +9,7 @@ It is a JSON-LD document that aggregates all [`Agent Badges`](/docs/vc/agent-bad
 The `Agent Passport` of an agent can be accessed using the following `well-known` URL:
 
 ```
-https://api.NODE/ID/.well-known/passport.json
+https://api.NODE/ID/.well-known/ap.json
 ```
 
 where:

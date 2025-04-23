@@ -18,7 +18,7 @@ paths:
         post:
             tags:
                 - IdService
-            description: Generate an Id and its corresponding Id Document for the specified issuer
+            description: Generate an Id and its corresponding ResolverMetadata for the specified Issuer
             operationId: IdService_Generate
             requestBody:
                 content:
@@ -43,7 +43,7 @@ paths:
         post:
             tags:
                 - IdService
-            description: Resolve a specified Id to its corresponding Id Document
+            description: Resolve a specified Id to its corresponding ResolverMetadata
             operationId: IdService_Resolve
             requestBody:
                 content:
@@ -217,7 +217,7 @@ components:
         APWellKnownResponse:
             type: object
             properties:
-                ap:
+                agentPassport:
                     allOf:
                         - $ref: '#/components/schemas/AgentPassport'
                     description: The well-known document for an Agent Passport
@@ -280,16 +280,16 @@ components:
                 issuer:
                     allOf:
                         - $ref: '#/components/schemas/Issuer'
-                    description: The issuer details
-            description: Generate an Id and its corresponding Id Document for the specified issuer
+                    description: The Issuer details
+            description: Generate an Id and its corresponding ResolverMetadata for the specified Issuer
         GenerateResponse:
             type: object
             properties:
-                idDocument:
+                resolverMetadata:
                     allOf:
-                        - $ref: '#/components/schemas/IdDocument'
-                    description: The Id Document corresponding to the generated Id
-            description: Returns the Generated Id and its corresponding Id Document
+                        - $ref: '#/components/schemas/ResolverMetadata'
+                    description: The ResolverMetadata corresponding to the generated Id
+            description: Returns the Generated Id and its corresponding ResolverMetadata
         GoogleProtobufAny:
             type: object
             properties:
@@ -298,45 +298,6 @@ components:
                     description: The type of the serialized message.
             additionalProperties: true
             description: Contains an arbitrary serialized message along with a @type that describes the type of the serialized message.
-        IdDocument:
-            type: object
-            properties:
-                id:
-                    type: string
-                    description: |-
-                        The ID
-                         The metadata below is related as claims to the ID
-                node:
-                    type: string
-                    description: The node that was used to publish the document
-                verificationMethod:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/VerificationMethod'
-                    description: |-
-                        VerificationMethod is a list of cryptographic public keys, which can be used
-                         to authenticate or authorize interactions with the entities represented by the ID.
-                service:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Service'
-                    description: |-
-                        Service is used in ID Documents to express ways of communicating with
-                         the node that published the document.
-                assertionMethod:
-                    type: array
-                    items:
-                        type: string
-                    description: |-
-                        AssertionMethod is used to specify how the entity represented by the ID
-                         is expected to express claims, such as for the purposes of issuing a VCs.
-            description: |-
-                IdDocument represents a set of data describing the ID including mechanisms such as:
-                   - cryptographic public keys - used to authenticate itself and prove
-                     association with the ID
-                   - node - the node that was used to publish the document
-
-                 An ID Document can be retrieved by resolving an ID.
         Issuer:
             type: object
             properties:
@@ -490,15 +451,51 @@ components:
                 id:
                     type: string
                     description: Id is the identifier.
-            description: Resolve a specified Id to its corresponding Id Document
+            description: Resolve a specified Id to its corresponding ResolverMetadata
         ResolveResponse:
             type: object
             properties:
-                idDocument:
+                resolverMetadata:
                     allOf:
-                        - $ref: '#/components/schemas/IdDocument'
-                    description: The Id Document resolved from the Id
-            description: Returns the Id Document corresponding to the specified Id
+                        - $ref: '#/components/schemas/ResolverMetadata'
+                    description: The ResolverMetadata resolved from the Id
+            description: Returns the ResolverMetadata corresponding to the specified Id
+        ResolverMetadata:
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: |-
+                        The ID
+                         The metadata below is related as claims to the ID
+                verificationMethod:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/VerificationMethod'
+                    description: |-
+                        VerificationMethod is a list of cryptographic public keys, which can be used
+                         to authenticate or authorize interactions with the entities represented by the ID.
+                service:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Service'
+                    description: |-
+                        Service is used in ResolverMetadatas to express ways of communicating with
+                         the node that published the document.
+                assertionMethod:
+                    type: array
+                    items:
+                        type: string
+                    description: |-
+                        AssertionMethod is used to specify how the entity represented by the ID
+                         is expected to express claims, such as for the purposes of issuing a VCs.
+            description: |-
+                ResolverMetadata represents a set of data describing the ID including mechanisms such as:
+                   - cryptographic public keys - used to authenticate itself and prove
+                     association with the ID
+                   - service - ways of communicating with the node that published the document
+
+                 A ResolverMetadata can be retrieved by resolving an ID.
         SearchRequest:
             type: object
             properties:
@@ -533,7 +530,7 @@ components:
                         ServiceEndpoint is a network address, such as an HTTP URL, of the
                          node.
             description: |-
-                Service is used in ID Documents to express ways of communicating with
+                Service is used in ResolverMetadata to express ways of communicating with
                  the node that published the document.
         Status:
             type: object
@@ -605,7 +602,7 @@ components:
             description: |-
                 VerificationMethod expresses verification methods, such as cryptographic
                  public keys, which can be used to authenticate or authorize interactions
-                 with the entities represented by the ID. It is a part of the ID Document.
+                 with the entities represented by the ID. It is a part of the ResolverMetadata.
         VerifyRequest:
             type: object
             properties:

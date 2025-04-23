@@ -1,8 +1,8 @@
 {
-  "$id": "agntcy.identity.core.v1alpha1.IdDocument.schema.json",
+  "$id": "agntcy.identity.core.v1alpha1.ResolverMetadata.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
-  "description": "IdDocument represents a set of data describing the ID including mechanisms such as:\n   - cryptographic public keys - used to authenticate itself and prove\n     association with the ID\n   - node - the node that was used to publish the document\n\n An ID Document can be retrieved by resolving an ID.",
+  "description": "ResolverMetadata represents a set of data describing the ID including mechanisms such as:\n   - cryptographic public keys - used to authenticate itself and prove\n     association with the ID\n   - service - ways of communicating with the node that published the document\n\n A ResolverMetadata can be retrieved by resolving an ID.",
   "patternProperties": {
     "^(assertionMethod)$": {
       "description": "AssertionMethod is used to specify how the entity represented by the ID\n is expected to express claims, such as for the purposes of issuing a VCs.",
@@ -31,12 +31,8 @@
       "description": "The ID\n The metadata below is related as claims to the ID",
       "type": "string"
     },
-    "node": {
-      "description": "The node that was used to publish the document",
-      "type": "string"
-    },
     "service": {
-      "description": "Service is used in ID Documents to express ways of communicating with\n the node that published the document.",
+      "description": "Service is used in ResolverMetadatas to express ways of communicating with\n the node that published the document.",
       "items": {
         "$ref": "agntcy.identity.core.v1alpha1.Service.schema.json"
       },
@@ -50,6 +46,6 @@
       "type": "array"
     }
   },
-  "title": "Id Document",
+  "title": "Resolver Metadata",
   "type": "object"
 }

@@ -1,6 +1,110 @@
 {
   "files": [
     {
+      "name": "agntcy/identity/core/v1alpha1/errors.proto",
+      "description": "",
+      "package": "agntcy.identity.core.v1alpha1",
+      "hasEnums": true,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": false,
+      "enums": [
+        {
+          "name": "ErrorReason",
+          "longName": "ErrorReason",
+          "fullName": "agntcy.identity.core.v1alpha1.ErrorReason",
+          "description": "Represents the reason for an error, providing a unique\nconstant value for the error.",
+          "values": [
+            {
+              "name": "ERROR_REASON_UNSPECIFIED",
+              "number": "0",
+              "description": "ERROR_REASON_UNSPECIFIED indicates that no specific error reason\nhas been specified."
+            },
+            {
+              "name": "ERROR_REASON_INVALID_ID",
+              "number": "1",
+              "description": "The Agent ID is invalid or not found"
+            },
+            {
+              "name": "ERROR_REASON_INVALID_CREDENTIAL_ENVELOPE_TYPE",
+              "number": "2",
+              "description": "The credential envelope type is invalid. For valid values refer to\nthe enum CredentialEnvelopeType."
+            },
+            {
+              "name": "ERROR_REASON_INVALID_CREDENTIAL_ENVELOPE_VALUE_FORMAT",
+              "number": "3",
+              "description": "The credential envelope value format does not correspond to the format\nspecified in envelope_type."
+            },
+            {
+              "name": "ERROR_REASON_INVALID_CREDENTIAL_CONTENT_TYPE",
+              "number": "4",
+              "description": "The credential content type is invalid. For valid values refer to\nthe enum CredentialContentType."
+            },
+            {
+              "name": "ERROR_REASON_INVALID_CREDENTIAL_CONTENT_FORMAT",
+              "number": "5",
+              "description": "The credential content format is not a valid JSON-LD."
+            },
+            {
+              "name": "ERROR_REASON_INVALID_ISSUER",
+              "number": "6",
+              "description": "The issuer contains one or more invalid fields."
+            },
+            {
+              "name": "ERROR_REASON_INVALID_VERIFIABLE_CREDENTIAL",
+              "number": "7",
+              "description": "The Verifiable Credential is invalid, this can be related to either\ninvalid format or unable to verify the Data Integrity proof."
+            },
+            {
+              "name": "ERROR_REASON_AGENT_PASSPORT_NOT_FOUND",
+              "number": "8",
+              "description": "Unable to find an Agent Passport for an ID."
+            }
+          ]
+        }
+      ],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "ErrorInfo",
+          "longName": "ErrorInfo",
+          "fullName": "agntcy.identity.core.v1alpha1.ErrorInfo",
+          "description": "Describes the cause of the error with structured details.",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "reason",
+              "description": "The reason of the error, as defined by the ErrorReason enum.\nThis is a constant unique value that helps identify the cause of\nthe error.",
+              "label": "optional",
+              "type": "ErrorReason",
+              "longType": "ErrorReason",
+              "fullType": "agntcy.identity.core.v1alpha1.ErrorReason",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_reason",
+              "defaultValue": ""
+            },
+            {
+              "name": "message",
+              "description": "The message describing the error in a human-readable way. This\nfield gives additional details about the error.",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_message",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": []
+    },
+    {
       "name": "agntcy/identity/core/v1alpha1/id.proto",
       "description": "",
       "package": "agntcy.identity.core.v1alpha1",
@@ -11,78 +115,6 @@
       "enums": [],
       "extensions": [],
       "messages": [
-        {
-          "name": "IdDocument",
-          "longName": "IdDocument",
-          "fullName": "agntcy.identity.core.v1alpha1.IdDocument",
-          "description": "IdDocument represents a set of data describing the ID including mechanisms such as:\n  - cryptographic public keys - used to authenticate itself and prove\n    association with the ID\n  - node - the node that was used to publish the document\n\nAn ID Document can be retrieved by resolving an ID.",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "The ID\nThe metadata below is related as claims to the ID",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_id",
-              "defaultValue": ""
-            },
-            {
-              "name": "node",
-              "description": "The node that was used to publish the document",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_node",
-              "defaultValue": ""
-            },
-            {
-              "name": "verification_method",
-              "description": "VerificationMethod is a list of cryptographic public keys, which can be used\nto authenticate or authorize interactions with the entities represented by the ID.",
-              "label": "repeated",
-              "type": "VerificationMethod",
-              "longType": "VerificationMethod",
-              "fullType": "agntcy.identity.core.v1alpha1.VerificationMethod",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "service",
-              "description": "Service is used in ID Documents to express ways of communicating with\nthe node that published the document.",
-              "label": "repeated",
-              "type": "Service",
-              "longType": "Service",
-              "fullType": "agntcy.identity.core.v1alpha1.Service",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "assertion_method",
-              "description": "AssertionMethod is used to specify how the entity represented by the ID\nis expected to express claims, such as for the purposes of issuing a VCs.",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
         {
           "name": "Jwk",
           "longName": "Jwk",
@@ -300,10 +332,70 @@
           ]
         },
         {
+          "name": "ResolverMetadata",
+          "longName": "ResolverMetadata",
+          "fullName": "agntcy.identity.core.v1alpha1.ResolverMetadata",
+          "description": "ResolverMetadata represents a set of data describing the ID including mechanisms such as:\n  - cryptographic public keys - used to authenticate itself and prove\n    association with the ID\n  - service - ways of communicating with the node that published the document\n\nA ResolverMetadata can be retrieved by resolving an ID.",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "The ID\nThe metadata below is related as claims to the ID",
+              "label": "optional",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_id",
+              "defaultValue": ""
+            },
+            {
+              "name": "verification_method",
+              "description": "VerificationMethod is a list of cryptographic public keys, which can be used\nto authenticate or authorize interactions with the entities represented by the ID.",
+              "label": "repeated",
+              "type": "VerificationMethod",
+              "longType": "VerificationMethod",
+              "fullType": "agntcy.identity.core.v1alpha1.VerificationMethod",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "service",
+              "description": "Service is used in ResolverMetadatas to express ways of communicating with\nthe node that published the document.",
+              "label": "repeated",
+              "type": "Service",
+              "longType": "Service",
+              "fullType": "agntcy.identity.core.v1alpha1.Service",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "assertion_method",
+              "description": "AssertionMethod is used to specify how the entity represented by the ID\nis expected to express claims, such as for the purposes of issuing a VCs.",
+              "label": "repeated",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "Service",
           "longName": "Service",
           "fullName": "agntcy.identity.core.v1alpha1.Service",
-          "description": "Service is used in ID Documents to express ways of communicating with\nthe node that published the document.",
+          "description": "Service is used in ResolverMetadata to express ways of communicating with\nthe node that published the document.",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -327,7 +419,7 @@
           "name": "VerificationMethod",
           "longName": "VerificationMethod",
           "fullName": "agntcy.identity.core.v1alpha1.VerificationMethod",
-          "description": "VerificationMethod expresses verification methods, such as cryptographic\npublic keys, which can be used to authenticate or authorize interactions\nwith the entities represented by the ID. It is a part of the ID Document.",
+          "description": "VerificationMethod expresses verification methods, such as cryptographic\npublic keys, which can be used to authenticate or authorize interactions\nwith the entities represented by the ID. It is a part of the ResolverMetadata.",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": true,
@@ -1063,7 +1155,7 @@
           "name": "GenerateRequest",
           "longName": "GenerateRequest",
           "fullName": "agntcy.identity.node.v1alpha1.GenerateRequest",
-          "description": "Generate an Id and its corresponding Id Document for the specified issuer",
+          "description": "Generate an Id and its corresponding ResolverMetadata for the specified Issuer",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1071,7 +1163,7 @@
           "fields": [
             {
               "name": "issuer",
-              "description": "The issuer details",
+              "description": "The Issuer details",
               "label": "",
               "type": "Issuer",
               "longType": "agntcy.identity.core.v1alpha1.Issuer",
@@ -1087,19 +1179,19 @@
           "name": "GenerateResponse",
           "longName": "GenerateResponse",
           "fullName": "agntcy.identity.node.v1alpha1.GenerateResponse",
-          "description": "Returns the Generated Id and its corresponding Id Document",
+          "description": "Returns the Generated Id and its corresponding ResolverMetadata",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
           "fields": [
             {
-              "name": "id_document",
-              "description": "The Id Document corresponding to the generated Id",
+              "name": "resolver_metadata",
+              "description": "The ResolverMetadata corresponding to the generated Id",
               "label": "",
-              "type": "IdDocument",
-              "longType": "agntcy.identity.core.v1alpha1.IdDocument",
-              "fullType": "agntcy.identity.core.v1alpha1.IdDocument",
+              "type": "ResolverMetadata",
+              "longType": "agntcy.identity.core.v1alpha1.ResolverMetadata",
+              "fullType": "agntcy.identity.core.v1alpha1.ResolverMetadata",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1111,7 +1203,7 @@
           "name": "ResolveRequest",
           "longName": "ResolveRequest",
           "fullName": "agntcy.identity.node.v1alpha1.ResolveRequest",
-          "description": "Resolve a specified Id to its corresponding Id Document",
+          "description": "Resolve a specified Id to its corresponding ResolverMetadata",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
@@ -1135,19 +1227,19 @@
           "name": "ResolveResponse",
           "longName": "ResolveResponse",
           "fullName": "agntcy.identity.node.v1alpha1.ResolveResponse",
-          "description": "Returns the Id Document corresponding to the specified Id",
+          "description": "Returns the ResolverMetadata corresponding to the specified Id",
           "hasExtensions": false,
           "hasFields": true,
           "hasOneofs": false,
           "extensions": [],
           "fields": [
             {
-              "name": "id_document",
-              "description": "The Id Document resolved from the Id",
+              "name": "resolver_metadata",
+              "description": "The ResolverMetadata resolved from the Id",
               "label": "",
-              "type": "IdDocument",
-              "longType": "agntcy.identity.core.v1alpha1.IdDocument",
-              "fullType": "agntcy.identity.core.v1alpha1.IdDocument",
+              "type": "ResolverMetadata",
+              "longType": "agntcy.identity.core.v1alpha1.ResolverMetadata",
+              "fullType": "agntcy.identity.core.v1alpha1.ResolverMetadata",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
@@ -1165,7 +1257,7 @@
           "methods": [
             {
               "name": "Generate",
-              "description": "Generate an Id and its corresponding Id Document for the specified issuer",
+              "description": "Generate an Id and its corresponding ResolverMetadata for the specified Issuer",
               "requestType": "GenerateRequest",
               "requestLongType": "GenerateRequest",
               "requestFullType": "agntcy.identity.node.v1alpha1.GenerateRequest",
@@ -1188,7 +1280,7 @@
             },
             {
               "name": "Resolve",
-              "description": "Resolve a specified Id to its corresponding Id Document",
+              "description": "Resolve a specified Id to its corresponding ResolverMetadata",
               "requestType": "ResolveRequest",
               "requestLongType": "ResolveRequest",
               "requestFullType": "agntcy.identity.node.v1alpha1.ResolveRequest",
@@ -1423,7 +1515,7 @@
           "extensions": [],
           "fields": [
             {
-              "name": "ap",
+              "name": "agent_passport",
               "description": "The well-known document for an Agent Passport",
               "label": "",
               "type": "AgentPassport",

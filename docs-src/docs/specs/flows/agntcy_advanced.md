@@ -93,7 +93,7 @@ Identity CLI->>Wallet: Get Private Key
 activate Wallet
 Wallet-->>Identity CLI: Private Key
 deactivate Wallet
-Identity CLI->>Identity CLI: Generate Data Integrity proof and add to Agent Passport
+Identity CLI->>Identity CLI: Generate Data Integrity proof
 Identity CLI->>Identity Node: Publish the Agent Badge<br/>(/v1alpha1/vc/publish)
 activate Identity Node
 Identity Node-->>Identity CLI: Published

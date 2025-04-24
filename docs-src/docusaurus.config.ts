@@ -90,11 +90,6 @@ const config: Config = {
         timeout: 1500
       },
     ],
-    [
-      require.resolve('docusaurus-lunr-search'),
-      {
-      },
-    ],
   ],
 
   themeConfig: {
@@ -173,6 +168,7 @@ const config: Config = {
   themes: [
     "@docusaurus/theme-mermaid",
     "docusaurus-json-schema-plugin",
+    "docusaurus-lunr-search",
   ],
 };
 

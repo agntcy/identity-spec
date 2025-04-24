@@ -33,7 +33,6 @@
   position: fixed; /* Fix the sidebar position */
   top: 0;
   left: 0;
-  overflow: hidden; /* Prevent scrolling */
   width: 100%; /* Fixed width */
   background-color: #E8EEFB; /* Keep the existing background */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -313,4 +312,12 @@ body.modal-open {
 
 [data-theme='dark'] .modal-header {
   background-color: #00142B;
+}
+
+.algolia-docsearch-suggestion--category-header {
+  background-color: #002786 !important;
+}
+
+.algolia-docsearch-suggestion--no-results {
+  background-color: #002786 !important;
 }

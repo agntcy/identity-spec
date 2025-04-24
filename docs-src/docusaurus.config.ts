@@ -85,6 +85,12 @@ const config: Config = {
       } as ScalarOptions,
     ],
     [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      ({
+        hashed: true,
+      }),
+    ],
+    [
       require.resolve('./src/plugins/panzoom'),
       {
         timeout: 1500
@@ -167,8 +173,7 @@ const config: Config = {
   },
   themes: [
     "@docusaurus/theme-mermaid",
-    "docusaurus-json-schema-plugin",
-    "docusaurus-lunr-search",
+    "docusaurus-json-schema-plugin"
   ],
 };
 

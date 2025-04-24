@@ -136,29 +136,33 @@ autonumber
 Agent Verifier->>Directory CLI: Discover and download the agent OASF
 activate Directory CLI
 Directory CLI->>Directory: Discover and download the agent OASF
+activate Directory
 Directory-->>Directory CLI: Downloaded OASF
+deactivate Directory
 Directory CLI->>Agent Verifier: Downloaded OASF
 deactivate Directory CLI
 
-Agent Verifier->>Agent Verifier: Extract the ID from the OASF identity extension
+Agent Verifier->>Agent Verifier: Extract the Agent Passport well-known<br/>URI from the OASF identity extension
 
 % Resolve the ID into a list of Agent Passports
-Agent Verifier->>Identity CLI: Resolve the ID into a list of Agent Passports
+Agent Verifier->>Identity CLI: Resolve the Agent Passport well-known URI
 activate Identity CLI
-Identity CLI->>Identity Node: Resolve the ID into a list of Agent Passports
+Identity CLI->>Identity Node: Resolve the Agent Passport well-known URI
 activate Identity Node
-Identity Node-->>Identity CLI: List of Agent Passports
+Identity Node-->>Identity CLI: Agent Passport
 deactivate Identity Node
-Identity CLI-->>Agent Verifier: List of Agent Passports
+Identity CLI-->>Agent Verifier: Agent Passport
 deactivate Identity CLI
 
-% Find and verify the Agent Passport
-Agent Verifier->>Agent Verifier: Find the Agent Passport that matches the OASF
-Agent Verifier->>Identity CLI: Verify the Agent Passport
+% Find and verify the Agent Badge
+Agent Verifier->>Agent Verifier: Find the Agent Badge in the<br/>Agent Passport that matches the OASF
+Agent Verifier->>Identity CLI: Verify the Agent Badge
 activate Identity CLI
-Identity CLI->>Identity Node: Resolve the ID into an ID Document
-Identity Node-->>Identity CLI: ID Document
-Identity CLI->>Identity CLI: Verify the Agent Passport Data Integrity proof<br/>using the ID Document public key
+Identity CLI->>Identity Node: Resolve the Agent Badge ResolverMetadata
+activate Identity Node
+Identity Node-->>Identity CLI: ResolverMetadata
+deactivate Identity Node
+Identity CLI->>Identity CLI: Verify the Agent Badge Data Integrity proof<br/>using the ResolverMetadata public key
 Identity CLI-->>Agent Verifier: Verified
 deactivate Identity CLI
 ```
@@ -173,23 +177,31 @@ autonumber
 Agent Verifier->>Directory CLI: Discover and download the agent OASF
 activate Directory CLI
 Directory CLI->>Directory: Discover and download the agent OASF
+activate Directory
 Directory-->>Directory CLI: Downloaded OASF
+deactivate Directory
 Directory CLI->>Agent Verifier: Downloaded OASF
 deactivate Directory CLI
 
-Agent Verifier->>Agent Verifier: Extract the ID from the OASF identity extension
+Agent Verifier->>Agent Verifier: Extract the Agent Passport well-known<br/>URI from the OASF identity extension
 
-Agent Verifier->>Identity CLI: Search the Agent Passport related to the OASF + ID
-Identity CLI->>Identity Node: Search the Agent Passport related to the OASF + ID<br/>(/v1alpha1/vc/search)
-Identity Node-->>Identity CLI: Agent Passport
-Identity CLI-->>Agent Verifier: Agent Passport
-
-% Find and verify the Agent Passport
-Agent Verifier->>Identity CLI: Verify the Agent Passport
+Agent Verifier->>Identity CLI: Search for the Agent Badge related to the OASF + Agent Passport well-known URI
 activate Identity CLI
-Identity CLI->>Identity Node: Resolve the ID into an ID Document<br/>(/v1alpha1/id/resolve)
-Identity Node-->>Identity CLI: ID Document
-Identity CLI->>Identity CLI: Verify the Agent Passport Data Integrity proof<br/>using the ID Document public key
+Identity CLI->>Identity Node: Search for the Agent Badge related<br/>to the OASF + Agent Passport well-known URI<br/>(/v1alpha1/vc/search)
+activate Identity Node
+Identity Node-->>Identity CLI: Agent Badge
+deactivate Identity Node
+Identity CLI-->>Agent Verifier: Agent Badge
+deactivate Identity CLI
+
+% Find and verify the Agent Badge
+Agent Verifier->>Identity CLI: Verify the Agent Badge
+activate Identity CLI
+Identity CLI->>Identity Node: Resolve the Agent Badge ResolverMetadata
+activate Identity Node
+Identity Node-->>Identity CLI: ResolverMetadata
+deactivate Identity Node
+Identity CLI->>Identity CLI: Verify the Agent Badge Data Integrity proof<br/>using the ResolverMetadata public key
 Identity CLI-->>Agent Verifier: Verified
 deactivate Identity CLI
 ```

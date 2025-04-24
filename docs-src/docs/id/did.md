@@ -11,7 +11,7 @@ sidebar_position: 2
 ### ID
 
 ```
-ID: OKTA_APP_ID
+ID: OKTA-APP_ID
 ```
 
 where `ID` represents a universally unique identifier associated to an Agent subject (e.g., an Okta application ID in this case).
@@ -23,7 +23,7 @@ The `ResolverMetadata` is represented as a JSON-LD object comprising the followi
 ```
 ResolverMetadata
 {
-  id: "OKTA_APP_ID",
+  id: "OKTA-APP_ID",
   assertionMethod: [{
     publicKeyJwk: {}
   }],
@@ -43,7 +43,7 @@ where:
 ### ID
 
 ```
-ID: DUO_CLIENT_ID
+ID: DUO-CLIENT_ID
 ```
 
 where `ID` represents a universally unique identifier associated to an Agent subject (e.g., a Duo client ID in this case).
@@ -55,7 +55,7 @@ The `ResolverMetadata` is represented as a JSON-LD object comprising the followi
 ```
 ResolverMetadata
 {
-  id: "DUO_CLIENT_ID",
+  id: "DUO-CLIENT_ID",
   assertionMethod: [{
     publicKeyJwk: {}
   }],
@@ -75,7 +75,7 @@ where:
 ### ID
 
 ```
-ID: A2A_Agent_ID
+ID: A2A-Agent_ID
 ```
 
 In the [`Agent2Agent (A2A) model`](https://google.github.io/A2A/#/documentation), the `ID` could be represented by a structured metadata file, typically hosted at https://YOUR-DOMAIN/.well-known/agent.json, which links to an Agent Card.
@@ -89,7 +89,7 @@ Hence, the A2A model may benefit from the use of the `ResolverMetadata` example 
 ```
 ResolverMetadata
 {
-  id: "A2A_Agent_ID",
+  id: "A2A-Agent_ID",
   assertionMethod: [{
     publicKeyJwk: {}
   }],

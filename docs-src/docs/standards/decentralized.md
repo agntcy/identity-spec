@@ -8,7 +8,7 @@ sidebar_position: 1
 
 The concepts of `DIDs` and `VCs`, along with the set of standards defined by the W3C consortium represent **a standardized option** for assigning, presenting, resolving, and verifying the Agents' identities in an open and decentralized manner. 
 
-It is worth highlighting that although the `Identity` platform conceived by the [`AGNTCY`](https://agntcy.org/) could leverage some of these concepts and standards, the Agent identities managed by, or through the [`AGNTCY`](https://agntcy.org/), <u>**are by no means limited to, or constrained by these standards**</u>. Indeed, the key concept leveraged by the [`AGNTCY`](https://agntcy.org/) is the use of `VCs`, particularly, with the aim of creating, presenting, and securely verifying Agent Badges and Agent Passports (see: [`Agent Badge example`](../vc/agent-badge.md), and [`Agent Passport example`](../vc/agent-passport.md)).
+It is worth highlighting that although the `Identity` platform conceived by the [`AGNTCY`](https://agntcy.org/) could leverage some of these concepts and standards, the Agent identities managed by, or through the [`AGNTCY`](https://agntcy.org/), <u>**are by no means limited to, or constrained by these standards**</u>. Indeed, the key concept leveraged by the [`AGNTCY`](https://agntcy.org/) is the use of `VCs`, particularly, with the aim of creating, presenting, and securely verifying Agent Badges (see: [`Agent Badge example`](../vc/agent-badge.md)).
 
 :::
 

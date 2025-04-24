@@ -2,13 +2,33 @@
 sidebar_position: 1
 ---
 
-# Intro
+# Definitions
 
-A verifiable credential is a specific way to express a set of claims made by an issuer, such as an agent definition (Ex.: [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) or [`A2A Agent Card`](https://github.com/google/A2A/blob/main/specification/json/a2a.json#AgentCard)), a deployment configuration or authorization related (MFA).
+The [`AGNTCY`](https://agntcy.org/) supports various types of verifiable credentials, referred to as `VCs`. A verifiable credential is a specific way to express and present a set of claims made by an issuer, such as an agent definition (e.g., an [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent), or an [`A2A Agent Card`](https://github.com/google/A2A/blob/main/specification/json/a2a.json#AgentCard)), a deployment configuration, or an authorization claim that could be used during a MFA process.
 
-The [W3C specification document](https://www.w3.org/TR/vc-data-model-2.0/) describes the extensible data model for verifiable credentials, how they can be secured from tampering, and a three-party ecosystem for the exchange of these credentials that is composed of issuers, holders, and verifiers. This document also covers a variety of security, privacy, internationalization, and accessibility considerations for ecosystems that use the technologies described in this specification.
+## Key Verifiable Credentials (VCs)
 
-We are issuing the following types of verifiable credentials:
+Within the [`AGNTCY`](https://agntcy.org/), there are two key `VCs`:
 
-- [`Agent Badge`](/docs/vc/agent-badge)
-- [`Agent Passport`](/docs/vc/agent-passport)
+
+- `Agent Badge`: An enveloped `VC`, captured in the form of a JSON-LD object, that represents a specific definition of an Agent subject in the IoA. The definition follows a given schema (e.g., an OASF definition or an A2A Agent Card schema). An Agent subject could have multiple Agent Badges, each representing a different definition of the same core Agent or Agent subject. For instance, different software versions and/or patched releases of an Agent will have different Agent Badges. The same applies if the Agent's code is available in different forms (e.g, if it can be used and composed using different types of artifacts, such as a Docker container image or a python package), or if the source code can be reached at different sites or routing locators (e.g., through github or sites like hugging face), etc. A concrete example of an Agent Badge can be found [`here`](../vc/agent-badge.md).
+
+- `Agent Passport`: An enveloped `VC`, captured in the form of a JSON-LD object, that represents an Agent subject in the IoA. While an Agent subject could have "n" different Agent Badges or definitions, it will be associated to one "Agent Passport", which in turn will be associated to single Agent `ID`. Hence, there is:
+
+  - An n:1 relationship between Agent Badges and an Agent Passport
+  - A 1:1 relationship between an Agent Passport and an Agent `ID`
+  - A common element that binds Agent Badges and an Agent Passport, which is the same Agent `ID`. 
+
+More specifically, the role of the "Agent Passport" is to cryptographically bind an Agent ID to an ISSUER, a public key and a proof of provenance, while the role of the Agent Badges is to enable the binding of the same Agent `ID` to different definitions of the core Agent, including different schemas, versions, locators, etc., as well as to additional `VCs` that may be used during Multi-Factor AuthN/AuthZ (MFA) processes. A concrete example of an Agent Passport can be found [`here`](../vc/agent-passport.md). 
+
+<br />
+
+:::tip[IMPORTANT]
+As detailed in the [`Agent Passport Example`](../vc/agent-passport.md), the combined use of an `Agent Passport` with `ResolverMetadata` enables the automatic and trustworthy discovery not only of the PubKey associated to the Agent subject issuer but also the verification material to prove the authenticity and integrity of the Agent Passport, according to the assertionMethod defined in the ResolverMetadata object.
+
+Furthermore, the combined use of Agent Badges and an Agent Passport provides a set of key properties in an IoA:
+
+1) It addresses the problem of **Agent impersonation**, by avoiding scenarios where one organization could offer rogue Agents as if they were created by another (trusted) company, or cases where an organization can claim ownership of an Agent developed by another company, among others.
+2) It enables **trustworthy origination, traceability, and lineage of Agents**. Note that Agents will end up having different versions and releases (e.g., due to security patches and updates), so while a  company might be using version 2.08 of Agent `ID` = X, another company might be using version 2.1 of Agent Agent `ID` = X. Knowing that there is a key vulnerability and recommended upgrade for Agent `ID` = X, version 2.08, would allow the first company to migrate to version 2.1, while inform the second company that the upgrade is not needed.    
+3) It **enables more sophisticated AuthN and AuthZ processes among agents with and without a human in the loop**, including the **capacity to build trust even before an Agent is selected and used**. In subsequent updates to this documentation, the [`AGNTCY`](https://agntcy.org/) will provide examples involving MFA and how to build trust dynamically among Agents. 
+:::

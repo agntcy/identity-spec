@@ -2,17 +2,16 @@
 sidebar_position: 1
 ---
 
-# Intro
+# Definitions
 
-**Identity** supports various types of identifiers, referred to as `IDs`, which serve as unique markers for different entities operated by the `AGNTCY` (Ex. agent).
+The [`AGNTCY`](https://agntcy.org/) supports various types of identities, referred to as `IDs`, which serve as universally unique identifiers for the main entities or subjects operated by the [`AGNTCY`](https://agntcy.org/), including Agents and Multi-Agent Systems (MAS).
 
-These identifiers are paired with `ID Documents`, which contain the necessary information that can be used to establish trust in interactions with that entity.
+## Key Identifiers
 
-### Definitions
+Each `ID` is associated 1:1 with `ResolverMetadata`, which contains the necessary information to establish trust while trying to use or interact with an Agent or a MAS `ID`.
 
-- `ID`: An identifier used to represent the identity of a subject.
-- `ID Document`: A document containing cryptographic material and verification methods to establish trust.
+- `ID`: A universally unique identifier that represents the identity of a subject (e.g., an Agent or MAS).
 
-### Examples
+- `ResolverMetadata`: Metadata, represented in the form of a JSON-LD object, containing cryptographic material and verification methods to resolve and establish trust with the associated `ID` (e.g., an Agent or MAS).
 
-You can find in the [`Decentralized Identifiers`](/docs/id/did) section some examples of `IDs` and `ID Documents`, modelized as [`Decentralized Identifiers (DIDs) v1.1`](https://www.w3.org/TR/did-1.1/).
+Concrete examples with various `IDs` and associated `ResolverMetadata` can be found [`here`](./did.md)

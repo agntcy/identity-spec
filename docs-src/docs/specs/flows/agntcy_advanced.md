@@ -10,36 +10,31 @@ sidebar_position: 3
 sequenceDiagram
 autonumber
 
-% Create a new agent
 Agent Creator->>e.g. Github: Publish agent source<br/>code and ACP manifest
 activate e.g. Github
 e.g. Github-->>Agent Creator: Published
 deactivate e.g. Github
 
-% Create and publish ResolverMetadata and Agent Passport with well-known URIs
-Agent Creator->>Identity CLI: Create and publish ResolverMetadata<br/>and empty Agent Passport with well-known URIs
+Agent Creator->>Identity CLI: Create and publish ResolverMetadata with an Agent ID
 activate Identity CLI
-Identity CLI->>Wallet: Get Public and Private Keys
+Identity CLI->>Wallet: Get Public Key
 activate Wallet
-Wallet-->>Identity CLI: Public and Private Keys
+Wallet-->>Identity CLI: Public Key
 deactivate Wallet
-Identity CLI->>Identity Node: Create and publish ResolverMetadata<br/>and empty Agent Passport with well-known URIs<br/>(/v1alpha1/id/generate)
+Identity CLI->>Identity Node: Create and publish ResolverMetadata with an Agent ID
 activate Identity Node
 Identity Node->>Identity Node: Generate a globally unique ID
-Identity Node->>Identity Node: Create ResolverMetadata with well-known URI
-Identity Node->>Identity Node: Create an empty Agent Passport (Verifiable Presentation) with well-known URI
-Identity Node-->>Identity CLI: Created ResolverMetadata and<br/>Agent Passport with well-known URIs
+Identity Node->>Identity Node: Create ResolverMetadata with Agent ID
+Identity Node-->>Identity CLI: Created and published
 deactivate Identity Node
-Identity CLI-->>Agent Creator: Created ResolverMetadata and<br/>Agent Passport with well-known URIs
+Identity CLI-->>Agent Creator: Created and published
 deactivate Identity CLI
 
-% Create the agent's OASF and add Agent Passport well-known URI
-Agent Creator->>Directory CLI: Create Agent OASF with Agent Passport well-known URI in identity extension
+Agent Creator->>Directory CLI: Create Agent OASF with Agent ID in identity extension
 activate Directory CLI
 Directory CLI-->>Agent Creator: OASF
 deactivate Directory CLI
 
-% Publish agent OASF
 Agent Creator->>Directory CLI: Publish OASF
 activate Directory CLI
 Directory CLI->>Directory: Publish OASF
@@ -49,8 +44,7 @@ deactivate Directory
 Directory CLI-->>Agent Creator: Published OASF with Catalogue ID (Digest)
 deactivate Directory CLI
 
-% Issue Agent Badge linking agent ID + OASF
-Agent Creator->>Identity CLI: Issue an Agent Badge (Verifiable Credential) with OASF
+Agent Creator->>Identity CLI: Issue and Publish an Agent Badge<br/>(Verifiable Credential) with OASF
 activate Identity CLI
 Identity CLI->>Identity CLI: Issue an Agent Badge (Verifiable Credential) with OASF
 Identity CLI->>Wallet: Get Private Key
@@ -58,18 +52,11 @@ activate Wallet
 Wallet-->>Identity CLI: Private Key
 deactivate Wallet
 Identity CLI->>Identity CLI: Generate Data Integrity proof and add to Agent Badge
-Identity CLI-->>Agent Creator: Issued Agent Badge
-deactivate Identity CLI
-
-% Publish the Agent Badge
-Agent Creator->>Identity CLI: Publish the Agent Badge
-activate Identity CLI
 Identity CLI->>Identity Node: Publish the Agent Badge<br/>(/v1alpha1/vc/publish)
 activate Identity Node
-Identity Node->>Identity Node: Add the Agent Badge (Verifiable Credential)<br/>to the Agent Passport (Verifiable Presentation)
 Identity Node-->>Identity CLI: Published
 deactivate Identity Node
-Identity CLI-->>Agent Creator: Published
+Identity CLI-->>Agent Creator: Issued and Published
 deactivate Identity CLI
 
 ```
@@ -80,19 +67,16 @@ deactivate Identity CLI
 sequenceDiagram
 autonumber
 
-% Update an existing agent
 Agent Creator->>e.g. Github: Update and publish agent source<br/>code and ACP manifest
 activate e.g. Github
 e.g. Github-->>Agent Creator: Published
 deactivate e.g. Github
 
-% Update the agent's OASF
-Agent Creator->>Directory CLI: Update Agent OASF keeping the same<br/>Agent Passport well-known in identity extension
+Agent Creator->>Directory CLI: Update Agent OASF keeping the same<br/>Agent ID in identity extension
 activate Directory CLI
 Directory CLI-->>Agent Creator: OASF
 deactivate Directory CLI
 
-% Publish agent OASF
 Agent Creator->>Directory CLI: Publish OASF
 activate Directory CLI
 Directory CLI->>Directory: Publish OASF
@@ -102,8 +86,7 @@ deactivate Directory
 Directory CLI-->>Agent Creator: Published OASF with Catalogue ID (Digest)
 deactivate Directory CLI
 
-% Create a new Verifiable Credential linking agent ID + OASF
-Agent Creator->>Identity CLI: Issue a new Agent Badge (Verifiable Credential) with OASF
+Agent Creator->>Identity CLI: Issue and Publish a new Agent Badge (Verifiable Credential) with OASF
 activate Identity CLI
 Identity CLI->>Identity CLI: Issue a new Agent Badge (Verifiable Credential) with OASF
 Identity CLI->>Wallet: Get Private Key
@@ -111,18 +94,11 @@ activate Wallet
 Wallet-->>Identity CLI: Private Key
 deactivate Wallet
 Identity CLI->>Identity CLI: Generate Data Integrity proof and add to Agent Passport
-Identity CLI-->>Agent Creator: Issued Agent Badge
-deactivate Identity CLI
-
-% Publish the Verifiable Credential
-Agent Creator->>Identity CLI: Publish the new Agent Badge
-activate Identity CLI
 Identity CLI->>Identity Node: Publish the Agent Badge<br/>(/v1alpha1/vc/publish)
 activate Identity Node
-Identity Node->>Identity Node: Add the Agent Badge (Verifiable Credential)<br/>to the Agent Passport (Verifiable Presentation)
 Identity Node-->>Identity CLI: Published
 deactivate Identity Node
-Identity CLI-->>Agent Creator: Published
+Identity CLI-->>Agent Creator: Issued and Published
 deactivate Identity CLI
 ```
 
@@ -132,7 +108,6 @@ deactivate Identity CLI
 sequenceDiagram
 autonumber
 
-% Discover + download the agent OASF
 Agent Verifier->>Directory CLI: Discover and download the agent OASF
 activate Directory CLI
 Directory CLI->>Directory: Discover and download the agent OASF
@@ -142,23 +117,22 @@ deactivate Directory
 Directory CLI->>Agent Verifier: Downloaded OASF
 deactivate Directory CLI
 
-Agent Verifier->>Agent Verifier: Extract the Agent Passport well-known<br/>URI from the OASF identity extension
+Agent Verifier->>Agent Verifier: Extract the Agent ID from<br/>the OASF identity extension
 
-% Resolve the ID into a list of Agent Passports
-Agent Verifier->>Identity CLI: Resolve the Agent Passport well-known URI
+Agent Verifier->>Identity CLI: Resolve the Agent ID to get the Agent Badges
 activate Identity CLI
-Identity CLI->>Identity Node: Resolve the Agent Passport well-known URI
+Identity CLI->>Identity Node: Resolve the Agent ID to get the Agent Badges
 activate Identity Node
-Identity Node-->>Identity CLI: Agent Passport
+Identity Node-->>Identity CLI: Agent Badges
 deactivate Identity Node
-Identity CLI-->>Agent Verifier: Agent Passport
+Identity CLI-->>Agent Verifier: Agent Badges
 deactivate Identity CLI
 
-% Find and verify the Agent Badge
-Agent Verifier->>Agent Verifier: Find the Agent Badge in the<br/>Agent Passport that matches the OASF
+Agent Verifier->>Agent Verifier: Find the Agent Badge<br/>that matches the OASF
+
 Agent Verifier->>Identity CLI: Verify the Agent Badge
 activate Identity CLI
-Identity CLI->>Identity Node: Resolve the Agent Badge ResolverMetadata
+Identity CLI->>Identity Node: Resolve the Agent ID to get the ResolverMetadata
 activate Identity Node
 Identity Node-->>Identity CLI: ResolverMetadata
 deactivate Identity Node
@@ -173,7 +147,6 @@ deactivate Identity CLI
 sequenceDiagram
 autonumber
 
-% Discover + download the agent OASF
 Agent Verifier->>Directory CLI: Discover and download the agent OASF
 activate Directory CLI
 Directory CLI->>Directory: Discover and download the agent OASF
@@ -183,21 +156,20 @@ deactivate Directory
 Directory CLI->>Agent Verifier: Downloaded OASF
 deactivate Directory CLI
 
-Agent Verifier->>Agent Verifier: Extract the Agent Passport well-known<br/>URI from the OASF identity extension
+Agent Verifier->>Agent Verifier: Extract the Agent ID from<br/>the OASF identity extension
 
-Agent Verifier->>Identity CLI: Search for the Agent Badge related to the OASF + Agent Passport well-known URI
+Agent Verifier->>Identity CLI: Search for the Agent Badge<br/>for the Agent ID + OASF
 activate Identity CLI
-Identity CLI->>Identity Node: Search for the Agent Badge related<br/>to the OASF + Agent Passport well-known URI<br/>(/v1alpha1/vc/search)
+Identity CLI->>Identity Node: Search for the Agent Badge<br/>for the Agent ID + OASF<br/>(/v1alpha1/vc/search)
 activate Identity Node
 Identity Node-->>Identity CLI: Agent Badge
 deactivate Identity Node
 Identity CLI-->>Agent Verifier: Agent Badge
 deactivate Identity CLI
 
-% Find and verify the Agent Badge
 Agent Verifier->>Identity CLI: Verify the Agent Badge
 activate Identity CLI
-Identity CLI->>Identity Node: Resolve the Agent Badge ResolverMetadata
+Identity CLI->>Identity Node: Resolve the Agent ID to get the ResolverMetadata
 activate Identity Node
 Identity Node-->>Identity CLI: ResolverMetadata
 deactivate Identity Node

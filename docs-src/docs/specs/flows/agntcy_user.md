@@ -12,15 +12,13 @@ autonumber
 
 Agent Creator->>e.g. Github: Publish agent source<br/>code and ACP manifest
 
-Agent Creator->>Identity CLI: Create and publish ResolverMetadata<br/>and empty Agent Passport with well-known URIs
+Agent Creator->>Identity CLI: Create and publish ResolverMetadata with an Agent ID
 
-Agent Creator->>Directory CLI: Create Agent OASF with Agent Passport well-known URI in identity extension
+Agent Creator->>Directory CLI: Create Agent OASF with Agent ID in identity extension
 
 Agent Creator->>Directory CLI: Publish OASF
 
-Agent Creator->>Identity CLI: Issue an Agent Badge (Verifiable Credential) with OASF
-
-Agent Creator->>Identity CLI: Publish the Agent Badge and add it to the Agent Passport
+Agent Creator->>Identity CLI: Issue and Publish an Agent Badge (Verifiable Credential) with OASF
 ```
 
 ## Update an Agent
@@ -31,13 +29,11 @@ autonumber
 
 Agent Creator->>e.g. Github: Update and publish agent source<br/>code and ACP manifest
 
-Agent Creator->>Directory CLI: Update Agent OASF keeping the same<br/>Agent Passport well-known in identity extension
+Agent Creator->>Directory CLI: Update Agent OASF keeping the same<br/>Agent ID in identity extension
 
 Agent Creator->>Directory CLI: Publish OASF
 
-Agent Creator->>Identity CLI: Issue a new Agent Badge (Verifiable Credential) with OASF
-
-Agent Creator->>Identity CLI: Publish the Agent Badge and add it to the Agent Passport
+Agent Creator->>Identity CLI: Issue and Publish a new Agent Badge (Verifiable Credential) with OASF
 ```
 
 ## Verify an Agent Locally
@@ -48,12 +44,11 @@ autonumber
 
 Agent Verifier->>Directory CLI: Discover and download the agent OASF
 
+Agent Verifier->>Agent Verifier: Extract the Agent ID from<br/>the OASF identity extension
 
-Agent Verifier->>Agent Verifier: Extract the Agent Passport well-known<br/>URI from the OASF identity extension
+Agent Verifier->>Identity CLI: Resolve the Agent ID to get the Agent Badges
 
-Agent Verifier->>Identity CLI: Resolve the Agent Passport well-known URI
-
-Agent Verifier->>Agent Verifier: Find the Agent Badge in the<br/>Agent Passport that matches the OASF
+Agent Verifier->>Agent Verifier: Find the Agent Badge<br/>that matches the OASF
 
 Agent Verifier->>Identity CLI: Verify the Agent Badge
 ```
@@ -66,9 +61,9 @@ autonumber
 
 Agent Verifier->>Directory CLI: Discover and download the agent OASF
 
-Agent Verifier->>Agent Verifier: Extract the Agent Passport well-known<br/>URI from the OASF identity extension
+Agent Verifier->>Agent Verifier: Extract the Agent ID from<br/>the OASF identity extension
 
-Agent Verifier->>Identity CLI: Search for the Agent Badge related to the<br/>OASF + Agent Passport well-known URI
+Agent Verifier->>Identity CLI: Search for the Agent Badge<br/>for the Agent ID + OASF
 
 Agent Verifier->>Identity CLI: Verify the Agent Badge
 ```

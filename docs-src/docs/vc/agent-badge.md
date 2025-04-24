@@ -1,11 +1,6 @@
-# Agent Badge
+# Agent Badge Example
 
-`Agent Badge` is an enveloped `Verifiable Credential` that represents one definition of an Agent in the `Identity` ecosystem.
-An Agent could have multiple `Agent Badges`, each representing a different definitions of the Agent.
-
-It is a JSON-LD document that contains information about the Agent, such as its [`ID`](/docs/id/intro), its definition (Ex.: [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) or [`A2A Agent Card`](https://github.com/google/A2A/blob/main/specification/json/a2a.json#AgentCard)) and other metadata used for defining locators, authentication, MFA, etc.
-
-Here is an example of an `AGNTCY` `Agent Badge` with an embedded proof envelope:
+The example below shows an [`Agent Badge`](./intro.md) as a `VC`, represented as a JSON-LD object that contains information about the Agent, including the issuing organization, its [`ID`](/docs/id/intro), a schema definition (e.g., an [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) in this case, or it could be another definition such as an [`A2A Agent Card`](https://github.com/google/A2A/blob/main/specification/json/a2a.json#AgentCard) schema). Such definition may encompass additional metadata, including locators, authentication methods, hashing methods, etc. The `VC` below also includes a data integrity proof as an embedded prove envelope.<br /><br />
 
 ```
 CREDENTIAL
@@ -34,13 +29,17 @@ CREDENTIAL
 
 where:
 
-- `credentialSubject.id`: [`ID`](/docs/id/intro) of the subject
-- `credentialSubject.badge`: [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent)
+- `credentialSubject.id`: represents the [`ID`](/docs/id/intro) of the Agent subject.
+- `credentialSubject.badge`: adheres to the [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) schema.
 
-:::note
-The `proof` is verified by the `assertionMethod` entry in the ID Document.
+<br />
+
+:::tip[IMPORTANT]
+The `proof` in an Agent Badge is verified by the `assertionMethod` defined in the `ResolverMetadata` (various `ResolverMetadata` examples are available [`here`](../id/did.md)).
 :::
 
-:::note
-Multiple envelopes are supported such as `JOSE`(JSON Object Signing and Encryption).
+<br />
+
+:::tip[IMPORTANT]
+Multiple envelopes are supported in the [`AGNTCY`](https://agntcy.org/), including JSON Object Signing and Encryption (`JOSE`).
 :::

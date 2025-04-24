@@ -1,13 +1,13 @@
 # Post-Quantum Safe
 
-As quantum computing technology advances, traditional cryptographic algorithms (such as RSA and ECC) become vulnerable to attacks from quantum computers. To address this challenge, **Post-Quantum Cryptography (PQC)** aims to develop algorithms that remain secure even in the presence of large-scale quantum computers.
+As industry makes progress in quantum computing technology, traditional cryptographic algorithms, such as Rivest-Shamir-Adleman (RSA), or Elliptic Curve Cryptography (ECC), may become vulnerable to attacks from quantum computers. To address this challenge, **Post-Quantum Cryptography (PQC)** efforts aim to develop algorithms that remain secure even in the presence of large-scale quantum computers.
 
-This project supports a selection of **NIST-approved** post-quantum algorithms that are available as optional key types in our cryptographic interface.
+In light of this, the [`AGNTCY`](https://agntcy.org/) will support various post-quantum algorithms, including **NIST-approved** ones, which are available as optional key types through the AGNTCY's cryptographic interface.
 
-We align with the algorithm families and naming conventions from the [NIST Post-Quantum Cryptography Project](https://csrc.nist.gov/projects/post-quantum-cryptography).
+To become familiar with PQC algorithms and naming conventions, please refer to the [NIST Post-Quantum Cryptography Project](https://csrc.nist.gov/projects/post-quantum-cryptography).
 
 ---
-## Supported algorithms
+## Supported PQC Algorithms in the AGNTCY
 
 ### [`CRYSTALS-Dilithium`](https://pq-crystals.org/dilithium/)
 - **Standardized Name**: ML-DSA (Module Lattice–based Digital Signature Algorithm)
@@ -24,7 +24,7 @@ We align with the algorithm families and naming conventions from the [NIST Post-
 
 ## 🔒 JWK Integration
 
-Post-Quantum algorithms can be represented using **JSON Web Key (JWK)** format, with extensions to support new key types:
+PQC algorithms can be represented using the **JSON Web Key (JWK)** format, with extensions to support new key types:
 
 ```json
 {

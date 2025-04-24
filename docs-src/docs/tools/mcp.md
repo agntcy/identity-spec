@@ -1,3 +1,3 @@
-# Deploy
+# MCP Example
 
 (coming soon)

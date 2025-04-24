@@ -6,4 +6,6 @@ hide_table_of_contents: true
 
 # Issuing Architecture Diagram
 
-![Issuing Architecture Diagram](/img/issuing-architecture-diagram.png)
+<br />
+![Issuing Architecture Diagram](/img/issuing.png)
+<br />

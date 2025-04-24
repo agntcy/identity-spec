@@ -18,7 +18,7 @@ Ensuring secure and dependable communication between software agents is vital fo
 
 The [`AGNTCY`](https://agntcy.org/) enables the assignment of identities to Agents in a way that is:
 
-- **Decentralized:** No central authority is in charge of assigning IDs to Agents.
+- **Open:** No central authority is in charge of assigning IDs to Agents. 
 - **Collision-free:** Each Agent has a universally unique identifier.
 - **Verifiable:** Each Agent is associated to a Verifiable Credential (VC) that can be used to Authenticate the ID of the Agent.
 
@@ -29,29 +29,33 @@ The [`AGNTCY`](https://agntcy.org/) prescribes neither the use of a specific ide
 - Present Agent identifiers
 - Verify Agent identifiers
 
-irrespective of their identity type. To this end, the [`AGNTCY`](https://agntcy.org/) supports the use of conventions as well as the use of standards for decentralized identity assignment for Agents.
+irrespective of their identity type. To this end, the [`AGNTCY`](https://agntcy.org/) supports the use of conventions as well as the use of standards to openly assign identity to Agents.
 
 #### Conventions
 
 As a starting point, the [`AGNTCY`](https://agntcy.org/) supports two types of conventions for identity assignment:
 
-1. The use of `well-known identifiers`, e.g., following the convention proposed by Google's Agent2Agent (A2A) protocol. This convention enables both decentralized identity assignment as well as universally unique identifiers for Agent Cards, which capture the metadata and characteristics that define, and allow to discover and identify an Agent within the A2A ecosystem. More specifically, in the A2A protocol, the Agent Card standardizes the format of the data shared during discovery, which may be facilitated by hosting the Agent Card at a well-known path or identifier, such as: https://YOUR-DOMAIN/.well-known/agent.json. In this case, the Agent Card includes details such as the Agent's capabilities, authentication requirements, and endpoint information.
+1. The use of `well-known identifiers`, e.g., following the convention proposed by Google's Agent2Agent (A2A) protocol. This convention enables both open identity assignment as well as the use of universally unique identifiers for Agent Cards, which capture the metadata and characteristics that define, and allow to discover and identify an Agent within the A2A ecosystem. More specifically, in the A2A protocol, the Agent Card standardizes the format of the data shared during discovery, which may be facilitated by hosting the Agent Card at a well-known path or identifier, such as: https://YOUR-DOMAIN/.well-known/agent.json. In this case, the Agent Card includes details such as the Agent's capabilities, authentication requirements, and endpoint information.
 
-2. The use of `User Accounts` and/or `Service Accounts` provided by an Identity Provider (IdP). Identities to agents provided in the context of Okta, Microsoft AD, Entra ID, Ping Identity, Auth0, or Google ID can also be used in the context of [`AGNTCY`](https://agntcy.org/) to assign universally unique identifiers to Agents in a decentralized way.
+2. The use of `User Accounts` and/or `Service Accounts` provided by an Identity Provider (IdP). Identities to agents provided in the context of Okta, Microsoft AD, Entra ID, Ping Identity, Auth0, or Google ID can also be used in the context of [`AGNTCY`](https://agntcy.org/) to assign universally unique identifiers to Agents in a open way.
 
 #### Standards
 
 Similarly, as a starting point, the [`AGNTCY`](https://agntcy.org/) supports one standard for identity assignment:
 
-1. The use of W3C [`Decentralized Identifiers (DIDs)`](/docs/category/identifiers). The W3C standards have done ground work in the context of decentralized identifiers, decentralized credential management, and the capacity to generate, authenticate, and selectively disclose [`Verifiable Credentials (VCs)`](/docs/category/verifiable-credentials). This approach allows organizations to assign universally unique identifiers to their Agents in a decentralized manner. Moreover, the identity of the Agents can be stored in decentralized networks along with a set of associated VCs, which can be utilized to verify the provenance of the Agents, their versions, their skills and other attributes and features, thereby facilitating secure multi-factor authentication (MFA) and authorization processes between agents as well as between agents and humans.
+1. The use of W3C [`Decentralized Identifiers (DIDs)`](/docs/category/identifiers). The W3C standards have done ground work in the context of decentralized identifiers, decentralized credential management, and the capacity to generate, authenticate, and selectively disclose [`Verifiable Credentials (VCs)`](/docs/category/verifiable-credentials). This approach allows organizations to assign universally unique identifiers to their Agents in a open and decentralized manner. Moreover, the identity of the Agents can be stored in decentralized networks along with a set of associated VCs, which can be utilized to verify the provenance of the Agents, their versions, their skills and other attributes and features, thereby facilitating secure multi-factor authentication (MFA) and authorization processes between agents as well as between agents and humans.
 
 ## Agent Passport
 
-As mentioned above, independently of whether the Agent identity is assigned following a convention or a standardized framework, at this stage the main focus of the [`AGNTCY`](https://agntcy.org/) is to provide a common and trustworthy mechanism to **present Agent identifiers** and to **verify them**. More specifically, the [`AGNTCY`](https://agntcy.org/) not only supports various (and heterogeneous) decentralized Agent identifiers that are universally unique but also proposes a standard way of presenting and verifying such identifiers, thereby enabling freedom in the selection of interoperable identities in an IoA.
+:::tip[IMPORTANT]
+Independently of whether the Agent identity is assigned following a convention or a standardized framework, at this stage the main focus of the [`AGNTCY`](https://agntcy.org/) is to provide a common and trustworthy mechanism to **present Agent identifiers** and to **verify them**. More specifically, the [`AGNTCY`](https://agntcy.org/) not only supports various (and heterogeneous) Agent identifiers that are universally unique but also proposes a standard way of presenting and verifying such identifiers, thereby enabling freedom in the selection of interoperable identities in an IoA.
+:::
 
-To this end, each Agent identifier is associated to an Agent Passport. Hence, in the [`AGNTCY`](https://agntcy.org/), an Agent is tied to a unique and persistent identifier linked to an Agent Passport. The Agent Passport is itself a `Verifiable Credential (VC)` that contains information about the Agent, such as its ID, a schema definition (e.g., an OASF schema), and other metadata used for defining locators, authentication, MFA, etc. Agents can use this Passport for secure presentation, verification, and enabling trusted communications in decentralized multi-agent systems.
+<br />
 
-Within the [`AGNTCY`](https://agntcy.org/), there is a decentralized network of Identity Nodes that operate as trust anchors for presenting and verifying the identity of the Agents issued by any organization, and ensure secure and trustworthy interactions among Agents. The following figure summarizes the concept of the Agent Passport and its main elements. For a detailed example of an Agent Passport using DIDs, please refer to: [Agent Passport example](./vc/agent-passport.md)
+To this end, each Agent identifier is associated to an Agent Passport. Hence, in the [`AGNTCY`](https://agntcy.org/), an Agent is tied to a unique and persistent identifier linked to an Agent Passport. The Agent Passport is itself a `Verifiable Credential (VC)` that contains information about the Agent, such as its ID, a schema definition (e.g., an OASF schema), and other metadata used for defining locators, authentication, MFA, etc. Agents can use this Passport for secure presentation, verification, and enabling trusted communications across multi-agent systems.
+
+Within the [`AGNTCY`](https://agntcy.org/), there is a distributed network of Identity Nodes that operate as trust anchors for presenting and verifying the identity of the Agents issued by any organization, and ensure secure and trustworthy interactions among Agents. The following figure summarizes the concept of the Agent Passport and its main elements. For a detailed example of an Agent Passport using DIDs, please refer to: [Agent Passport example](./vc/agent-passport.md)
 
 <br />
 

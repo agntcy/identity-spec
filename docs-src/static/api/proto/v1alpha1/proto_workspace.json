@@ -56,9 +56,9 @@
               "description": "The Verifiable Credential is invalid, this can be related to either\ninvalid format or unable to verify the Data Integrity proof."
             },
             {
-              "name": "ERROR_REASON_AGENT_PASSPORT_NOT_FOUND",
+              "name": "ERROR_REASON_ID_VCS_NOT_FOUND",
               "number": "8",
-              "description": "Unable to find an Agent Passport for an ID."
+              "description": "Unable to find an VCs for an ID."
             }
           ]
         }
@@ -541,6 +541,80 @@
       "services": []
     },
     {
+      "name": "agntcy/identity/core/v1alpha1/pagination.proto",
+      "description": "",
+      "package": "agntcy.identity.core.v1alpha1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": false,
+      "enums": [],
+      "extensions": [],
+      "messages": [
+        {
+          "name": "PagedResponse",
+          "longName": "PagedResponse",
+          "fullName": "agntcy.identity.core.v1alpha1.PagedResponse",
+          "description": "Pagination response",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": true,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "next_page",
+              "description": "Next page",
+              "label": "optional",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_next_page",
+              "defaultValue": ""
+            },
+            {
+              "name": "has_next_page",
+              "description": "Has next page",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_has_next_page",
+              "defaultValue": ""
+            },
+            {
+              "name": "total",
+              "description": "The total size of items",
+              "label": "",
+              "type": "int64",
+              "longType": "int64",
+              "fullType": "int64",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "size",
+              "description": "The size of the current page",
+              "label": "",
+              "type": "int32",
+              "longType": "int32",
+              "fullType": "int32",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        }
+      ],
+      "services": []
+    },
+    {
       "name": "agntcy/identity/core/v1alpha1/vc.proto",
       "description": "",
       "package": "agntcy.identity.core.v1alpha1",
@@ -553,7 +627,7 @@
           "name": "CredentialContentType",
           "longName": "CredentialContentType",
           "fullName": "agntcy.identity.core.v1alpha1.CredentialContentType",
-          "description": "The content of the Credential.\nMultiple content types can be supported: AgentBadge, AgentPassport, etc.",
+          "description": "The content of the Credential.\nMultiple content types can be supported: AgentBadge, etc.",
           "values": [
             {
               "name": "CREDENTIAL_CONTENT_TYPE_UNSPECIFIED",
@@ -564,11 +638,6 @@
               "name": "CREDENTIAL_CONTENT_TYPE_AGENT_BADGE",
               "number": "1",
               "description": "AgentBadge Content Type.\nThe Agent content representation following a defined schema\nOASF: https://schema.oasf.agntcy.org/schema/objects/agent\nGoogle A2A: https://github.com/google/A2A/blob/main/specification/json/a2a.json"
-            },
-            {
-              "name": "CREDENTIAL_CONTENT_TYPE_AGENT_PASSPORT",
-              "number": "2",
-              "description": "AgentPassport Content Type.\nThe Agent passport is a verifiable presentation that aggregates all the\nagent badges of the agent.\nIt can also be accessed on a well-known URL\nof type: {agent_id}/.well-known/passport.json"
             }
           ]
         },
@@ -598,66 +667,6 @@
       ],
       "extensions": [],
       "messages": [
-        {
-          "name": "AgentPassport",
-          "longName": "AgentPassport",
-          "fullName": "agntcy.identity.core.v1alpha1.AgentPassport",
-          "description": "AgentPassport represents a Verifiable Presentation for an agent.",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "context",
-              "description": "https://www.w3.org/TR/vc-data-model/#contexts",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "type",
-              "description": "https://www.w3.org/TR/vc-data-model/#dfn-type",
-              "label": "repeated",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "verifiable_credential",
-              "description": "https://www.w3.org/2018/credentials#verifiableCredential",
-              "label": "repeated",
-              "type": "VerifiableCredential",
-              "longType": "VerifiableCredential",
-              "fullType": "agntcy.identity.core.v1alpha1.VerifiableCredential",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "proof",
-              "description": "https://w3id.org/security#proof",
-              "label": "optional",
-              "type": "Proof",
-              "longType": "Proof",
-              "fullType": "agntcy.identity.core.v1alpha1.Proof",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_proof",
-              "defaultValue": ""
-            }
-          ]
-        },
         {
           "name": "CredentialContent",
           "longName": "CredentialContent",
@@ -1481,54 +1490,6 @@
       "extensions": [],
       "messages": [
         {
-          "name": "APWellKnownRequest",
-          "longName": "APWellKnownRequest",
-          "fullName": "agntcy.identity.node.v1alpha1.APWellKnownRequest",
-          "description": "Requests the well-known document content for an Agent Passport",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "The identifier.",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "APWellKnownResponse",
-          "longName": "APWellKnownResponse",
-          "fullName": "agntcy.identity.node.v1alpha1.APWellKnownResponse",
-          "description": "Returns the well-known document for an Agent Passport",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "agent_passport",
-              "description": "The well-known document for an Agent Passport",
-              "label": "",
-              "type": "AgentPassport",
-              "longType": "agntcy.identity.core.v1alpha1.AgentPassport",
-              "fullType": "agntcy.identity.core.v1alpha1.AgentPassport",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "PublishRequest",
           "longName": "PublishRequest",
           "fullName": "agntcy.identity.node.v1alpha1.PublishRequest",
@@ -1625,6 +1586,54 @@
           ]
         },
         {
+          "name": "VcWellKnownRequest",
+          "longName": "VcWellKnownRequest",
+          "fullName": "agntcy.identity.node.v1alpha1.VcWellKnownRequest",
+          "description": "Requests the well-known VCs for an Id",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "The identifier.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "VcWellKnownResponse",
+          "longName": "VcWellKnownResponse",
+          "fullName": "agntcy.identity.node.v1alpha1.VcWellKnownResponse",
+          "description": "Returns the well-known VCs for an Id",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "vcs",
+              "description": "The list of VCs for the specified Id",
+              "label": "repeated",
+              "type": "EnvelopedCredential",
+              "longType": "agntcy.identity.core.v1alpha1.EnvelopedCredential",
+              "fullType": "agntcy.identity.core.v1alpha1.EnvelopedCredential",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
           "name": "VerifyRequest",
           "longName": "VerifyRequest",
           "fullName": "agntcy.identity.node.v1alpha1.VerifyRequest",
@@ -1703,22 +1712,22 @@
               }
             },
             {
-              "name": "APWellKnown",
-              "description": "Returns the well-known Verifiable Presentation for an Agent Passport",
-              "requestType": "APWellKnownRequest",
-              "requestLongType": "APWellKnownRequest",
-              "requestFullType": "agntcy.identity.node.v1alpha1.APWellKnownRequest",
+              "name": "VcWellKnown",
+              "description": "Returns the well-known Verifiable Credentials for the specified Id",
+              "requestType": "VcWellKnownRequest",
+              "requestLongType": "VcWellKnownRequest",
+              "requestFullType": "agntcy.identity.node.v1alpha1.VcWellKnownRequest",
               "requestStreaming": false,
-              "responseType": "APWellKnownResponse",
-              "responseLongType": "APWellKnownResponse",
-              "responseFullType": "agntcy.identity.node.v1alpha1.APWellKnownResponse",
+              "responseType": "VcWellKnownResponse",
+              "responseLongType": "VcWellKnownResponse",
+              "responseFullType": "agntcy.identity.node.v1alpha1.VcWellKnownResponse",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
                   "rules": [
                     {
                       "method": "GET",
-                      "pattern": "/v1alpha1/vc/{id}/.well-known/ap.json"
+                      "pattern": "/v1alpha1/vc/{id}/.well-known/vcs.json"
                     }
                   ]
                 }

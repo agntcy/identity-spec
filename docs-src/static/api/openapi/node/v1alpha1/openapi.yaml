@@ -186,12 +186,12 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Status'
-    /v1alpha1/vc/{id}/.well-known/ap.json:
+    /v1alpha1/vc/{id}/.well-known/vcs.json:
         get:
             tags:
                 - VcService
-            description: Returns the well-known Verifiable Presentation for an Agent Passport
-            operationId: VcService_APWellKnown
+            description: Returns the well-known Verifiable Credentials for the specified Id
+            operationId: VcService_VcWellKnown
             parameters:
                 - name: id
                   in: path
@@ -205,7 +205,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/APWellKnownResponse'
+                                $ref: '#/components/schemas/VcWellKnownResponse'
                 default:
                     description: Default error response
                     content:
@@ -214,37 +214,6 @@ paths:
                                 $ref: '#/components/schemas/Status'
 components:
     schemas:
-        APWellKnownResponse:
-            type: object
-            properties:
-                agentPassport:
-                    allOf:
-                        - $ref: '#/components/schemas/AgentPassport'
-                    description: The well-known document for an Agent Passport
-            description: Returns the well-known document for an Agent Passport
-        AgentPassport:
-            type: object
-            properties:
-                context:
-                    type: array
-                    items:
-                        type: string
-                    description: https://www.w3.org/TR/vc-data-model/#contexts
-                type:
-                    type: array
-                    items:
-                        type: string
-                    description: https://www.w3.org/TR/vc-data-model/#dfn-type
-                verifiableCredential:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/VerifiableCredential'
-                    description: https://www.w3.org/2018/credentials#verifiableCredential
-                proof:
-                    allOf:
-                        - $ref: '#/components/schemas/Proof'
-                    description: https://w3id.org/security#proof
-            description: AgentPassport represents a Verifiable Presentation for an agent.
         CredentialSchema:
             type: object
             properties:
@@ -407,21 +376,6 @@ components:
                         $ref: '#/components/schemas/Jwk'
                     description: Keys represents the list of JSON Web Keys.
             description: JWKS represents a set of JSON Web Keys (JWKs).
-        Proof:
-            type: object
-            properties:
-                type:
-                    type: string
-                    description: The type of the proof
-                proofPurpose:
-                    type: string
-                    description: The proof purpose
-                proofValue:
-                    type: string
-                    description: The proof value
-            description: |-
-                A data integrity proof provides information about the proof mechanism,
-                 parameters required to verify that proof, and the proof value itself.
         PublishRequest:
             type: object
             properties:
@@ -548,47 +502,15 @@ components:
                         $ref: '#/components/schemas/GoogleProtobufAny'
                     description: A list of messages that carry the error details.  There is a common set of message types for APIs to use.
             description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-        VerifiableCredential:
+        VcWellKnownResponse:
             type: object
             properties:
-                context:
+                vcs:
                     type: array
                     items:
-                        type: string
-                    description: https://www.w3.org/TR/vc-data-model/#contexts
-                type:
-                    type: array
-                    items:
-                        type: string
-                    description: https://www.w3.org/TR/vc-data-model/#dfn-type
-                issuer:
-                    type: string
-                    description: https://www.w3.org/TR/vc-data-model/#issuer
-                credentialSubject:
-                    type: string
-                    description: https://www.w3.org/TR/vc-data-model/#credential-subject
-                id:
-                    type: string
-                    description: https://www.w3.org/TR/vc-data-model/#identifiers
-                issuanceDate:
-                    type: string
-                    description: https://www.w3.org/TR/vc-data-model/#issuance-date
-                expirationDate:
-                    type: string
-                    description: https://www.w3.org/TR/vc-data-model/#expiration
-                credentialSchema:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/CredentialSchema'
-                    description: https://www.w3.org/TR/vc-data-model-2.0/#data-schemas
-                proof:
-                    allOf:
-                        - $ref: '#/components/schemas/Proof'
-                    description: https://w3id.org/security#proof
-            description: |-
-                DataModel represents the W3C Verifiable Credential Data Model defined [here]
-
-                 [here]: https://www.w3.org/TR/vc-data-model/
+                        $ref: '#/components/schemas/EnvelopedCredential'
+                    description: The list of VCs for the specified Id
+            description: Returns the well-known VCs for an Id
         VerificationMethod:
             type: object
             properties:

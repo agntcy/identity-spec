@@ -14,36 +14,19 @@ autonumber
 Agent Creator->>e.g. Github: Publish agent source<br/>code and ACP manifest
 e.g. Github-->>Agent Creator: Published
 
-% Create and publish ResolverMetadata 
-Agent Creator->>Identity CLI: Create and publish agent ResolverMetadata<br/>with well-known URI
+% Create and publish ResolverMetadata and Agent Passport with well-known URIs
+Agent Creator->>Identity CLI: Create and publish ResolverMetadata<br/>and empty Agent Passport with well-known URIs
 activate Identity CLI
 Identity CLI->>Wallet: Get Public and Private Keys
 Wallet-->>Identity CLI: Public and Private Keys
-Identity CLI->>Identity Node: Create agent ResolverMetadata with well-known URI<br/>(/v1alpha1/id/generate)
+Identity CLI->>Identity Node: Create and publish ResolverMetadata<br/>and empty Agent Passport with well-known URIs<br/>(/v1alpha1/id/generate)
 activate Identity Node
 Identity Node->>Identity Node: Generate a globally unique ID
 Identity Node->>Identity Node: Create ResolverMetadata with well-known URI
-Identity Node-->>Identity CLI: Created ResolverMetadata with well-known URI
+Identity Node->>Identity Node: Create an empty Agent Passport (Verifiable Presentation) with well-known URI
+Identity Node-->>Identity CLI: Created ResolverMetadata and<br/>Agent Passport with well-known URIs
 deactivate Identity Node
-Identity CLI-->>Agent Creator: Created agent ResolverMetadata with well-known URI
-deactivate Identity CLI
-
-% Issue an empty Agent Passport 
-Agent Creator->>Identity CLI: Issue an empty Agent Passport (Verifiable Presentation)
-activate Identity CLI
-Identity CLI->>Identity CLI: Issue an empty Agent Passport (Verifiable Presentation)
-Identity CLI->>Wallet: Get Private Key
-Wallet-->>Identity CLI: Private Key
-Identity CLI->>Identity CLI: Generate Data Integrity proof and add to Agent Passport
-Identity CLI-->>Agent Creator: Issued Agent Passport
-deactivate Identity CLI
-
-% Publish the empty Agent Passport to well-known URI
-Agent Creator->>Identity CLI: Publish the Agent Passport to well-known URI
-activate Identity CLI
-Identity CLI->>Identity Node: Publish the Agent Passport to well-known URI<br/>(/v1alpha1/vc/publish)
-Identity Node-->>Identity CLI: Published to well-known URI
-Identity CLI-->>Agent Creator: Published to well-known URI
+Identity CLI-->>Agent Creator: Created ResolverMetadata and<br/>Agent Passport with well-known URIs
 deactivate Identity CLI
 
 % Create the agent's OASF and add Agent Passport well-known URI
@@ -72,27 +55,13 @@ deactivate Identity CLI
 Agent Creator->>Identity CLI: Publish the Agent Badge
 activate Identity CLI
 Identity CLI->>Identity Node: Publish the Agent Badge<br/>(/v1alpha1/vc/publish)
+activate Identity Node
+Identity Node->>Identity Node: Add the Agent Badge (Verifiable Credential)<br/>to the Agent Passport (Verifiable Presentation)
 Identity Node-->>Identity CLI: Published
+deactivate Identity Node
 Identity CLI-->>Agent Creator: Published
 deactivate Identity CLI
 
-% Add the Agent Badge to the Agent Passport and reissue 
-Agent Creator->>Identity CLI: Reissue Agent Passport (Verifiable Presentation)<br/>with Agent Badge
-activate Identity CLI
-Identity CLI->>Identity CLI: Reissue Agent Passport (Verifiable Presentation) with Agent Badge
-Identity CLI->>Wallet: Get Private Key
-Wallet-->>Identity CLI: Private Key
-Identity CLI->>Identity CLI: Generate Data Integrity proof and add to Agent Passport
-Identity CLI-->>Agent Creator: Reissued Agent Passport
-deactivate Identity CLI
-
-% Republish the Agent Passport to well-known URI
-Agent Creator->>Identity CLI: Republish the Agent Passport to well-known URI
-activate Identity CLI
-Identity CLI->>Identity Node: Republish the Agent Passport to well-known URI<br/>(/v1alpha1/vc/publish)
-Identity Node-->>Identity CLI: Published to well-known URI
-Identity CLI-->>Agent Creator: Published to well-known URI
-deactivate Identity CLI
 ```
 
 ## Update an Agent

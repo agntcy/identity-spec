@@ -1,20 +1,5 @@
 # Agent Badge Examples
 
-## Agent Badge accessible through a "well-known" endpoint
-
-The Agent Badge of an Agent subject can be accessed using the following well-known URL:
-
-```
-https://api.NODE/ID/.well-known/agent-badge.json
-```
-
-where:
-
-- `ID`: represents the [`ID`](/docs/id/intro) of the Agent subject.
-- `NODE`: represents a **trust anchor**, e.g., an `Identity Node` within the [`AGNTCY`](https://agntcy.org/) identity system.
-
-Note that under the well-known URL, there could be several agents badges available from the same issuer.
-
 ## Agent Badge as a Verifiable Credential
 
 The example below shows an [`Agent Badge`](./intro.md) as a `VC`, represented as a JSON-LD object that contains information about the Agent, including the issuing organization, its [`ID`](/docs/id/intro), a schema definition, which is an [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) in this case. Such definition may encompass additional metadata, including locators, authentication methods, hashing methods, etc. The `VC` below also includes a data integrity proof as an embedded prove envelope.<br /><br />
@@ -88,3 +73,19 @@ The `proof` in an Agent Badge is verified by the `assertionMethod` defined in th
 Multiple envelopes are supported in the [`AGNTCY`](https://agntcy.org/), including JSON Object Signing and Encryption (`JOSE`).
 :::
 
+## Agent Badges accessible through a "well-known" endpoint
+
+The Agent Badges of an Agent subject can be accessed using the following well-known URL:
+
+```
+https://api.NODE/ID/.well-known/vcs.json
+```
+
+where:
+
+- `ID`: represents the [`ID`](/docs/id/intro) of the Agent subject.
+- `NODE`: represents a **trust anchor**, e.g., an `Identity Node` within the [`AGNTCY`](https://agntcy.org/) identity system.
+
+:::tip[IMPORTANT]
+Note that under the well-known URL, there could be several agents badges available from the same issuer.
+:::

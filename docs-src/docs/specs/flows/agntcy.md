@@ -12,13 +12,17 @@ autonumber
 
 % Create a new agent
 Agent Creator->>e.g. Github: Publish agent source<br/>code and ACP manifest
+activate e.g. Github
 e.g. Github-->>Agent Creator: Published
+deactivate e.g. Github
 
 % Create and publish ResolverMetadata and Agent Passport with well-known URIs
 Agent Creator->>Identity CLI: Create and publish ResolverMetadata<br/>and empty Agent Passport with well-known URIs
 activate Identity CLI
 Identity CLI->>Wallet: Get Public and Private Keys
+activate Wallet
 Wallet-->>Identity CLI: Public and Private Keys
+deactivate Wallet
 Identity CLI->>Identity Node: Create and publish ResolverMetadata<br/>and empty Agent Passport with well-known URIs<br/>(/v1alpha1/id/generate)
 activate Identity Node
 Identity Node->>Identity Node: Generate a globally unique ID
@@ -31,13 +35,17 @@ deactivate Identity CLI
 
 % Create the agent's OASF and add Agent Passport well-known URI
 Agent Creator->>Directory CLI: Create Agent OASF with Agent Passport well-known URI in identity extension
+activate Directory CLI
 Directory CLI-->>Agent Creator: OASF
+deactivate Directory CLI
 
 % Publish agent OASF
 Agent Creator->>Directory CLI: Publish OASF
 activate Directory CLI
 Directory CLI->>Directory: Publish OASF
+activate Directory
 Directory-->>Directory CLI: Published OASF with<br/>Catalogue ID (Digest)
+deactivate Directory
 Directory CLI-->>Agent Creator: Published OASF with Catalogue ID (Digest)
 deactivate Directory CLI
 
@@ -46,7 +54,9 @@ Agent Creator->>Identity CLI: Issue an Agent Badge (Verifiable Credential) with 
 activate Identity CLI
 Identity CLI->>Identity CLI: Issue an Agent Badge (Verifiable Credential) with OASF
 Identity CLI->>Wallet: Get Private Key
+activate Wallet
 Wallet-->>Identity CLI: Private Key
+deactivate Wallet
 Identity CLI->>Identity CLI: Generate Data Integrity proof and add to Agent Badge
 Identity CLI-->>Agent Creator: Issued Agent Badge
 deactivate Identity CLI
@@ -72,35 +82,46 @@ autonumber
 
 % Update an existing agent
 Agent Creator->>e.g. Github: Update and publish agent source<br/>code and ACP manifest
+activate e.g. Github
 e.g. Github-->>Agent Creator: Published
+deactivate e.g. Github
 
 % Update the agent's OASF
-Agent Creator->>Directory CLI: Update Agent OASF<br/>(keeping the same agent ID in identity extension)
+Agent Creator->>Directory CLI: Update Agent OASF keeping the same<br/>Agent Passport well-known in identity extension
+activate Directory CLI
 Directory CLI-->>Agent Creator: OASF
+deactivate Directory CLI
 
 % Publish agent OASF
 Agent Creator->>Directory CLI: Publish OASF
 activate Directory CLI
 Directory CLI->>Directory: Publish OASF
+activate Directory
 Directory-->>Directory CLI: Published OASF with<br/>Catalogue ID (Digest)
+deactivate Directory
 Directory CLI-->>Agent Creator: Published OASF with Catalogue ID (Digest)
 deactivate Directory CLI
 
 % Create a new Verifiable Credential linking agent ID + OASF
-Agent Creator->>Identity CLI: Issue a new Agent Passport (Verifiable Credential)<br/>linking agent ID and OASF
+Agent Creator->>Identity CLI: Issue a new Agent Badge (Verifiable Credential) with OASF
 activate Identity CLI
-Identity CLI->>Identity CLI: Issue a new Agent Passport (Verifiable Credential)<br/>linking agent ID and OASF
+Identity CLI->>Identity CLI: Issue a new Agent Badge (Verifiable Credential) with OASF
 Identity CLI->>Wallet: Get Private Key
+activate Wallet
 Wallet-->>Identity CLI: Private Key
+deactivate Wallet
 Identity CLI->>Identity CLI: Generate Data Integrity proof and add to Agent Passport
-Identity CLI-->>Agent Creator: Issued Agent Passport
+Identity CLI-->>Agent Creator: Issued Agent Badge
 deactivate Identity CLI
 
 % Publish the Verifiable Credential
-Agent Creator->>Identity CLI: Publish the Agent Passport
+Agent Creator->>Identity CLI: Publish the new Agent Badge
 activate Identity CLI
-Identity CLI->>Identity Node: Publish the Agent Passport<br/>(/v1alpha1/vc/publish)
+Identity CLI->>Identity Node: Publish the Agent Badge<br/>(/v1alpha1/vc/publish)
+activate Identity Node
+Identity Node->>Identity Node: Add the Agent Badge (Verifiable Credential)<br/>to the Agent Passport (Verifiable Presentation)
 Identity Node-->>Identity CLI: Published
+deactivate Identity Node
 Identity CLI-->>Agent Creator: Published
 deactivate Identity CLI
 ```

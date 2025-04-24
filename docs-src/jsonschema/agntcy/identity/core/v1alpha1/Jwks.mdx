@@ -1,10 +1,36 @@
+import AgentPassport from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.AgentPassport.jsonschema.json";
+import CredentialContent from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.CredentialContent.jsonschema.json";
+import CredentialSchema from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.CredentialSchema.jsonschema.json";
+import EnvelopedCredential from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.EnvelopedCredential.jsonschema.json";
+import ErrorInfo from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.ErrorInfo.jsonschema.json";
+import Issuer from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.Issuer.jsonschema.json";
 import Jwk from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.Jwk.jsonschema.json";
+import Jwks from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.Jwks.jsonschema.json";
+import Proof from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.Proof.jsonschema.json";
+import ResolverMetadata from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.ResolverMetadata.jsonschema.json";
+import Service from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.Service.jsonschema.json";
+import VerifiableCredential from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.VerifiableCredential.jsonschema.json";
+import VerifiablePresentation from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.VerifiablePresentation.jsonschema.json";
+import VerificationMethod from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.VerificationMethod.jsonschema.json";
 import CodeBlock from '@theme/CodeBlock';
 import Schema from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.Jwks.jsonschema.json";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 
 export const refs = {
+  "agntcy.identity.core.v1alpha1.AgentPassport.jsonschema.json": AgentPassport,
+  "agntcy.identity.core.v1alpha1.CredentialContent.jsonschema.json": CredentialContent,
+  "agntcy.identity.core.v1alpha1.CredentialSchema.jsonschema.json": CredentialSchema,
+  "agntcy.identity.core.v1alpha1.EnvelopedCredential.jsonschema.json": EnvelopedCredential,
+  "agntcy.identity.core.v1alpha1.ErrorInfo.jsonschema.json": ErrorInfo,
+  "agntcy.identity.core.v1alpha1.Issuer.jsonschema.json": Issuer,
   "agntcy.identity.core.v1alpha1.Jwk.jsonschema.json": Jwk,
+  "agntcy.identity.core.v1alpha1.Jwks.jsonschema.json": Jwks,
+  "agntcy.identity.core.v1alpha1.Proof.jsonschema.json": Proof,
+  "agntcy.identity.core.v1alpha1.ResolverMetadata.jsonschema.json": ResolverMetadata,
+  "agntcy.identity.core.v1alpha1.Service.jsonschema.json": Service,
+  "agntcy.identity.core.v1alpha1.VerifiableCredential.jsonschema.json": VerifiableCredential,
+  "agntcy.identity.core.v1alpha1.VerifiablePresentation.jsonschema.json": VerifiablePresentation,
+  "agntcy.identity.core.v1alpha1.VerificationMethod.jsonschema.json": VerificationMethod,
 };
 export const get = function anonymous(ref) { return refs[ref + ""]; };
 export const resolverOptions = {resolvers:{file: {resolve: get}}};

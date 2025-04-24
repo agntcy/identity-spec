@@ -20,7 +20,7 @@
             "ERROR_REASON_INVALID_CREDENTIAL_CONTENT_FORMAT",
             "ERROR_REASON_INVALID_ISSUER",
             "ERROR_REASON_INVALID_VERIFIABLE_CREDENTIAL",
-            "ERROR_REASON_AGENT_PASSPORT_NOT_FOUND"
+            "ERROR_REASON_ID_VCS_NOT_FOUND"
           ],
           "title": "Error Reason",
           "type": "string"

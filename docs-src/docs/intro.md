@@ -29,7 +29,7 @@ irrespective of their identity type. To this end, the [`AGNTCY`](https://agntcy.
 
 As a starting point, the [`AGNTCY`](https://agntcy.org/) supports two types of conventions for identity assignment:
 
-1. The use of `User Accounts` and/or `Service Accounts` provided by an Identity Provider (IdP). Identities to agents provided in the context of Okta, Microsoft AD, Entra ID, Ping Identity, Auth0, or Google ID can be used in the context of [`AGNTCY`](https://agntcy.org/) to assign universally unique identifiers to Agents in a open way.
+1. The use of `User Accounts` and/or `Service Accounts` provided by an Identity Provider (IdP). Identities to agents provided in the context of Okta, Microsoft AD, Entra ID, Duo, Ping Identity, Auth0, or Google ID can be used in the context of [`AGNTCY`](https://agntcy.org/) to assign universally unique identifiers to Agents in a open way.
 
 2. The use of `well-known identifiers`, e.g., following the convention proposed by Google's Agent2Agent (A2A) protocol. This convention enables both open identity assignment as well as the use of universally unique identifiers for Agent Cards, which capture the metadata and characteristics that define, and allow to discover and identify an Agent within the A2A ecosystem. More specifically, in the A2A protocol, the Agent Card standardizes the format of the data shared during discovery, which may be facilitated by hosting the Agent Card at a well-known path or identifier, such as: https://YOUR-DOMAIN/.well-known/agent.json. In this case, the Agent Card includes details such as the Agent's capabilities, authentication requirements, and endpoint information.
 

@@ -1,3 +1,3 @@
-# MCP Support
+# Model Context Protocol (MCP) Support
 
 (coming soon)

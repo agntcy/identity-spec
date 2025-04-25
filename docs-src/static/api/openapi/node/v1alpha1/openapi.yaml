@@ -74,7 +74,7 @@ paths:
                 content:
                     application/json:
                         schema:
-                            $ref: '#/components/schemas/RegisterRequest'
+                            $ref: '#/components/schemas/RegisterIssuerRequest'
                 required: true
             responses:
                 "200":
@@ -82,7 +82,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/RegisterResponse'
+                                $ref: '#/components/schemas/RegisterIssuerResponse'
                 default:
                     description: Default error response
                     content:
@@ -96,7 +96,7 @@ paths:
             description: |-
                 Returns the well-known document content for an issuer in
                  Json Web Key Set (JWKS) format
-            operationId: IssuerService_IssuerWellKnown
+            operationId: IssuerService_GetWellKnown
             parameters:
                 - name: commonName
                   in: path
@@ -110,7 +110,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/IssuerWellKnownResponse'
+                                $ref: '#/components/schemas/GetIssuerWellKnownResponse'
                 default:
                     description: Default error response
                     content:
@@ -191,7 +191,7 @@ paths:
             tags:
                 - VcService
             description: Returns the well-known Verifiable Credentials for the specified Id
-            operationId: VcService_VcWellKnown
+            operationId: VcService_GetWellKnown
             parameters:
                 - name: id
                   in: path
@@ -205,7 +205,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schemas/VcWellKnownResponse'
+                                $ref: '#/components/schemas/GetVcWellKnownResponse'
                 default:
                     description: Default error response
                     content:
@@ -259,6 +259,23 @@ components:
                         - $ref: '#/components/schemas/ResolverMetadata'
                     description: The ResolverMetadata corresponding to the generated Id
             description: Returns the Generated Id and its corresponding ResolverMetadata
+        GetIssuerWellKnownResponse:
+            type: object
+            properties:
+                jwks:
+                    allOf:
+                        - $ref: '#/components/schemas/Jwks'
+                    description: The well-known Json Web Key Set (JWKS) document
+            description: Returns the content of the well-known JWKS document
+        GetVcWellKnownResponse:
+            type: object
+            properties:
+                vcs:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/EnvelopedCredential'
+                    description: The list of VCs for the specified Id
+            description: Returns the well-known VCs for an Id
         GoogleProtobufAny:
             type: object
             properties:
@@ -295,14 +312,6 @@ components:
                         This field is optional
                          The private key of the issuer in JWK format
             description: A Identity Issuer
-        IssuerWellKnownResponse:
-            type: object
-            properties:
-                jwks:
-                    allOf:
-                        - $ref: '#/components/schemas/Jwks'
-                    description: The well-known Json Web Key Set (JWKS) document
-            description: Returns the content of the well-known JWKS document
         Jwk:
             type: object
             properties:
@@ -384,7 +393,7 @@ components:
                         - $ref: '#/components/schemas/EnvelopedCredential'
                     description: The Verifiable Credential to publish
             description: Request to publish an issued Verifiable Credential
-        RegisterRequest:
+        RegisterIssuerRequest:
             type: object
             properties:
                 issuer:
@@ -392,7 +401,7 @@ components:
                         - $ref: '#/components/schemas/Issuer'
                     description: The Issuer to register.
             description: Request to register an issuer
-        RegisterResponse:
+        RegisterIssuerResponse:
             type: object
             properties:
                 uri:
@@ -502,15 +511,6 @@ components:
                         $ref: '#/components/schemas/GoogleProtobufAny'
                     description: A list of messages that carry the error details.  There is a common set of message types for APIs to use.
             description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
-        VcWellKnownResponse:
-            type: object
-            properties:
-                vcs:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/EnvelopedCredential'
-                    description: The list of VCs for the specified Id
-            description: Returns the well-known VCs for an Id
         VerificationMethod:
             type: object
             properties:

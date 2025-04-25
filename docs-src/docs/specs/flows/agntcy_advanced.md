@@ -108,36 +108,36 @@ deactivate Identity CLI
 sequenceDiagram
 autonumber
 
-Agent Verifier->>Directory CLI: Discover and download the agent OASF
+Agent Consumer->>Directory CLI: Discover and download the agent OASF
 activate Directory CLI
 Directory CLI->>Directory: Discover and download the agent OASF
 activate Directory
 Directory-->>Directory CLI: Downloaded OASF
 deactivate Directory
-Directory CLI->>Agent Verifier: Downloaded OASF
+Directory CLI->>Agent Consumer: Downloaded OASF
 deactivate Directory CLI
 
-Agent Verifier->>Agent Verifier: Extract the Agent ID from<br/>the OASF identity extension
+Agent Consumer->>Agent Consumer: Extract the Agent ID from<br/>the OASF identity extension
 
-Agent Verifier->>Identity CLI: Resolve the Agent ID to get the Agent Badges
+Agent Consumer->>Identity CLI: Resolve the Agent ID to get the Agent Badges
 activate Identity CLI
 Identity CLI->>Identity Node: Resolve the Agent ID to get the Agent Badges
 activate Identity Node
 Identity Node-->>Identity CLI: Agent Badges
 deactivate Identity Node
-Identity CLI-->>Agent Verifier: Agent Badges
+Identity CLI-->>Agent Consumer: Agent Badges
 deactivate Identity CLI
 
-Agent Verifier->>Agent Verifier: Find the Agent Badge<br/>that matches the OASF
+Agent Consumer->>Agent Consumer: Find the Agent Badge<br/>that matches the OASF
 
-Agent Verifier->>Identity CLI: Verify the Agent Badge
+Agent Consumer->>Identity CLI: Verify the Agent Badge
 activate Identity CLI
 Identity CLI->>Identity Node: Resolve the Agent ID to get the ResolverMetadata
 activate Identity Node
 Identity Node-->>Identity CLI: ResolverMetadata
 deactivate Identity Node
 Identity CLI->>Identity CLI: Verify the Agent Badge Data Integrity proof<br/>using the ResolverMetadata public key
-Identity CLI-->>Agent Verifier: Verified
+Identity CLI-->>Agent Consumer: Verified
 deactivate Identity CLI
 ```
 
@@ -147,33 +147,33 @@ deactivate Identity CLI
 sequenceDiagram
 autonumber
 
-Agent Verifier->>Directory CLI: Discover and download the agent OASF
+Agent Consumer->>Directory CLI: Discover and download the agent OASF
 activate Directory CLI
 Directory CLI->>Directory: Discover and download the agent OASF
 activate Directory
 Directory-->>Directory CLI: Downloaded OASF
 deactivate Directory
-Directory CLI->>Agent Verifier: Downloaded OASF
+Directory CLI->>Agent Consumer: Downloaded OASF
 deactivate Directory CLI
 
-Agent Verifier->>Agent Verifier: Extract the Agent ID from<br/>the OASF identity extension
+Agent Consumer->>Agent Consumer: Extract the Agent ID from<br/>the OASF identity extension
 
-Agent Verifier->>Identity CLI: Search for the Agent Badge<br/>for the Agent ID + OASF
+Agent Consumer->>Identity CLI: Search for the Agent Badge<br/>for the Agent ID + OASF
 activate Identity CLI
 Identity CLI->>Identity Node: Search for the Agent Badge<br/>for the Agent ID + OASF<br/>(/v1alpha1/vc/search)
 activate Identity Node
 Identity Node-->>Identity CLI: Agent Badge
 deactivate Identity Node
-Identity CLI-->>Agent Verifier: Agent Badge
+Identity CLI-->>Agent Consumer: Agent Badge
 deactivate Identity CLI
 
-Agent Verifier->>Identity CLI: Verify the Agent Badge
+Agent Consumer->>Identity CLI: Verify the Agent Badge
 activate Identity CLI
 Identity CLI->>Identity Node: Resolve the Agent ID to get the ResolverMetadata
 activate Identity Node
 Identity Node-->>Identity CLI: ResolverMetadata
 deactivate Identity Node
 Identity CLI->>Identity CLI: Verify the Agent Badge Data Integrity proof<br/>using the ResolverMetadata public key
-Identity CLI-->>Agent Verifier: Verified
+Identity CLI-->>Agent Consumer: Verified
 deactivate Identity CLI
 ```

@@ -29,6 +29,11 @@ CREDENTIAL
 
 ```
 
+where:
+
+- `credentialSubject.id`: represents the [`ID`](/docs/id/definitions) of the Agent subject.
+- `credentialSubject.badge`: adheres to the [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) schema.
+
 ## A2A Agent Badge
 
 Similarly, the example below shows a second `Agent Badge`, using in this case another definition, that is, an [`A2A Agent Card`](https://github.com/google/A2A/blob/main/specification/json/a2a.json#AgentCard) schema.<br /><br />
@@ -61,7 +66,7 @@ CREDENTIAL
 where:
 
 - `credentialSubject.id`: represents the [`ID`](/docs/id/definitions) of the Agent subject.
-- `credentialSubject.badge`: adheres to the [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) schema.
+- `credentialSubject.badge`: adheres to the [`A2A Agent Card`](https://github.com/google/A2A/blob/main/specification/json/a2a.json#AgentCard) schema.
 
 <br />
 

@@ -38,6 +38,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          sidebarCollapsed: false,
         },
         theme: {
           customCss: ['./src/css/custom.css'],

@@ -1,5 +1,7 @@
 ---
 sidebar_position: 2
+toc_min_heading_level: 2
+toc_max_heading_level: 5
 ---
 
 # Examples
@@ -8,15 +10,15 @@ sidebar_position: 2
 
 ### 1.a) Okta Example
 
-### ID
+#### ID
 
 ```
 ID: OKTA-APP_ID
 ```
 
-where `ID` represents a universally unique identifier associated to an Agent subject (e.g., an Okta application ID in this case).
+where `ID` represents a universally unique identifier associated to an Agent subject (e.g., an Okta Application ID in this case).
 
-### ResolverMetadata
+#### ResolverMetadata
 
 The `ResolverMetadata` is represented as a JSON-LD object comprising the following elements:
 
@@ -30,17 +32,17 @@ ResolverMetadata
   service: [{
     serviceEndpoint: "https://OKTA_TENANT_NAME.okta.com"
   }]
-} 
+}
 ```
 
 where:
 
-- `assertionMethod`: contains the method, e.g., a JSON Web key (JWK), and in some cases, may also contain the public key that can be used to verify the [`Verifiable Credentials`](/docs/vc/intro). JWKs are commonly used for signing and verifying JWTs (JSON Web Tokens). Note that while a JWK may contain the public key itself, in practice, JWKs are often retrieved dynamically from a JWKS (JSON Web Key Set) endpoint. More specifically, a JWKS is a collection of JWKs hosted by an authentication provider, allowing clients to fetch the appropriate key to verify JWTs without storing them manually. This is precisely the role of the `serviceEndpoint` below. 
+- `assertionMethod`: contains the method, e.g., a JSON Web key (JWK), and in some cases, may also contain the public key that can be used to verify the [`Verifiable Credentials`](/docs/vc/intro). JWKs are commonly used for signing and verifying JWTs (JSON Web Tokens). Note that while a JWK may contain the public key itself, in practice, JWKs are often retrieved dynamically from a JWKS (JSON Web Key Set) endpoint. More specifically, a JWKS is a collection of JWKs hosted by an authentication provider, allowing clients to fetch the appropriate key to verify JWTs without storing them manually. This is precisely the role of the `serviceEndpoint` below.
 - `serviceEndpoint`: the identity node where the Okta signing object can be found.
 
 ### 1.b) Duo Example
 
-### ID
+#### ID
 
 ```
 ID: DUO-CLIENT_ID
@@ -48,7 +50,7 @@ ID: DUO-CLIENT_ID
 
 where `ID` represents a universally unique identifier associated to an Agent subject (e.g., a Duo client ID in this case).
 
-### ResolverMetadata
+#### ResolverMetadata
 
 The `ResolverMetadata` is represented as a JSON-LD object comprising the following elements:
 
@@ -101,7 +103,7 @@ ResolverMetadata
 
 where:
 
-- `assertionMethod`: Idem to the cases above described for Okta and Duo. 
+- `assertionMethod`: Idem to the cases above described for Okta and Duo.
 - `serviceEndpoint`: The endpoint where JWKs can be dynamically retrieved from. In this case, this could be a **trust anchor**, e.g., an `Identity Node` within the [`AGNTCY`](https://agntcy.org/) identity system.
 
 ## 3) Decentralized Identifiers (DIDs) Example
@@ -138,6 +140,6 @@ ResolverMetadata
 
 where:
 
-- `verificationMethod`: contains the public key that can be used to prove and verify the signatures, including ownership of a credential. 
+- `verificationMethod`: contains the public key that can be used to prove and verify the signatures, including ownership of a credential.
 - `assertionMethod`: represents how a DID subject can issue or assert claims about themselves or others. For example, an entity might use assertion methods to sign verifiable credentials, proving that certain information (like an Agent skill) is valid and trustworthy. Essentially, verification methods focus on proving identity, while assertion methods focus on issuing trusted claims.
 - `serviceEndpoint`: The endpoint or `Identity Node` where the `DID Document` is published and accessible.

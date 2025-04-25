@@ -14,4 +14,4 @@ Each `ID` is associated 1:1 with `ResolverMetadata`, which contains the necessar
 
 - `ResolverMetadata`: Metadata, represented in the form of a JSON-LD object, containing cryptographic material and verification methods to resolve and establish trust with the associated `ID` (e.g., an Agent or MAS).
 
-Concrete examples with various `IDs` and associated `ResolverMetadata` can be found [`here`](./did.md)
+Concrete examples with various `IDs` and associated `ResolverMetadata` can be found [`here`](./examples.md).

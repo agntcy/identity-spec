@@ -12,7 +12,7 @@ Ensuring secure and dependable communication between software agents is vital fo
 
 The [`AGNTCY`](https://agntcy.org/) enables the assignment of identities to Agents in a way that is:
 
-- **Open:** No central authority is in charge of assigning IDs to Agents. 
+- **Open:** No central authority is in charge of assigning IDs to Agents.
 - **Collision-free:** Each Agent has a universally unique identifier.
 - **Verifiable:** Each Agent is associated to a Verifiable Credential (VC) that can be used to Authenticate the ID of the Agent.
 
@@ -55,9 +55,9 @@ Independently of whether the Agent identity is assigned following a convention o
 
 The figure above depicts the main elements of an Agent's subject identifier:
 
-- Each Agent subject has a universally unique identifier named [`ID`](./id/intro.md). 
-- Each `ID` is associated 1:1 to a [`ResolverMetadata`](./id/intro.md) object, enabling automated resolution and trustworthy verification of Agent IDs.   
-- Each `ID` is also associated 1:n to an [`Agent Badge`](./vc/intro.md). 
+- Each Agent subject has a universally unique identifier named [`ID`](./id/definitions.md).
+- Each `ID` is associated 1:1 to a [`ResolverMetadata`](./id/definitions.md) object, enabling automated resolution and trustworthy verification of Agent IDs.
+- Each `ID` is also associated 1:n to an [`Agent Badge`](./vc/intro.md).
 
 Hence, in the [`AGNTCY`](https://agntcy.org/), an Agent subject is tied to a unique identifier linked to one or more `Verifiable Credentials (VCs)`, which contain information about the Agent, such as its ID, a schema definition (e.g., an OASF schema), and other metadata used for defining locators, authentication, MFA, etc. Agents can use this Badge for secure presentation, verification, and enabling trusted communications across multi-agent systems.
 

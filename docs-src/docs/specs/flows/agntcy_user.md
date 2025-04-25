@@ -42,15 +42,15 @@ Agent Creator->>Identity CLI: Issue and Publish a new Agent Badge (Verifiable Cr
 sequenceDiagram
 autonumber
 
-Agent Verifier->>Directory CLI: Discover and download the agent OASF
+Agent Consumer->>Directory CLI: Discover and download the agent OASF
 
-Agent Verifier->>Agent Verifier: Extract the Agent ID from<br/>the OASF identity extension
+Agent Consumer->>Agent Consumer: Extract the Agent ID from<br/>the OASF identity extension
 
-Agent Verifier->>Identity CLI: Resolve the Agent ID to get the Agent Badges
+Agent Consumer->>Identity CLI: Resolve the Agent ID to get the Agent Badges
 
-Agent Verifier->>Agent Verifier: Find the Agent Badge<br/>that matches the OASF
+Agent Consumer->>Agent Consumer: Find the Agent Badge<br/>that matches the OASF
 
-Agent Verifier->>Identity CLI: Verify the Agent Badge
+Agent Consumer->>Identity CLI: Verify the Agent Badge
 ```
 
 ## Verify an Agent Using Search Endpoint
@@ -59,11 +59,11 @@ Agent Verifier->>Identity CLI: Verify the Agent Badge
 sequenceDiagram
 autonumber
 
-Agent Verifier->>Directory CLI: Discover and download the agent OASF
+Agent Consumer->>Directory CLI: Discover and download the agent OASF
 
-Agent Verifier->>Agent Verifier: Extract the Agent ID from<br/>the OASF identity extension
+Agent Consumer->>Agent Consumer: Extract the Agent ID from<br/>the OASF identity extension
 
-Agent Verifier->>Identity CLI: Search for the Agent Badge<br/>for the Agent ID + OASF
+Agent Consumer->>Identity CLI: Search for the Agent Badge<br/>for the Agent ID + OASF
 
-Agent Verifier->>Identity CLI: Verify the Agent Badge
+Agent Consumer->>Identity CLI: Verify the Agent Badge
 ```

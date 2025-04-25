@@ -1326,9 +1326,9 @@
       "extensions": [],
       "messages": [
         {
-          "name": "IssuerWellKnownRequest",
-          "longName": "IssuerWellKnownRequest",
-          "fullName": "agntcy.identity.node.v1alpha1.IssuerWellKnownRequest",
+          "name": "GetIssuerWellKnownRequest",
+          "longName": "GetIssuerWellKnownRequest",
+          "fullName": "agntcy.identity.node.v1alpha1.GetIssuerWellKnownRequest",
           "description": "Request to get the well-known JWKS document of an issuer",
           "hasExtensions": false,
           "hasFields": true,
@@ -1350,9 +1350,9 @@
           ]
         },
         {
-          "name": "IssuerWellKnownResponse",
-          "longName": "IssuerWellKnownResponse",
-          "fullName": "agntcy.identity.node.v1alpha1.IssuerWellKnownResponse",
+          "name": "GetIssuerWellKnownResponse",
+          "longName": "GetIssuerWellKnownResponse",
+          "fullName": "agntcy.identity.node.v1alpha1.GetIssuerWellKnownResponse",
           "description": "Returns the content of the well-known JWKS document",
           "hasExtensions": false,
           "hasFields": true,
@@ -1374,9 +1374,9 @@
           ]
         },
         {
-          "name": "RegisterRequest",
-          "longName": "RegisterRequest",
-          "fullName": "agntcy.identity.node.v1alpha1.RegisterRequest",
+          "name": "RegisterIssuerRequest",
+          "longName": "RegisterIssuerRequest",
+          "fullName": "agntcy.identity.node.v1alpha1.RegisterIssuerRequest",
           "description": "Request to register an issuer",
           "hasExtensions": false,
           "hasFields": true,
@@ -1398,9 +1398,9 @@
           ]
         },
         {
-          "name": "RegisterResponse",
-          "longName": "RegisterResponse",
-          "fullName": "agntcy.identity.node.v1alpha1.RegisterResponse",
+          "name": "RegisterIssuerResponse",
+          "longName": "RegisterIssuerResponse",
+          "fullName": "agntcy.identity.node.v1alpha1.RegisterIssuerResponse",
           "description": "Returns the action to take to complete the registration",
           "hasExtensions": false,
           "hasFields": true,
@@ -1432,13 +1432,13 @@
             {
               "name": "Register",
               "description": "Register an issuer by providing the issuer details",
-              "requestType": "RegisterRequest",
-              "requestLongType": "RegisterRequest",
-              "requestFullType": "agntcy.identity.node.v1alpha1.RegisterRequest",
+              "requestType": "RegisterIssuerRequest",
+              "requestLongType": "RegisterIssuerRequest",
+              "requestFullType": "agntcy.identity.node.v1alpha1.RegisterIssuerRequest",
               "requestStreaming": false,
-              "responseType": "RegisterResponse",
-              "responseLongType": "RegisterResponse",
-              "responseFullType": "agntcy.identity.node.v1alpha1.RegisterResponse",
+              "responseType": "RegisterIssuerResponse",
+              "responseLongType": "RegisterIssuerResponse",
+              "responseFullType": "agntcy.identity.node.v1alpha1.RegisterIssuerResponse",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
@@ -1453,15 +1453,15 @@
               }
             },
             {
-              "name": "IssuerWellKnown",
+              "name": "GetWellKnown",
               "description": "Returns the well-known document content for an issuer in\nJson Web Key Set (JWKS) format",
-              "requestType": "IssuerWellKnownRequest",
-              "requestLongType": "IssuerWellKnownRequest",
-              "requestFullType": "agntcy.identity.node.v1alpha1.IssuerWellKnownRequest",
+              "requestType": "GetIssuerWellKnownRequest",
+              "requestLongType": "GetIssuerWellKnownRequest",
+              "requestFullType": "agntcy.identity.node.v1alpha1.GetIssuerWellKnownRequest",
               "requestStreaming": false,
-              "responseType": "IssuerWellKnownResponse",
-              "responseLongType": "IssuerWellKnownResponse",
-              "responseFullType": "agntcy.identity.node.v1alpha1.IssuerWellKnownResponse",
+              "responseType": "GetIssuerWellKnownResponse",
+              "responseLongType": "GetIssuerWellKnownResponse",
+              "responseFullType": "agntcy.identity.node.v1alpha1.GetIssuerWellKnownResponse",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {
@@ -1489,6 +1489,54 @@
       "enums": [],
       "extensions": [],
       "messages": [
+        {
+          "name": "GetVcWellKnownRequest",
+          "longName": "GetVcWellKnownRequest",
+          "fullName": "agntcy.identity.node.v1alpha1.GetVcWellKnownRequest",
+          "description": "Requests the well-known VCs for an Id",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "id",
+              "description": "The identifier.",
+              "label": "",
+              "type": "string",
+              "longType": "string",
+              "fullType": "string",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
+        {
+          "name": "GetVcWellKnownResponse",
+          "longName": "GetVcWellKnownResponse",
+          "fullName": "agntcy.identity.node.v1alpha1.GetVcWellKnownResponse",
+          "description": "Returns the well-known VCs for an Id",
+          "hasExtensions": false,
+          "hasFields": true,
+          "hasOneofs": false,
+          "extensions": [],
+          "fields": [
+            {
+              "name": "vcs",
+              "description": "The list of VCs for the specified Id",
+              "label": "repeated",
+              "type": "EnvelopedCredential",
+              "longType": "agntcy.identity.core.v1alpha1.EnvelopedCredential",
+              "fullType": "agntcy.identity.core.v1alpha1.EnvelopedCredential",
+              "ismap": false,
+              "isoneof": false,
+              "oneofdecl": "",
+              "defaultValue": ""
+            }
+          ]
+        },
         {
           "name": "PublishRequest",
           "longName": "PublishRequest",
@@ -1586,54 +1634,6 @@
           ]
         },
         {
-          "name": "VcWellKnownRequest",
-          "longName": "VcWellKnownRequest",
-          "fullName": "agntcy.identity.node.v1alpha1.VcWellKnownRequest",
-          "description": "Requests the well-known VCs for an Id",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "id",
-              "description": "The identifier.",
-              "label": "",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
-          "name": "VcWellKnownResponse",
-          "longName": "VcWellKnownResponse",
-          "fullName": "agntcy.identity.node.v1alpha1.VcWellKnownResponse",
-          "description": "Returns the well-known VCs for an Id",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": false,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "vcs",
-              "description": "The list of VCs for the specified Id",
-              "label": "repeated",
-              "type": "EnvelopedCredential",
-              "longType": "agntcy.identity.core.v1alpha1.EnvelopedCredential",
-              "fullType": "agntcy.identity.core.v1alpha1.EnvelopedCredential",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        },
-        {
           "name": "VerifyRequest",
           "longName": "VerifyRequest",
           "fullName": "agntcy.identity.node.v1alpha1.VerifyRequest",
@@ -1712,15 +1712,15 @@
               }
             },
             {
-              "name": "VcWellKnown",
+              "name": "GetWellKnown",
               "description": "Returns the well-known Verifiable Credentials for the specified Id",
-              "requestType": "VcWellKnownRequest",
-              "requestLongType": "VcWellKnownRequest",
-              "requestFullType": "agntcy.identity.node.v1alpha1.VcWellKnownRequest",
+              "requestType": "GetVcWellKnownRequest",
+              "requestLongType": "GetVcWellKnownRequest",
+              "requestFullType": "agntcy.identity.node.v1alpha1.GetVcWellKnownRequest",
               "requestStreaming": false,
-              "responseType": "VcWellKnownResponse",
-              "responseLongType": "VcWellKnownResponse",
-              "responseFullType": "agntcy.identity.node.v1alpha1.VcWellKnownResponse",
+              "responseType": "GetVcWellKnownResponse",
+              "responseLongType": "GetVcWellKnownResponse",
+              "responseFullType": "agntcy.identity.node.v1alpha1.GetVcWellKnownResponse",
               "responseStreaming": false,
               "options": {
                 "google.api.http": {

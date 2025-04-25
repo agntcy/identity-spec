@@ -6,6 +6,8 @@ sidebar_position: 2
 
 ## Create a New Agent
 
+This sequence diagram illustrates the process of creating, publishing, and registering an Agent's metadata and identity information within the Agntcy ecosystem.
+
 ```mermaid
 sequenceDiagram
 autonumber
@@ -23,6 +25,8 @@ Agent Creator->>Identity CLI: Issue and Publish an Agent Badge (Verifiable Crede
 
 ## Update an Agent
 
+This sequence diagram illustrates the process of updating an existing Agent along with its associated metadata and identity information within the Agntcy ecosystem.
+
 ```mermaid
 sequenceDiagram
 autonumber
@@ -37,6 +41,8 @@ Agent Creator->>Identity CLI: Issue and Publish a new Agent Badge (Verifiable Cr
 ```
 
 ## Verify an Agent Locally
+
+This sequence diagram illustrates the local verification process of an Agent's authenticity, including its associated identity credentials, within the Agntcy ecosystem.
 
 ```mermaid
 sequenceDiagram
@@ -54,6 +60,8 @@ Agent Consumer->>Identity CLI: Verify the Agent Badge
 ```
 
 ## Verify an Agent Using Search Endpoint
+
+This sequence diagram illustrates the process of verifying an Agent's authenticity using a search endpoint within the Agntcy ecosystem. This approach allows the Agent Verifier to locate and validate the correct Agent Badge by querying directly with both the Agent ID and OASF.
 
 ```mermaid
 sequenceDiagram

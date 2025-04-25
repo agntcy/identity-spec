@@ -13,9 +13,16 @@
 
 ---
 
-This repository contains documentation for the Identity platform.
+**Explore comprehensive guides and best practices for implementing and managing identity for agents.**
 
 ## Getting Started
+
+- Explore our full [Documentation](https://musical-adventure-w65ozok.pages.github.io) to understand the capabilities
+- Discover our core models and services [Protodocs](https://musical-adventure-w65ozok.pages.github.io/protodocs/agntcy/identity/core/v1alpha1/id.proto)
+- See samples of the [`Agent Badge`](https://musical-adventure-w65ozok.pages.github.io/docs/vc/agent-badge) for [`OASF`](https://schema.oasf.agntcy.org/schema/objects/agent) and [`A2A Agent Card`](https://github.com/google/A2A/blob/main/specification/json/a2a.json#AgentCard)
+- See examples of the [`Identifiers`](https://musical-adventure-w65ozok.pages.github.io/docs/id/examples)
+- Review our [User Flows](https://musical-adventure-w65ozok.pages.github.io/docs/specs/flows/agntcy_user/)
+- Check our Post-Quantum Support [Post-Quantum](https://musical-adventure-w65ozok.pages.github.io/docs/standards/post-quantum-safe)
 
 ## Generate the docs
 

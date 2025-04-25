@@ -1,8 +1,8 @@
 # Agent Badge Examples
 
-## Agent Badge as a Verifiable Credential
+## OASF Agent Badge
 
-The example below shows an [`Agent Badge`](./intro.md) as a `VC`, represented as a JSON-LD object that contains information about the Agent, including the issuing organization, its [`ID`](/docs/id/intro), a schema definition, which is an [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) in this case. Such definition may encompass additional metadata, including locators, authentication methods, hashing methods, etc. The `VC` below also includes a data integrity proof as an embedded prove envelope.<br /><br />
+The example below shows an [`Agent Badge`](./intro.md) as a `VC`, represented as a JSON-LD object that contains information about the Agent, including the issuing organization, its [`ID`](/docs/id/definitions), a schema definition, which is an [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) in this case. Such definition may encompass additional metadata, including locators, authentication methods, hashing methods, etc. The `VC` below also includes a data integrity proof as an embedded prove envelope.<br /><br />
 
 ```
 CREDENTIAL
@@ -29,14 +29,9 @@ CREDENTIAL
 
 ```
 
-where:
+## A2A Agent Badge
 
-- `credentialSubject.id`: represents the [`ID`](/docs/id/intro) of the Agent subject.
-- `credentialSubject.badge`: adheres to the [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) schema.
-
-<br />
-
-Similarly, the example below shows a second Agent Badge, using in this case another definition, that is, an [`A2A Agent Card`](https://github.com/google/A2A/blob/main/specification/json/a2a.json#AgentCard) schema.<br /><br />
+Similarly, the example below shows a second `Agent Badge`, using in this case another definition, that is, an [`A2A Agent Card`](https://github.com/google/A2A/blob/main/specification/json/a2a.json#AgentCard) schema.<br /><br />
 
 ```
 CREDENTIAL
@@ -63,8 +58,15 @@ CREDENTIAL
 
 ```
 
+where:
+
+- `credentialSubject.id`: represents the [`ID`](/docs/id/definitions) of the Agent subject.
+- `credentialSubject.badge`: adheres to the [`OASF Definition`](https://schema.oasf.agntcy.org/objects/agent) schema.
+
+<br />
+
 :::tip[IMPORTANT]
-The `proof` in an Agent Badge is verified by the `assertionMethod` defined in the `ResolverMetadata` (various `ResolverMetadata` examples are available [`here`](../id/did.md)).
+The `proof` in an `Agent Badge` is verified by the `assertionMethod` defined in the `ResolverMetadata` (various `ResolverMetadata` examples are available [`here`](../id/examples.md)).
 :::
 
 <br />
@@ -75,7 +77,7 @@ Multiple envelopes are supported in the [`AGNTCY`](https://agntcy.org/), includi
 
 ## Agent Badges accessible through a "well-known" endpoint
 
-The Agent Badges of an Agent subject can be accessed using the following well-known URL:
+The `Agent Badges` of an Agent subject can be accessed using the following well-known URL:
 
 ```
 https://api.NODE/ID/.well-known/vcs.json
@@ -83,7 +85,7 @@ https://api.NODE/ID/.well-known/vcs.json
 
 where:
 
-- `ID`: represents the [`ID`](/docs/id/intro) of the Agent subject.
+- `ID`: represents the [`ID`](/docs/id/definitions) of the Agent subject.
 - `NODE`: represents a **trust anchor**, e.g., an `Identity Node` within the [`AGNTCY`](https://agntcy.org/) identity system.
 
 :::tip[IMPORTANT]

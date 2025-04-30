@@ -1,4 +1,4 @@
-# Identity Docs
+# Identity Spec
 
 <p align="center">
   <a href="https://agntcy.org">

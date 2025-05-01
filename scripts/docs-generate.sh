@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Copyright AGNTCY Contributors (https://github.com/agntcy)
+# SPDX-License-Identifier: Apache-2.0
+
 _=`rm -rvf ../docs || true`
 
 cd docker && \

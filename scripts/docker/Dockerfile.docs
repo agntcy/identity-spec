@@ -1,6 +1,6 @@
 # Copyright AGNTCY Contributors (https://github.com/agntcy)
 # SPDX-License-Identifier: Apache-2.0
-FROM node:latest
+FROM node:23
 
 COPY scripts/docker/run.sh .
 RUN chmod +x run.sh && \

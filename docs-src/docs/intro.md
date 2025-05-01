@@ -49,7 +49,7 @@ Independently of whether the Agent identity is assigned following a convention o
 
 <br />
 
-![1](static/img/agent-badge.png)
+![1](/img/agent-badge.png)
 
 <br />
 

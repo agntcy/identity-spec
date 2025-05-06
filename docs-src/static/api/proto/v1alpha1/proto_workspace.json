@@ -1164,10 +1164,10 @@
           "name": "GenerateRequest",
           "longName": "GenerateRequest",
           "fullName": "agntcy.identity.node.v1alpha1.GenerateRequest",
-          "description": "Generate an Id and its corresponding ResolverMetadata for the specified Issuer",
+          "description": "Generate an Id and its corresponding ResolverMetadata for the specified Issuer\nFor external IdPs, the Issuer should be provided with a Proof of ownership\nof the Issuer's provided id",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -1180,6 +1180,18 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "proof",
+              "description": "Optional Proof of ownership of the Issuer's provided id\nThis should be provided when the Issuer is provided by an external IdP\nExample: a signed JWT",
+              "label": "optional",
+              "type": "Proof",
+              "longType": "agntcy.identity.core.v1alpha1.Proof",
+              "fullType": "agntcy.identity.core.v1alpha1.Proof",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_proof",
               "defaultValue": ""
             }
           ]
@@ -1380,7 +1392,7 @@
           "description": "Request to register an issuer",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -1394,6 +1406,18 @@
               "isoneof": false,
               "oneofdecl": "",
               "defaultValue": ""
+            },
+            {
+              "name": "proof",
+              "description": "Optional Proof of ownership of the Issuer's common_name\nThis should be provided when the Issuer is provided by an external IdP\nExample: a signed JWT",
+              "label": "optional",
+              "type": "Proof",
+              "longType": "agntcy.identity.core.v1alpha1.Proof",
+              "fullType": "agntcy.identity.core.v1alpha1.Proof",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_proof",
+              "defaultValue": ""
             }
           ]
         },
@@ -1404,19 +1428,19 @@
           "description": "Returns the action to take to complete the registration",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
               "name": "uri",
-              "description": "A uri indicating an action to take to complete the registration.",
-              "label": "",
+              "description": "Optional: a uri indicating an action to take to complete the registration\nDepending on the issuer type, this could be a validation URL",
+              "label": "optional",
               "type": "string",
               "longType": "string",
               "fullType": "string",
               "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
+              "isoneof": true,
+              "oneofdecl": "_uri",
               "defaultValue": ""
             }
           ]

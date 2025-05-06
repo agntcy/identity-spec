@@ -250,7 +250,17 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/Issuer'
                     description: The Issuer details
-            description: Generate an Id and its corresponding ResolverMetadata for the specified Issuer
+                proof:
+                    allOf:
+                        - $ref: '#/components/schemas/Proof'
+                    description: |-
+                        Optional Proof of ownership of the Issuer's provided id
+                         This should be provided when the Issuer is provided by an external IdP
+                         Example: a signed JWT
+            description: |-
+                Generate an Id and its corresponding ResolverMetadata for the specified Issuer
+                 For external IdPs, the Issuer should be provided with a Proof of ownership
+                 of the Issuer's provided id
         GenerateResponse:
             type: object
             properties:
@@ -385,6 +395,21 @@ components:
                         $ref: '#/components/schemas/Jwk'
                     description: Keys represents the list of JSON Web Keys.
             description: JWKS represents a set of JSON Web Keys (JWKs).
+        Proof:
+            type: object
+            properties:
+                type:
+                    type: string
+                    description: The type of the proof
+                proofPurpose:
+                    type: string
+                    description: The proof purpose
+                proofValue:
+                    type: string
+                    description: The proof value
+            description: |-
+                A data integrity proof provides information about the proof mechanism,
+                 parameters required to verify that proof, and the proof value itself.
         PublishRequest:
             type: object
             properties:
@@ -400,13 +425,22 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/Issuer'
                     description: The Issuer to register.
+                proof:
+                    allOf:
+                        - $ref: '#/components/schemas/Proof'
+                    description: |-
+                        Optional Proof of ownership of the Issuer's common_name
+                         This should be provided when the Issuer is provided by an external IdP
+                         Example: a signed JWT
             description: Request to register an issuer
         RegisterIssuerResponse:
             type: object
             properties:
                 uri:
                     type: string
-                    description: A uri indicating an action to take to complete the registration.
+                    description: |-
+                        Optional: a uri indicating an action to take to complete the registration
+                         Depending on the issuer type, this could be a validation URL
             description: Returns the action to take to complete the registration
         ResolveRequest:
             type: object

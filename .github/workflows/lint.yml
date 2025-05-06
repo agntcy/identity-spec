@@ -33,6 +33,7 @@ jobs:
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_MARKDOWN_PRETTIER: false
           VALIDATE_YAML_PRETTIER: false
+          VALIDATE_JSON_PRETTIER: false
           VALIDATE_NATURAL_LANGUAGE: false
           VALIDATE_JSCPD: false
           VALIDATE_CHECKOV: false

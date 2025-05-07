@@ -1568,7 +1568,7 @@
           "description": "Request to publish an issued Verifiable Credential",
           "hasExtensions": false,
           "hasFields": true,
-          "hasOneofs": false,
+          "hasOneofs": true,
           "extensions": [],
           "fields": [
             {
@@ -1581,6 +1581,18 @@
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",
+              "defaultValue": ""
+            },
+            {
+              "name": "proof",
+              "description": "Optional Proof of ownership of the Issuer's ResolverMetadata\nThis should be provided when the Issuer is provided by an external IdP\nExample: a signed JWT",
+              "label": "optional",
+              "type": "Proof",
+              "longType": "agntcy.identity.core.v1alpha1.Proof",
+              "fullType": "agntcy.identity.core.v1alpha1.Proof",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_proof",
               "defaultValue": ""
             }
           ]

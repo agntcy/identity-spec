@@ -417,6 +417,13 @@ components:
                     allOf:
                         - $ref: '#/components/schemas/EnvelopedCredential'
                     description: The Verifiable Credential to publish
+                proof:
+                    allOf:
+                        - $ref: '#/components/schemas/Proof'
+                    description: |-
+                        Optional Proof of ownership of the Issuer's ResolverMetadata
+                         This should be provided when the Issuer is provided by an external IdP
+                         Example: a signed JWT
             description: Request to publish an issued Verifiable Credential
         RegisterIssuerRequest:
             type: object

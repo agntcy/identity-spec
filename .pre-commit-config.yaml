@@ -8,4 +8,4 @@ repos:
     rev: 499ed7f28389eb4a08c2d7e40b1637cfd7f65381
     hooks:
       - id: addlicense # Add license header to files
-        args: ["-check", "-ignore", "**/node_modules/**", "-c", "Copyright AGNTCY Contributors (https://github.com/agntcy)", "-l", "appache", "-s", "only", "."]
+        args: ["-check", "-ignore", "**/node_modules/**", "-c", "Copyright AGNTCY Contributors (https://github.com/agntcy)", "-l", "appache", "-s=only", "."]

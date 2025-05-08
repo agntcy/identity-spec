@@ -1,3 +1,8 @@
+/**
+ * Copyright 2025 AGNTCY Contributors (https://github.com/agntcy)
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';

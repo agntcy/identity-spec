@@ -1,0 +1,11 @@
+# Copyright 2025 AGNTCY Contributors (https://github.com/agntcy)
+# SPDX-License-Identifier: Apache-2.0
+
+---
+default_stages: [pre-commit, pre-push]
+repos:
+  - repo: https://github.com/google/addlicense
+    rev: 499ed7f28389eb4a08c2d7e40b1637cfd7f65381
+    hooks:
+      - id: addlicense # Add license header to files
+        args: ["-check", "-ignore", "**/node_modules/**", "-c", "Copyright AGNTCY Contributors (https://github.com/agntcy)", "-l", "appache", "-s", "only", "."]

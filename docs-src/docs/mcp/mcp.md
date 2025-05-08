@@ -1,3 +1,0 @@
-# Support
-
-(coming soon)

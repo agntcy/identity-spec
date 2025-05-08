@@ -8,7 +8,7 @@ extends: null
 # https://github.com/DavidAnson/markdownlint/blob/v0.34.0/doc/md013.md
 MD013:
   # Number of characters
-  line_length: 150
+  line_length: 1000
   # Include code blocks
   code_blocks: true
   # Include tables

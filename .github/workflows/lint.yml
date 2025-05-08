@@ -1,3 +1,6 @@
+# Copyright 2025 AGNTCY Contributors (https://github.com/agntcy)
+# SPDX-License-Identifier: Apache-2.0
+
 ---
 name: lint
 
@@ -34,7 +37,13 @@ jobs:
           VALIDATE_MARKDOWN_PRETTIER: false
           VALIDATE_YAML_PRETTIER: false
           VALIDATE_JSON_PRETTIER: false
+          VALIDATE_CSS_PRETTIER: false
+          VALIDATE_JAVASCRIPT_PRETTIER: false
+          VALIDATE_TYPESCRIPT_PRETTIER: false
           VALIDATE_NATURAL_LANGUAGE: false
           VALIDATE_JSCPD: false
           VALIDATE_CHECKOV: false
+          VALIDATE_CSS: false
+          VALIDATE_TYPESCRIPT_STANDARD: false
+          VALIDATE_JAVASCRIPT_STANDARD: false
           MULTI_STATUS: false

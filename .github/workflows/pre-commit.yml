@@ -7,7 +7,7 @@ name: pre-commit
 on:
   pull_request:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   pre-commit:
@@ -17,5 +17,5 @@ jobs:
       - uses: actions/setup-python@v5
       - uses: actions/setup-go@v5
       - run: go install golang.org/x/lint/golint@latest
-      - run: echo "PATH=$PATH:/home/runner/go/bin" >> $GITHUB_ENV
+      - run: echo "PATH=$PATH:/home/runner/go/bin" >> "$GITHUB_ENV"
       - uses: pre-commit/action@v3.0.1

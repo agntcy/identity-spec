@@ -20,16 +20,15 @@ This framework applies equally to:
 
 Each plays a critical role in the architecture and operation of an IoA and must comply with shared identity and authentication principles.
 
-
 ### 2. Identity Requirements
 
 The AGNTCY defines identity assignment with the following core properties:
 
 - **Open:** No centralized authority is required for assigning identities
-- **Collision-free:** Each entity (Agent, MCP Server, or  MAS) has a universally unique identifier.
+- **Collision-free:** Each entity (Agent, MCP Server, or MAS) has a universally unique identifier.
 - **Verifiable:** Each entity is backed by a Verifiable Credential (VC) that can be used to authenticate its ID and provenance.
 
-### 3. Identity Assignment Approaches 
+### 3. Identity Assignment Approaches
 
 - The AGNTCY supports both conventions and standards for identity assignment.
 - This approach promotes interoperability across varied systems and ecosystems.
@@ -85,7 +84,7 @@ The figure above depicts the main elements of an Agent's subject identifier:
 
 Hence, in the [`AGNTCY`](https://agntcy.org/), an Agent subject is tied to a unique identifier linked to one or more `Verifiable Credentials (VCs)`, which contain information about the Agent, such as its ID, a schema definition (e.g., an [`OASF schema`](https://docs.agntcy.org/pages/oasf.html)), and other metadata used for defining locators, authentication, MFA, etc. Agents can use this Badge for secure presentation, verification, and enabling trust across multi-agent systems.
 
-Note:  This same structure applies to MCP Servers and MASs, ensuring consistency across all identity-bearing entities in the IoA.
+Note: This same structure applies to MCP Servers and MASs, ensuring consistency across all identity-bearing entities in the IoA.
 
 <!---
 ## About the AGNTCY

@@ -26,9 +26,9 @@ The identity framework conceived by the `AGNTCY` allows not only to cryptographi
 
 The combined use of Badges (VCs) and ResolverMetadata enables automated and trustworthy validation of:
 
--	Issuer public keys, via assertion methods
--	Authenticity and integrity of credentials (Agent or MCP Server Badges)
--	Entity provenance and update lineage (especially critical for secure versioning)
+- Issuer public keys, via assertion methods
+- Authenticity and integrity of credentials (Agent or MCP Server Badges)
+- Entity provenance and update lineage (especially critical for secure versioning)
 
 **Benefits of This Model**
 

@@ -2,7 +2,7 @@
   "$id": "agntcy.identity.core.v1alpha1.ResolverMetadata.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
-  "description": "ResolverMetadata represents a set of data describing the ID including mechanisms such as:\n   - cryptographic public keys - used to authenticate itself and prove\n     association with the ID\n   - service - ways of communicating with the node that published the document\n\n A ResolverMetadata can be retrieved by resolving an ID.",
+  "description": "A ResolverMetadata can be retrieved by resolving an ID.",
   "patternProperties": {
     "^(assertionMethod)$": {
       "description": "AssertionMethod is used to specify how the entity represented by the ID\n is expected to express claims, such as for the purposes of issuing a VCs.",
@@ -46,6 +46,6 @@
       "type": "array"
     }
   },
-  "title": "Resolver Metadata",
+  "title": "ResolverMetadata represents a set of data describing the ID including mechanisms such as:\n   - cryptographic public keys - used to authenticate itself and prove\n     association with the ID\n   - service - ways of communicating with the node that published the document",
   "type": "object"
 }

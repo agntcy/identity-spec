@@ -9,10 +9,18 @@
       "type": "boolean"
     },
     "^(nextPage)$": {
-      "description": "Next page",
-      "maximum": 2147483647,
-      "minimum": -2147483648,
-      "type": "integer"
+      "anyOf": [
+        {
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
+        },
+        {
+          "pattern": "^-?[0-9]+$",
+          "type": "string"
+        }
+      ],
+      "description": "Next page"
     }
   },
   "properties": {
@@ -21,16 +29,33 @@
       "type": "boolean"
     },
     "next_page": {
-      "description": "Next page",
-      "maximum": 2147483647,
-      "minimum": -2147483648,
-      "type": "integer"
+      "anyOf": [
+        {
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
+        },
+        {
+          "pattern": "^-?[0-9]+$",
+          "type": "string"
+        }
+      ],
+      "description": "Next page"
     },
     "size": {
-      "description": "The size of the current page",
-      "maximum": 2147483647,
-      "minimum": -2147483648,
-      "type": "integer"
+      "anyOf": [
+        {
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
+        },
+        {
+          "pattern": "^-?[0-9]+$",
+          "type": "string"
+        }
+      ],
+      "default": 0,
+      "description": "The size of the current page"
     },
     "total": {
       "anyOf": [
@@ -44,6 +69,7 @@
           "type": "string"
         }
       ],
+      "default": 0,
       "description": "The total size of items"
     }
   },

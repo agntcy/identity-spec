@@ -32,7 +32,7 @@ CREDENTIAL
 where:
 
 - `credentialSubject.id`: represents the [`ID`](/docs/id/definitions) of the MCP Server subject.
-- `credentialSubject.badge`: adheres to the [`MCP Server Definition`](https://spec.identity.agntcy.org/jsonschema/agntcy/identity/core/v1alpha1/MCP#source-) schema.
+- `credentialSubject.badge`: adheres to the [`MCP Server Definition`](https://spec.identity.agntcy.org/jsonschema/agntcy/identity/core/v1alpha1/McpServer#source-) schema.
 
 <br />
 

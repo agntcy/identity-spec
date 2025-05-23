@@ -2,7 +2,7 @@
 
 ## MCP Server Badge
 
-The example below shows an [`MCP Server Badge`](./intro.md) as a `VC`, represented as a JSON-LD object that contains information about the MCP Server, including the issuing organization, its [`ID`](/docs/id/definitions), and schema definition (e.g. an [`MCP Server Definition`](https://spec.identity.agntcy.org/jsonschema/agntcy/identity/core/v1alpha1/MCP#source-) in JSON). Such definition may encompass additional metadata, including locators, authentication methods, hashing methods, etc. The `VC` below also includes a data integrity proof as an embedded proof within an envelope.<br /><br />
+The example below shows an [`MCP Server Badge`](./intro.md) as a `VC`, represented as a JSON-LD object that contains information about the MCP Server, including the issuing organization, its [`ID`](/docs/id/definitions), and schema definition (e.g. an [`MCP Server Definition`](https://spec.identity.agntcy.org/jsonschema/agntcy/identity/core/v1alpha1/McpServer#source-) in JSON). Such definition may encompass additional metadata, including locators, authentication methods, hashing methods, etc. The `VC` below also includes a data integrity proof as an embedded proof within an envelope.<br /><br />
 
 ```json
 CREDENTIAL
@@ -17,7 +17,7 @@ CREDENTIAL
     badge: MCP_SERVER_JSON,
   },
   credentialSchema: [{
-    id: "https://spec.identity.agntcy.org/jsonschema/agntcy/identity/core/v1alpha1/MCP#source-",
+    id: "https://spec.identity.agntcy.org/jsonschema/agntcy/identity/core/v1alpha1/McpServer#source-",
     type: "JsonSchema"
   }],
   proof: {
@@ -32,7 +32,7 @@ CREDENTIAL
 where:
 
 - `credentialSubject.id`: represents the [`ID`](/docs/id/definitions) of the MCP Server subject.
-- `credentialSubject.badge`: adheres to the [`MCP Server Definition`](https://spec.identity.agntcy.org/jsonschema/agntcy/identity/core/v1alpha1/MCP#source-) schema.
+- `credentialSubject.badge`: adheres to the [`MCP Server Definition`](https://spec.identity.agntcy.org/jsonschema/agntcy/identity/core/v1alpha1/McpServer#source-) schema.
 
 <br />
 

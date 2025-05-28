@@ -12,15 +12,20 @@ FILES_PREFIX="agntcy.identity.core.v1alpha1."
 function do_add_refs() {
     # Gather imports
     imports=""
-    for entry in ./$PATH_TO_JSONSCHEMA/*.jsonschema.json; do
+    for entry in ./"$PATH_TO_JSONSCHEMA"/*.jsonschema.json; do
+      # Check if the file is part of agntcy
+      if [[ ! $entry =~ $FILES_PREFIX ]]; then
+        continue
+      fi
+
       # Get the name of the file without the prefix
-      name=$(do_parse_entry_name $entry)
+      name=$(do_parse_entry_name "$entry")
 
       # Get the filename without the path and extension
       filename=$(basename "$entry")
 
       # Add the ref to the refs object
-      echo "  \"$filename\": $name," >> $output_file
+      echo "  \"$filename\": $name," >> "$output_file"
 
       # Add the ref to the imports array
       imports="${imports}import ${name} from \"@site/${PATH_TO_JSONSCHEMA}/${FILES_PREFIX}${name}.jsonschema.json\";\n"
@@ -29,7 +34,7 @@ function do_add_refs() {
     # Remove the last newline from the imports array
     imports=${imports%"\n"}
 
-    echo $imports
+    echo "$imports"
 }
 
 # Parse entry name
@@ -38,25 +43,30 @@ function do_parse_entry_name() {
   filename=$(basename "$1" .jsonschema.json)
 
   # Get the name of the file without the prefix
-  name=${filename#$FILES_PREFIX}
+  name=${filename#"$FILES_PREFIX"}
 
   # Get the name of the file without the suffix
   name=${name%.jsonschema}
 
-  echo $name
+  echo "$name"
 }
 
 # Cleanup
 function do_cleanup() {
   # Remove all files in the output folder
-  rm -rf $PATH_TO_OUTPUT/*.mdx
+  rm -rf "$PATH_TO_OUTPUT"/*.mdx
 }
 
 # Generate mdx files
 function do_generate() {
-    for entry in ./$PATH_TO_JSONSCHEMA/*.jsonschema.json; do
+    for entry in ./"$PATH_TO_JSONSCHEMA"/*.jsonschema.json; do
+      # Check if the file is part of agntcy
+      if [[ ! $entry =~ $FILES_PREFIX ]]; then
+        continue
+      fi
+
       # Get the name of the file without the prefix
-      name=$(do_parse_entry_name $entry)
+      name=$(do_parse_entry_name "$entry")
 
       # Create the output file with the same name as the input file
       output_file="${PATH_TO_OUTPUT}/$name.mdx"
@@ -68,20 +78,20 @@ function do_generate() {
 
 
       # Create the output file
-      cat >> $output_file <<EOF
+      cat >> "$output_file" <<EOF
 import CodeBlock from '@theme/CodeBlock';
 import Schema from "@site/${PATH_TO_JSONSCHEMA}/${FILES_PREFIX}${name}.jsonschema.json";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
 EOF
 
-    cat >> $output_file <<EOF
+    cat >> "$output_file" <<EOF
 
 export const refs = {
 EOF
 
     imports=$(do_add_refs)
 
-    cat >> $output_file <<EOF
+    cat >> "$output_file" <<EOF
 };
 export const get = function anonymous(ref) { return refs[ref + ""]; };
 export const resolverOptions = {resolvers:{file: {resolve: get}}};
@@ -95,7 +105,7 @@ EOF
 
     # Write to the top of the file if array not empty
     if [ ${#imports[@]} -gt 0 ]; then
-      echo -e "${imports[*]}\n$(cat $output_file)" > $output_file
+      echo -e "${imports[*]}\n$(cat $output_file)" > "$output_file"
     fi
 
     done

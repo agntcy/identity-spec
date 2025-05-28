@@ -25,7 +25,9 @@
             "ERROR_REASON_ID_VCS_NOT_FOUND",
             "ERROR_REASON_IDP_REQUIRED",
             "ERROR_REASON_INVALID_PROOF",
-            "ERROR_REASON_RESOLVER_METADATA_NOT_FOUND"
+            "ERROR_REASON_UNSUPPORTED_PROOF",
+            "ERROR_REASON_RESOLVER_METADATA_NOT_FOUND",
+            "ERROR_REASON_UNKNOWN_IDP"
           ],
           "type": "string"
         },

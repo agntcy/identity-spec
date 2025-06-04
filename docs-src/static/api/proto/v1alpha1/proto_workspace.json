@@ -26,74 +26,59 @@
               "description": "An internal error, this happens in case of unexpected condition or failure within the service"
             },
             {
-              "name": "ERROR_REASON_INVALID_ID",
-              "number": "2",
-              "description": "The Agent ID is invalid or not found"
-            },
-            {
               "name": "ERROR_REASON_INVALID_CREDENTIAL_ENVELOPE_TYPE",
-              "number": "3",
+              "number": "2",
               "description": "The credential envelope type is invalid. For valid values refer to\nthe enum CredentialEnvelopeType."
             },
             {
               "name": "ERROR_REASON_INVALID_CREDENTIAL_ENVELOPE_VALUE_FORMAT",
-              "number": "4",
+              "number": "3",
               "description": "The credential envelope value format does not correspond to the format\nspecified in envelope_type."
             },
             {
-              "name": "ERROR_REASON_INVALID_CREDENTIAL_CONTENT_TYPE",
-              "number": "5",
-              "description": "The credential content type is invalid. For valid values refer to\nthe enum CredentialContentType."
-            },
-            {
-              "name": "ERROR_REASON_INVALID_CREDENTIAL_CONTENT_FORMAT",
-              "number": "6",
-              "description": "The credential content format is not a valid JSON-LD."
-            },
-            {
               "name": "ERROR_REASON_INVALID_ISSUER",
-              "number": "7",
+              "number": "4",
               "description": "The issuer contains one or more invalid fields."
             },
             {
               "name": "ERROR_REASON_ISSUER_NOT_REGISTERED",
-              "number": "8",
+              "number": "5",
               "description": "The issuer is not registered in the Node."
             },
             {
               "name": "ERROR_REASON_INVALID_VERIFIABLE_CREDENTIAL",
-              "number": "9",
+              "number": "6",
               "description": "The Verifiable Credential is invalid, this can be related to either\ninvalid format or unable to verify the Data Integrity proof."
             },
             {
-              "name": "ERROR_REASON_ID_VCS_NOT_FOUND",
-              "number": "10",
-              "description": "Unable to find an VCs for an ID."
-            },
-            {
               "name": "ERROR_REASON_IDP_REQUIRED",
-              "number": "11",
+              "number": "7",
               "description": "An issuer is required to have an external IdP"
             },
             {
               "name": "ERROR_REASON_INVALID_PROOF",
-              "number": "12",
+              "number": "8",
               "description": "The proof is invalid"
             },
             {
               "name": "ERROR_REASON_UNSUPPORTED_PROOF",
-              "number": "13",
+              "number": "9",
               "description": "The proof type is not supported"
             },
             {
               "name": "ERROR_REASON_RESOLVER_METADATA_NOT_FOUND",
-              "number": "14",
+              "number": "10",
               "description": "Unable to resolve an ID to a ResolverMetadata"
             },
             {
               "name": "ERROR_REASON_UNKNOWN_IDP",
-              "number": "15",
+              "number": "11",
               "description": "Unknown Identity Provider"
+            },
+            {
+              "name": "ERROR_REASON_ID_ALREADY_REGISTERED",
+              "number": "12",
+              "description": "The ID and Resolver Metadata are already registered in the system"
             }
           ]
         }
@@ -807,80 +792,6 @@
               "type": "string",
               "longType": "string",
               "fullType": "string",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            }
-          ]
-        }
-      ],
-      "services": []
-    },
-    {
-      "name": "agntcy/identity/core/v1alpha1/pagination.proto",
-      "description": "",
-      "package": "agntcy.identity.core.v1alpha1",
-      "hasEnums": false,
-      "hasExtensions": false,
-      "hasMessages": true,
-      "hasServices": false,
-      "enums": [],
-      "extensions": [],
-      "messages": [
-        {
-          "name": "PagedResponse",
-          "longName": "PagedResponse",
-          "fullName": "agntcy.identity.core.v1alpha1.PagedResponse",
-          "description": "Pagination response",
-          "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
-          "extensions": [],
-          "fields": [
-            {
-              "name": "next_page",
-              "description": "Next page",
-              "label": "optional",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_next_page",
-              "defaultValue": ""
-            },
-            {
-              "name": "has_next_page",
-              "description": "Has next page",
-              "label": "optional",
-              "type": "bool",
-              "longType": "bool",
-              "fullType": "bool",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_has_next_page",
-              "defaultValue": ""
-            },
-            {
-              "name": "total",
-              "description": "The total size of items",
-              "label": "",
-              "type": "int64",
-              "longType": "int64",
-              "fullType": "int64",
-              "ismap": false,
-              "isoneof": false,
-              "oneofdecl": "",
-              "defaultValue": ""
-            },
-            {
-              "name": "size",
-              "description": "The size of the current page",
-              "label": "",
-              "type": "int32",
-              "longType": "int32",
-              "fullType": "int32",
               "ismap": false,
               "isoneof": false,
               "oneofdecl": "",

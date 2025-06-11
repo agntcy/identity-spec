@@ -53,7 +53,7 @@
             {
               "name": "ERROR_REASON_IDP_REQUIRED",
               "number": "7",
-              "description": "An issuer is required to have an external IdP"
+              "description": "The Identity Provider (IdP) is required for the operation, but it is not provided."
             },
             {
               "name": "ERROR_REASON_INVALID_PROOF",
@@ -529,6 +529,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_common_name",
+              "defaultValue": ""
+            },
+            {
+              "name": "verified",
+              "description": "This will be set to true when issuer provides a valid proof of ownership\nof the common name on registration",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_verified",
               "defaultValue": ""
             },
             {
@@ -1654,25 +1666,12 @@
           "name": "RegisterIssuerResponse",
           "longName": "RegisterIssuerResponse",
           "fullName": "agntcy.identity.node.v1alpha1.RegisterIssuerResponse",
-          "description": "Returns the action to take to complete the registration",
+          "description": "Returns a registration response for the issuer\n\nEmpty response",
           "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
+          "hasFields": false,
+          "hasOneofs": false,
           "extensions": [],
-          "fields": [
-            {
-              "name": "uri",
-              "description": "Optional: a uri indicating an action to take to complete the registration\nDepending on the issuer type, this could be a validation URL",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_uri",
-              "defaultValue": ""
-            }
-          ]
+          "fields": []
         }
       ],
       "services": [

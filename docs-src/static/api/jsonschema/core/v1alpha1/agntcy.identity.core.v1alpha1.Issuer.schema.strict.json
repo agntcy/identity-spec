@@ -23,6 +23,10 @@
     "sub_organization": {
       "description": "The sub organization of the issuer",
       "type": "string"
+    },
+    "verified": {
+      "description": "This will be set to true when issuer provides a valid proof of ownership\n of the common name on registration",
+      "type": "boolean"
     }
   },
   "title": "Issuer",

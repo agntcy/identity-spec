@@ -311,6 +311,11 @@ components:
                     description: |-
                         The common name of the issuer
                          Could be a FQDN or a FQDA
+                verified:
+                    type: boolean
+                    description: |-
+                        This will be set to true when issuer provides a valid proof of ownership
+                         of the common name on registration
                 publicKey:
                     allOf:
                         - $ref: '#/components/schemas/Jwk'
@@ -445,13 +450,8 @@ components:
             description: Request to register an issuer
         RegisterIssuerResponse:
             type: object
-            properties:
-                uri:
-                    type: string
-                    description: |-
-                        Optional: a uri indicating an action to take to complete the registration
-                         Depending on the issuer type, this could be a validation URL
-            description: Returns the action to take to complete the registration
+            properties: {}
+            description: Returns a registration response for the issuer
         ResolveRequest:
             type: object
             properties:

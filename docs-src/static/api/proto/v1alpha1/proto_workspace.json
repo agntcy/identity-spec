@@ -53,7 +53,7 @@
             {
               "name": "ERROR_REASON_IDP_REQUIRED",
               "number": "7",
-              "description": "An issuer is required to have an external IdP"
+              "description": "The Identity Provider (IdP) is required for the operation, but it is not provided."
             },
             {
               "name": "ERROR_REASON_INVALID_PROOF",
@@ -125,7 +125,7 @@
       "services": []
     },
     {
-      "name": "agntcy/identity/core/v1alpha1/id.proto",
+      "name": "agntcy/identity/core/v1alpha1/jwk.proto",
       "description": "",
       "package": "agntcy.identity.core.v1alpha1",
       "hasEnums": false,
@@ -350,7 +350,21 @@
               "defaultValue": ""
             }
           ]
-        },
+        }
+      ],
+      "services": []
+    },
+    {
+      "name": "agntcy/identity/core/v1alpha1/id.proto",
+      "description": "",
+      "package": "agntcy.identity.core.v1alpha1",
+      "hasEnums": false,
+      "hasExtensions": false,
+      "hasMessages": true,
+      "hasServices": false,
+      "enums": [],
+      "extensions": [],
+      "messages": [
         {
           "name": "ResolverMetadata",
           "longName": "ResolverMetadata",
@@ -478,11 +492,35 @@
       "name": "agntcy/identity/core/v1alpha1/issuer.proto",
       "description": "",
       "package": "agntcy.identity.core.v1alpha1",
-      "hasEnums": false,
+      "hasEnums": true,
       "hasExtensions": false,
       "hasMessages": true,
       "hasServices": false,
-      "enums": [],
+      "enums": [
+        {
+          "name": "IssuerAuthType",
+          "longName": "IssuerAuthType",
+          "fullName": "agntcy.identity.core.v1alpha1.IssuerAuthType",
+          "description": "IssuerAuthType represents the type of authentication mechanism used by the issuer.",
+          "values": [
+            {
+              "name": "ISSUER_AUTH_TYPE_UNSPECIFIED",
+              "number": "0",
+              "description": "ISSUER_AUTH_TYPE_UNSPECIFIED represents an unspecified or unknown authentication type."
+            },
+            {
+              "name": "ISSUER_AUTH_TYPE_IDP",
+              "number": "1",
+              "description": "ISSUER_AUTH_TYPE_IDP indicates that the issuer uses an external Identity Provider (IDP)\nto authenticate"
+            },
+            {
+              "name": "ISSUER_AUTH_TYPE_SELF",
+              "number": "2",
+              "description": "ISSUER_AUTH_TYPE_SELF indicates that the issuer uses a self-issued key for authentication.\nThis is typically used in scenarios where the issuer doesn't rely on an IdP."
+            }
+          ]
+        }
+      ],
       "extensions": [],
       "messages": [
         {
@@ -532,6 +570,18 @@
               "defaultValue": ""
             },
             {
+              "name": "verified",
+              "description": "This will be set to true when issuer provides a valid proof of ownership\nof the common name on registration",
+              "label": "optional",
+              "type": "bool",
+              "longType": "bool",
+              "fullType": "bool",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_verified",
+              "defaultValue": ""
+            },
+            {
               "name": "public_key",
               "description": "This field is optional\nThe keys of the issuer in JWK format\nThe public key is used to verify the signature of the different claims",
               "label": "optional",
@@ -553,6 +603,18 @@
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_private_key",
+              "defaultValue": ""
+            },
+            {
+              "name": "auth_type",
+              "description": "This field specifies the authentication mechanism used by the issuer.\nIt determines whether the issuer uses an external Identity Provider (IDP)\nor a self-issued key for authentication.",
+              "label": "optional",
+              "type": "IssuerAuthType",
+              "longType": "IssuerAuthType",
+              "fullType": "agntcy.identity.core.v1alpha1.IssuerAuthType",
+              "ismap": false,
+              "isoneof": true,
+              "oneofdecl": "_auth_type",
               "defaultValue": ""
             }
           ]
@@ -717,9 +779,9 @@
               "name": "parameters",
               "description": "Parameters of the tool.\nThis is a JSON object that describes the parameters",
               "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
+              "type": "Struct",
+              "longType": "google.protobuf.Struct",
+              "fullType": "google.protobuf.Struct",
               "ismap": false,
               "isoneof": true,
               "oneofdecl": "_parameters",
@@ -1654,25 +1716,12 @@
           "name": "RegisterIssuerResponse",
           "longName": "RegisterIssuerResponse",
           "fullName": "agntcy.identity.node.v1alpha1.RegisterIssuerResponse",
-          "description": "Returns the action to take to complete the registration",
+          "description": "Returns a registration response for the issuer\n\nEmpty response",
           "hasExtensions": false,
-          "hasFields": true,
-          "hasOneofs": true,
+          "hasFields": false,
+          "hasOneofs": false,
           "extensions": [],
-          "fields": [
-            {
-              "name": "uri",
-              "description": "Optional: a uri indicating an action to take to complete the registration\nDepending on the issuer type, this could be a validation URL",
-              "label": "optional",
-              "type": "string",
-              "longType": "string",
-              "fullType": "string",
-              "ismap": false,
-              "isoneof": true,
-              "oneofdecl": "_uri",
-              "defaultValue": ""
-            }
-          ]
+          "fields": []
         }
       ],
       "services": [

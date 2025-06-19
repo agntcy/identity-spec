@@ -4,6 +4,25 @@
   "additionalProperties": false,
   "description": "A Identity Issuer",
   "patternProperties": {
+    "^(authType)$": {
+      "anyOf": [
+        {
+          "enum": [
+            "ISSUER_AUTH_TYPE_UNSPECIFIED",
+            "ISSUER_AUTH_TYPE_IDP",
+            "ISSUER_AUTH_TYPE_SELF"
+          ],
+          "type": "string"
+        },
+        {
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
+        }
+      ],
+      "description": "This field specifies the authentication mechanism used by the issuer.\n It determines whether the issuer uses an external Identity Provider (IDP)\n or a self-issued key for authentication.",
+      "title": "Issuer Auth Type"
+    },
     "^(commonName)$": {
       "description": "The common name of the issuer\n Could be a FQDN or a FQDA",
       "type": "string"
@@ -22,6 +41,25 @@
     }
   },
   "properties": {
+    "auth_type": {
+      "anyOf": [
+        {
+          "enum": [
+            "ISSUER_AUTH_TYPE_UNSPECIFIED",
+            "ISSUER_AUTH_TYPE_IDP",
+            "ISSUER_AUTH_TYPE_SELF"
+          ],
+          "type": "string"
+        },
+        {
+          "maximum": 2147483647,
+          "minimum": -2147483648,
+          "type": "integer"
+        }
+      ],
+      "description": "This field specifies the authentication mechanism used by the issuer.\n It determines whether the issuer uses an external Identity Provider (IDP)\n or a self-issued key for authentication.",
+      "title": "Issuer Auth Type"
+    },
     "common_name": {
       "description": "The common name of the issuer\n Could be a FQDN or a FQDA",
       "type": "string"
@@ -41,6 +79,10 @@
     "sub_organization": {
       "description": "The sub organization of the issuer",
       "type": "string"
+    },
+    "verified": {
+      "description": "This will be set to true when issuer provides a valid proof of ownership\n of the common name on registration",
+      "type": "boolean"
     }
   },
   "title": "Issuer",

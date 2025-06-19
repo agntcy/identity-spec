@@ -5,6 +5,16 @@
       "additionalProperties": false,
       "description": "A Identity Issuer",
       "properties": {
+        "authType": {
+          "description": "This field specifies the authentication mechanism used by the issuer.\n It determines whether the issuer uses an external Identity Provider (IDP)\n or a self-issued key for authentication.",
+          "enum": [
+            "ISSUER_AUTH_TYPE_UNSPECIFIED",
+            "ISSUER_AUTH_TYPE_IDP",
+            "ISSUER_AUTH_TYPE_SELF"
+          ],
+          "title": "Issuer Auth Type",
+          "type": "string"
+        },
         "commonName": {
           "description": "The common name of the issuer\n Could be a FQDN or a FQDA",
           "type": "string"
@@ -24,6 +34,10 @@
         "subOrganization": {
           "description": "The sub organization of the issuer",
           "type": "string"
+        },
+        "verified": {
+          "description": "This will be set to true when issuer provides a valid proof of ownership\n of the common name on registration",
+          "type": "boolean"
         }
       },
       "title": "Issuer",

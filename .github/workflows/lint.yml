@@ -33,6 +33,7 @@ jobs:
           LINTER_RULES_PATH: ".github/linters"
           MARKDOWN_CONFIG_FILE: ".markdownlint.yml"
           YAML_CONFIG_FILE: ".yamllint.yml"
+          FILTER_REGEX_EXCLUDE: "(docs-src/static/.*)"
           VALIDATE_ALL_CODEBASE: false
           VALIDATE_MARKDOWN_PRETTIER: false
           VALIDATE_YAML_PRETTIER: false

@@ -17,6 +17,36 @@
       "title": "CredentialSchema represents the credentialSchema property of a Verifiable Credential.\n more information can be found [here]",
       "type": "object"
     },
+    "agntcy.identity.core.v1alpha1.CredentialStatus.jsonschema.strict.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "description": "[here]: https://www.w3.org/TR/vc-data-model-2.0/#status",
+      "properties": {
+        "createdAt": {
+          "$ref": "#/$defs/agntcy.identity.core.v1alpha1.Time.jsonschema.strict.json",
+          "description": "The creation date and time of the status"
+        },
+        "id": {
+          "description": "The URL identifying the schema file",
+          "type": "string"
+        },
+        "purpose": {
+          "description": "The value of the purpose for the status entry",
+          "enum": [
+            "CREDENTIAL_STATUS_PURPOSE_UNSPECIFIED",
+            "CREDENTIAL_STATUS_PURPOSE_REVOCATION"
+          ],
+          "title": "Credential Status Purpose",
+          "type": "string"
+        },
+        "type": {
+          "description": "Type specifies the type of the file",
+          "type": "string"
+        }
+      },
+      "title": "CredentialStatus represents the credentialStatus property of a Verifiable Credential.\n more information can be found [here]",
+      "type": "object"
+    },
     "agntcy.identity.core.v1alpha1.Proof.jsonschema.strict.json": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
       "additionalProperties": false,
@@ -36,6 +66,13 @@
         }
       },
       "title": "Proof",
+      "type": "object"
+    },
+    "agntcy.identity.core.v1alpha1.Time.jsonschema.strict.json": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false,
+      "properties": {},
+      "title": "Time",
       "type": "object"
     },
     "agntcy.identity.core.v1alpha1.VerifiableCredential.jsonschema.strict.json": {
@@ -58,6 +95,13 @@
           "description": "https://www.w3.org/TR/vc-data-model-2.0/#data-schemas",
           "items": {
             "$ref": "#/$defs/agntcy.identity.core.v1alpha1.CredentialSchema.jsonschema.strict.json"
+          },
+          "type": "array"
+        },
+        "credentialStatus": {
+          "description": "https://www.w3.org/TR/vc-data-model-2.0/#status",
+          "items": {
+            "$ref": "#/$defs/agntcy.identity.core.v1alpha1.CredentialStatus.jsonschema.strict.json"
           },
           "type": "array"
         },

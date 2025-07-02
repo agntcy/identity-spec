@@ -142,6 +142,28 @@ paths:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Status'
+    /v1alpha1/vc/revoke:
+        post:
+            tags:
+                - VcService
+            description: Revoke a Verifiable Credential. THIS ACTION IS NOT REVERSIBLE.
+            operationId: VcService_Revoke
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/RevokeRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content: {}
+                default:
+                    description: Default error response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Status'
     /v1alpha1/vc/search:
         post:
             tags:
@@ -514,6 +536,21 @@ components:
                    - service - ways of communicating with the node that published the document
 
                  A ResolverMetadata can be retrieved by resolving an ID.
+        RevokeRequest:
+            type: object
+            properties:
+                vc:
+                    allOf:
+                        - $ref: '#/components/schemas/EnvelopedCredential'
+                    description: The Verifiable Credential to revoked
+                proof:
+                    allOf:
+                        - $ref: '#/components/schemas/Proof'
+                    description: |-
+                        Required Proof of ownership of the Issuer's ResolverMetadata
+                         This should be provided when the Issuer is provided by an external IdP
+                         Example: a signed JWT
+            description: Request to revoke a published Verifiable Credential
         SearchRequest:
             type: object
             properties:

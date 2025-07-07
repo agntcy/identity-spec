@@ -204,7 +204,10 @@ paths:
             responses:
                 "200":
                     description: OK
-                    content: {}
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/VerificationResult'
                 default:
                     description: Default error response
                     content:
@@ -253,6 +256,31 @@ components:
                  more information can be found [here]
 
                  [here]: https://www.w3.org/TR/vc-data-model-2.0/#data-schemas
+        CredentialStatus:
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: The URL identifying the schema file
+                type:
+                    type: string
+                    description: Type specifies the type of the file
+                createdAt:
+                    allOf:
+                        - $ref: '#/components/schemas/Time'
+                    description: The creation date and time of the status
+                purpose:
+                    enum:
+                        - CREDENTIAL_STATUS_PURPOSE_UNSPECIFIED
+                        - CREDENTIAL_STATUS_PURPOSE_REVOCATION
+                    type: string
+                    description: The value of the purpose for the status entry
+                    format: enum
+            description: |-
+                CredentialStatus represents the credentialStatus property of a Verifiable Credential.
+                 more information can be found [here]
+
+                 [here]: https://www.w3.org/TR/vc-data-model-2.0/#status
         EnvelopedCredential:
             type: object
             properties:
@@ -268,6 +296,37 @@ components:
                     type: string
                     description: Value is the enveloped credential in the specified format.
             description: EnvelopedCredential represents a Credential enveloped in a specific format.
+        ErrorInfo:
+            type: object
+            properties:
+                reason:
+                    enum:
+                        - ERROR_REASON_UNSPECIFIED
+                        - ERROR_REASON_INTERNAL
+                        - ERROR_REASON_INVALID_CREDENTIAL_ENVELOPE_TYPE
+                        - ERROR_REASON_INVALID_CREDENTIAL_ENVELOPE_VALUE_FORMAT
+                        - ERROR_REASON_INVALID_ISSUER
+                        - ERROR_REASON_ISSUER_NOT_REGISTERED
+                        - ERROR_REASON_INVALID_VERIFIABLE_CREDENTIAL
+                        - ERROR_REASON_IDP_REQUIRED
+                        - ERROR_REASON_INVALID_PROOF
+                        - ERROR_REASON_UNSUPPORTED_PROOF
+                        - ERROR_REASON_RESOLVER_METADATA_NOT_FOUND
+                        - ERROR_REASON_UNKNOWN_IDP
+                        - ERROR_REASON_ID_ALREADY_REGISTERED
+                        - ERROR_REASON_VERIFIABLE_CREDENTIAL_REVOKED
+                    type: string
+                    description: |-
+                        The reason of the error, as defined by the ErrorReason enum.
+                         This is a constant unique value that helps identify the cause of
+                         the error.
+                    format: enum
+                message:
+                    type: string
+                    description: |-
+                        The message describing the error in a human-readable way. This
+                         field gives additional details about the error.
+            description: Describes the cause of the error with structured details.
         GenerateRequest:
             type: object
             properties:
@@ -529,6 +588,9 @@ components:
                     description: |-
                         AssertionMethod is used to specify how the entity represented by the ID
                          is expected to express claims, such as for the purposes of issuing a VCs.
+                controller:
+                    type: string
+                    description: A controller is an entity that is authorized to make changes to a Resolver Metadata.
             description: |-
                 ResolverMetadata represents a set of data describing the ID including mechanisms such as:
                    - cryptographic public keys - used to authenticate itself and prove
@@ -603,6 +665,55 @@ components:
                         $ref: '#/components/schemas/GoogleProtobufAny'
                     description: A list of messages that carry the error details.  There is a common set of message types for APIs to use.
             description: 'The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).'
+        Time:
+            type: object
+            properties: {}
+        VerifiableCredential:
+            type: object
+            properties:
+                context:
+                    type: array
+                    items:
+                        type: string
+                    description: https://www.w3.org/TR/vc-data-model/#contexts
+                type:
+                    type: array
+                    items:
+                        type: string
+                    description: https://www.w3.org/TR/vc-data-model/#dfn-type
+                issuer:
+                    type: string
+                    description: https://www.w3.org/TR/vc-data-model/#issuer
+                content:
+                    type: object
+                    description: https://www.w3.org/TR/vc-data-model/#credential-subject
+                id:
+                    type: string
+                    description: https://www.w3.org/TR/vc-data-model/#identifiers
+                issuanceDate:
+                    type: string
+                    description: https://www.w3.org/TR/vc-data-model/#issuance-date
+                expirationDate:
+                    type: string
+                    description: https://www.w3.org/TR/vc-data-model/#expiration
+                credentialSchema:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/CredentialSchema'
+                    description: https://www.w3.org/TR/vc-data-model-2.0/#data-schemas
+                credentialStatus:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/CredentialStatus'
+                    description: https://www.w3.org/TR/vc-data-model-2.0/#status
+                proof:
+                    allOf:
+                        - $ref: '#/components/schemas/Proof'
+                    description: https://w3id.org/security#proof
+            description: |-
+                DataModel represents the W3C Verifiable Credential Data Model defined [here]
+
+                 [here]: https://www.w3.org/TR/vc-data-model/
         VerificationMethod:
             type: object
             properties:
@@ -617,6 +728,43 @@ components:
                 VerificationMethod expresses verification methods, such as cryptographic
                  public keys, which can be used to authenticate or authorize interactions
                  with the entities represented by the ID. It is a part of the ResolverMetadata.
+        VerificationResult:
+            type: object
+            properties:
+                status:
+                    type: boolean
+                    description: A boolean status
+                document:
+                    allOf:
+                        - $ref: '#/components/schemas/VerifiableCredential'
+                    description: A conforming document which represents the Verifiable Credential
+                mediaType:
+                    type: string
+                    description: 'The media type of the Verifiable Credential (ex: application/vc)'
+                controller:
+                    type: string
+                    description: |-
+                        The controller of the verification method associated with the securing mechanism,
+                         usually it represents the issuer.
+                controlledIdentifierDocument:
+                    type: string
+                    description: |-
+                        A controlled identifier document that is associated with the verification method
+                         used to verify the securing mechanism (i,e the DID)
+                warnings:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ErrorInfo'
+                    description: A list represents zero or more warnings generated by the verification process
+                errors:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/ErrorInfo'
+                    description: A list represents zero or more errors generated by the verification process
+            description: |-
+                The result returned from the verification process defined [here]
+
+                 [here]: https://www.w3.org/TR/vc-data-model-2.0/#verification
         VerifyRequest:
             type: object
             properties:

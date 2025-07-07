@@ -11,6 +11,10 @@
       },
       "type": "array"
     },
+    "controller": {
+      "description": "A controller is an entity that is authorized to make changes to a Resolver Metadata.",
+      "type": "string"
+    },
     "id": {
       "description": "The ID\n The metadata below is related as claims to the ID",
       "type": "string"

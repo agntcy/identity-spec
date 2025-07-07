@@ -19,6 +19,7 @@ import Time from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core
 import VerifiableCredential from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.VerifiableCredential.jsonschema.json";
 import VerifiablePresentation from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.VerifiablePresentation.jsonschema.json";
 import VerificationMethod from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.VerificationMethod.jsonschema.json";
+import VerificationResult from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.VerificationResult.jsonschema.json";
 import CodeBlock from '@theme/CodeBlock';
 import Schema from "@site/static/api/jsonschema/core/v1alpha1/agntcy.identity.core.v1alpha1.Proof.jsonschema.json";
 import JSONSchemaViewer from "@theme/JSONSchemaViewer";
@@ -45,6 +46,7 @@ export const refs = {
   "agntcy.identity.core.v1alpha1.VerifiableCredential.jsonschema.json": VerifiableCredential,
   "agntcy.identity.core.v1alpha1.VerifiablePresentation.jsonschema.json": VerifiablePresentation,
   "agntcy.identity.core.v1alpha1.VerificationMethod.jsonschema.json": VerificationMethod,
+  "agntcy.identity.core.v1alpha1.VerificationResult.jsonschema.json": VerificationResult,
 };
 export const get = function anonymous(ref) { return refs[ref + ""]; };
 export const resolverOptions = {resolvers:{file: {resolve: get}}};

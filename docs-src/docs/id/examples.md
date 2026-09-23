@@ -6,7 +6,9 @@ toc_max_heading_level: 5
 
 # Examples
 
-## 1) IdP Examples (Okta and Duo)
+## 1) IdP Examples (Okta, Duo, PingOne and Microsoft Entra ID)
+
+In all the IdP examples below, the `serviceEndpoint` is derived from the **common name** of the issuer, that is, from the host of the IdP's OIDC issuer URL, prefixed with the tenant or environment identifier in those cases where the IdP scopes its issuer by path. It identifies the authority associated with the `ID` and is the starting point from which the JWKs are discovered through the IdP's OIDC/OAuth well-known metadata. Note that in the `DIDs` example in section 4 below, where the `ID` is issued by the [`AGNTCY`](https://agntcy.org/) rather than by an external IdP, the `serviceEndpoint` instead addresses the `Identity Node` that published the `ResolverMetadata`.
 
 ### 1.a) Okta Example of an Agent ID
 
@@ -38,7 +40,7 @@ ResolverMetadata
 where:
 
 - `assertionMethod`: contains the method, e.g., a JSON Web key (JWK), and in some cases, may also contain the public key that can be used to verify the [`Verifiable Credentials`](/docs/vc/intro). JWKs are commonly used for signing and verifying JWTs (JSON Web Tokens). Note that while a JWK will typically contain the crypto material encoding the public key itself (e.g., the RSA's modulus and exponent), in practice, JWKs are often retrieved dynamically from a JWKS (JSON Web Key Set) endpoint. More specifically, a JWKS is a collection of JWKs hosted by an authentication provider, allowing clients to fetch the appropriate key to verify JWTs without storing them manually. This is precisely the role of the `serviceEndpoint` below.
-- `serviceEndpoint`: The endpoint where JWKs can be dynamically retrieved from in case Okta is used.
+- `serviceEndpoint`: The endpoint associated to the Okta org, derived from its issuer as described above, and from which the JWKs are dynamically discovered.
 
 ### 1.b) Duo Example of an Agent ID
 
@@ -70,7 +72,71 @@ ResolverMetadata
 where:
 
 - `assertionMethod`: Idem to the case above described for Okta.
-- `serviceEndpoint`: The endpoint where JWKs can be dynamically retrieved from in case Duo is used.
+- `serviceEndpoint`: The endpoint associated to the Duo tenant, derived from its issuer as described above, and from which the JWKs are dynamically discovered.
+
+### 1.c) PingOne Example of an Agent ID
+
+#### ID
+
+```text
+ID: PING-CLIENT_ID
+```
+
+where `ID` represents a universally unique identifier associated to an Agent subject (e.g., the Client ID of a PingOne application, which is scoped to a PingOne Environment, in this case).
+
+#### ResolverMetadata
+
+The `ResolverMetadata` is represented as a JSON-LD object comprising the following elements:
+
+```json
+ResolverMetadata
+{
+  id: "PING-CLIENT_ID",
+  assertionMethod: [{
+    publicKeyJwk: {}
+  }],
+  service: [{
+    serviceEndpoint: "https://PING_ENV_ID.auth.pingone.com"
+  }]
+}
+```
+
+where:
+
+- `assertionMethod`: Idem to the cases above described for Okta and Duo.
+- `serviceEndpoint`: The endpoint associated to the PingOne Environment, derived from its issuer `https://auth.pingone.com/PING_ENV_ID/as`, and from which the JWKs are dynamically discovered via `https://auth.pingone.com/PING_ENV_ID/as/.well-known/openid-configuration`. Note that the `auth.pingone.com` host is region-specific, with `auth.pingone.eu`, `auth.pingone.ca`, and `auth.pingone.com.au` being used for the European, Canadian, and Australian regions respectively.
+
+### 1.d) Microsoft Entra ID Example of an Agent ID
+
+#### ID
+
+```text
+ID: IDP-CLIENT_ID
+```
+
+where `ID` represents a universally unique identifier associated to an Agent subject (e.g., the Application (client) ID of a Microsoft Entra ID app registration, which is scoped to an Entra ID Tenant, in this case). Note that, unlike the `OKTA-`, `DUO-`, and `PING-` cases above, Microsoft Entra ID currently uses the generic `IDP-` scheme, since no dedicated `ENTRA-` scheme is defined.
+
+#### ResolverMetadata
+
+The `ResolverMetadata` is represented as a JSON-LD object comprising the following elements:
+
+```json
+ResolverMetadata
+{
+  id: "IDP-CLIENT_ID",
+  assertionMethod: [{
+    publicKeyJwk: {}
+  }],
+  service: [{
+    serviceEndpoint: "https://ENTRA_TENANT_ID.login.microsoftonline.com"
+  }]
+}
+```
+
+where:
+
+- `assertionMethod`: Idem to the cases above described for Okta and Duo.
+- `serviceEndpoint`: The endpoint associated to the Entra ID Tenant, derived from its v2.0 issuer `https://login.microsoftonline.com/ENTRA_TENANT_ID/v2.0`, and from which the JWKs are dynamically discovered via `https://login.microsoftonline.com/ENTRA_TENANT_ID/v2.0/.well-known/openid-configuration`, with the JWKS itself being published at `https://login.microsoftonline.com/ENTRA_TENANT_ID/discovery/v2.0/keys`.
 
 ## 2) A2A Example
 
@@ -110,10 +176,10 @@ where:
 
 ## 3) MCP Server Examples
 
-The latest MCP specification covers authentication and delegated authorization requirements and recommends the use of OAuth 2.1, which entails the use of IdPs and Auth Providers, such as Okta, Duo, or others. However, MCP has not yet addressed the problem of proving provenance and building trust during dynamic discovery and selection of already deployed MCP Servers. For instance, a calling Agent might want to verify the provenance and resources and/or tools supported by an MCP Server, and build trust even before attempting to connect to it (i.e., building trust even before the connectivity and AuthN process is started).
+The latest MCP specification covers authentication and delegated authorization requirements and recommends the use of OAuth 2.1, which entails the use of IdPs and Auth Providers, such as Okta, Duo, PingOne, Microsoft Entra ID, or others. However, MCP has not yet addressed the problem of proving provenance and building trust during dynamic discovery and selection of already deployed MCP Servers. For instance, a calling Agent might want to verify the provenance and resources and/or tools supported by an MCP Server, and build trust even before attempting to connect to it (i.e., building trust even before the connectivity and AuthN process is started).
 
-Hence, the MCP model may benefit from the use of an [`MCP Badge`](../vc/mcp.md) and `ResolverMetadata` in order to automatically discover public keys and verify their origin in a trusted manner. The examples below show `IDs` and `ResolverMetadata` for MCP Servers when Okta or Duo are used as IdPs.
-Also note that, the AGNTCY enables organizations to bring their own MCP Server IDs (as in the examples 3.a) and 3.b) below) or create new ones via the AGNTCY identity services. Hence, the MCP Server identity might be a Fully Qualified Domain Name (FQDN), an ID created through Okta, Duo, AD, Entra ID or other identity providers, or a DID.
+Hence, the MCP model may benefit from the use of an [`MCP Badge`](../vc/mcp.md) and `ResolverMetadata` in order to automatically discover public keys and verify their origin in a trusted manner. The examples below show `IDs` and `ResolverMetadata` for MCP Servers when Okta, Duo, PingOne, or Microsoft Entra ID are used as IdPs.
+Also note that, the AGNTCY enables organizations to bring their own MCP Server IDs (as in the examples 3.a) through 3.d) below) or create new ones via the AGNTCY identity services. Hence, the MCP Server identity might be a Fully Qualified Domain Name (FQDN), an ID created through Okta, Duo, AD, Ping Identity, Entra ID or other identity providers, or a DID.
 
 ### 3.a) Okta Example of an MCP Server ID
 
@@ -147,7 +213,7 @@ ResolverMetadata
 where:
 
 - `assertionMethod`: Idem as in case 1.a).
-- `serviceEndpoint`: The endpoint where the JWK associated to the MCP Server can be dynamically retrieved from in case Okta is used.
+- `serviceEndpoint`: The endpoint associated to the Okta org, from which the JWK associated to the MCP Server is dynamically discovered.
 
 ### 3.b) Duo Example of an MCP Server ID
 
@@ -181,7 +247,75 @@ ResolverMetadata
 where:
 
 - `assertionMethod`: Idem as in case 1.b).
-- `serviceEndpoint`: The endpoint where the JWK associated to the MCP Server can be dynamically retrieved from in case Duo is used.
+- `serviceEndpoint`: The endpoint associated to the Duo tenant, from which the JWK associated to the MCP Server is dynamically discovered.
+
+### 3.c) PingOne Example of an MCP Server ID
+
+Likewise, to enable the use of `ResolverMetadata` and `MCP Server Badges` that can be automatically resolved and verified when PingOne is used as the IdP, the `ID` and `ResolverMetadata` associated to an MCP Server could follow the same approach as in the example 1.c) above.
+
+#### ID
+
+```text
+ID: PING-CLIENT_ID
+```
+
+where `ID` represents a universally unique identifier associated to an MCP Server subject when PingOne is used.
+
+#### ResolverMetadata
+
+The `ResolverMetadata` is represented as a JSON-LD object comprising the following elements:
+
+```json
+ResolverMetadata
+{
+  id: "PING-CLIENT_ID",
+  assertionMethod: [{
+    publicKeyJwk: {}
+  }],
+  service: [{
+    serviceEndpoint: "https://PING_ENV_ID.auth.pingone.com"
+  }]
+}
+```
+
+where:
+
+- `assertionMethod`: Idem as in case 1.c).
+- `serviceEndpoint`: The endpoint associated to the PingOne Environment, from which the JWK associated to the MCP Server is dynamically discovered.
+
+### 3.d) Microsoft Entra ID Example of an MCP Server ID
+
+Likewise, to enable the use of `ResolverMetadata` and `MCP Server Badges` that can be automatically resolved and verified when Microsoft Entra ID is used as the IdP, the `ID` and `ResolverMetadata` associated to an MCP Server could follow the same approach as in the example 1.d) above.
+
+#### ID
+
+```text
+ID: IDP-CLIENT_ID
+```
+
+where `ID` represents a universally unique identifier associated to an MCP Server subject when Microsoft Entra ID is used. As noted in the example 1.d) above, Entra ID currently uses the generic `IDP-` scheme.
+
+#### ResolverMetadata
+
+The `ResolverMetadata` is represented as a JSON-LD object comprising the following elements:
+
+```json
+ResolverMetadata
+{
+  id: "IDP-CLIENT_ID",
+  assertionMethod: [{
+    publicKeyJwk: {}
+  }],
+  service: [{
+    serviceEndpoint: "https://ENTRA_TENANT_ID.login.microsoftonline.com"
+  }]
+}
+```
+
+where:
+
+- `assertionMethod`: Idem as in case 1.d).
+- `serviceEndpoint`: The endpoint associated to the Entra ID Tenant, from which the JWK associated to the MCP Server is dynamically discovered.
 
 ## 4) Decentralized Identifiers (DIDs) Example
 

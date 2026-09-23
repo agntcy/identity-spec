@@ -25,7 +25,7 @@
 - 🎨 See samples of the [`Agent Badges`](https://spec.identity.agntcy.org/docs/vc/agent-badge)
   for [`OASF`](https://schema.oasf.agntcy.org/schema/objects/agent) and [`A2A Agent Card`](https://github.com/google/A2A/blob/main/specification/json/a2a.json#AgentCard)
 - 🆔 See examples of the [`Identifiers`](https://spec.identity.agntcy.org/docs/id/examples)
-  for [`DUO`](https://duo.com), [`OKTA`](https://okta.com) and others
+  for [`DUO`](https://duo.com), [`OKTA`](https://okta.com), [`PING`](https://www.pingidentity.com), [`ENTRA ID`](https://www.microsoft.com/security/business/identity-access/microsoft-entra-id) and others
 - 🔄 Review our [User Flows](https://spec.identity.agntcy.org/docs/specs/flows/agntcy_user/)
 - 🔐 Check our Post-Quantum Support [Post-Quantum](https://spec.identity.agntcy.org/docs/standards/post-quantum-safe)
 
